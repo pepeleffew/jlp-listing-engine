@@ -33,6 +33,35 @@ export const toBase64 = (file: File): Promise<string> =>
     reader.onerror = reject
   })
 
+// Resize + compress an image file to max 2048px on longest side, 85% JPEG.
+// Keeps photos fast to store and render without visible quality loss.
+export function resizeImage(file: File, maxPx = 2048, quality = 0.85): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onerror = reject
+    reader.onload = () => {
+      const img = new Image()
+      img.src = reader.result as string
+      img.onerror = reject
+      img.onload = () => {
+        const { naturalWidth: w, naturalHeight: h } = img
+        const scale = w > h ? maxPx / w : maxPx / h
+        const width  = scale < 1 ? Math.round(w * scale) : w
+        const height = scale < 1 ? Math.round(h * scale) : h
+
+        const canvas = document.createElement('canvas')
+        canvas.width  = width
+        canvas.height = height
+        const ctx = canvas.getContext('2d')
+        if (!ctx) { reject(new Error('Canvas not supported')); return }
+        ctx.drawImage(img, 0, 0, width, height)
+        resolve(canvas.toDataURL('image/jpeg', quality))
+      }
+    }
+  })
+}
+
 export const downloadBlob = (blob: Blob, filename: string) => {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')

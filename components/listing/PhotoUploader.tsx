@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Upload, X, Star, GripVertical, Image as ImageIcon, AlertCircle } from 'lucide-react'
 import { ListingPhoto } from '@/types'
-import { toBase64, generateId, cn } from '@/lib/utils/helpers'
+import { resizeImage, generateId, cn } from '@/lib/utils/helpers'
 import { Spinner } from '@/components/ui'
 
 interface PhotoUploaderProps {
@@ -29,7 +29,7 @@ export default function PhotoUploader({
       const newPhotos: ListingPhoto[] = await Promise.all(
         acceptedFiles.map(async (file, i) => ({
           id: generateId(),
-          url: await toBase64(file),
+          url: await resizeImage(file),
           name: file.name,
           order: photos.length + i,
           isPrimary: photos.length === 0 && i === 0,
