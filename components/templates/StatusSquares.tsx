@@ -1,95 +1,119 @@
+'use client'
 import React from 'react'
 import { Listing } from '@/types'
-import { BRAND, OVERLAY, TYPE, WEIGHT, M } from '@/lib/templates/brand'
-import { PhotoBg, StatusLabel, Rule, StatRow, AgentLine, PriceDisplay, TemplateWrapper } from '@/components/templates/shared'
+import { BRAND, OVERLAY, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
+import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  STATUS SQUARES — social performance rebuild
+//
+//  All three variants follow: HOOK BANNER → HERO TEXT → ADDRESS → STATS
+//  Readability target: key info legible in < 2 seconds on a phone.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const W = 1080, H = 1080
 const E = M.social.edge
 
+// Shared banner used by all status types
+function Banner({ text, bg, textColor }: { text: string; bg: string; textColor: string }) {
+  return (
+    <div style={{
+      position: 'absolute', top: 0, left: 0, right: 0,
+      background: bg,
+      padding: '20px 60px',
+      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      zIndex: 10,
+    }}>
+      <div style={{
+        fontSize: 28,
+        fontWeight: WEIGHT.black,
+        color: textColor,
+        letterSpacing: '0.16em',
+        textTransform: 'uppercase' as const,
+      }}>
+        {text}
+      </div>
+      <Logo variant={bg === BRAND.accentWarm ? 'white' : 'white'} height={42} />
+    </div>
+  )
+}
+
 // ════════════════════════════════════════════════════════════════════════════
-//  COMING SOON — 1080 × 1080
-//
-//  Old: 88px stacked "Coming/Soon" type + glowing gold blur orb + heavy shadow
-//  New: Confident, typographic. The phrase is set in restrained type.
-//      The word "Soon" is differentiated by weight, not color.
-//      No glow effects. No decoration. The message is the design.
+//  COMING SOON
+//  Navy banner builds suspense. Photo + overlay. No price (anticipation).
+//  Large teaser text center. Address revealed, price hidden or shown.
 // ════════════════════════════════════════════════════════════════════════════
 interface ComingSoonProps { listing: Listing; variant?: 'dark' | 'light'; scale?: number; id?: string }
 
 export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: ComingSoonProps) {
   const elementId = id || `tpl-coming-soon-square-${variant}`
-  const isDark = variant === 'dark'
-
-  const bg          = isDark ? BRAND.navy   : BRAND.offWhite
-  const headColor   = isDark ? BRAND.white  : BRAND.navy
-  const subColor    = isDark ? 'rgba(255,255,255,0.50)' : BRAND.gray
-  const ruleColor   = isDark ? 'rgba(255,255,255,0.20)' : BRAND.grayLight
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {isDark
-        ? <PhotoBg listing={listing} overlay={OVERLAY.navyDeep} />
-        : <div style={{ position: 'absolute', inset: 0, background: bg }} />
-      }
+      <PhotoBg listing={listing} overlay={OVERLAY.navyDeep} />
 
-      {/* Top: status label */}
-      <div style={{ position: 'absolute', top: E, left: E }}>
-        <StatusLabel text="Coming Soon" dark={isDark} />
-      </div>
+      {/* Navy banner — builds suspense, contrasts with gold Just Listed */}
+      <Banner text="Coming Soon" bg={BRAND.navyDeep} textColor={BRAND.accentWarm} />
 
-      {/* Center: the phrase — typographic restraint */}
+      {/* Center: teaser statement */}
       <div style={{
         position: 'absolute',
-        top: '50%', left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '100%',
-        padding: `0 ${E}px`,
-        textAlign: 'left',
+        top: '50%', left: E, right: E,
+        transform: 'translateY(-58%)',
       }}>
-        {/* "Coming" — light weight */}
         <div style={{
-          fontSize: TYPE.s_3xl,
-          fontWeight: WEIGHT.light,
-          color: headColor,
-          lineHeight: 0.95,
-          letterSpacing: '-0.04em',
+          fontSize: 20,
+          fontWeight: WEIGHT.semibold,
+          color: BRAND.accentWarm,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          marginBottom: 20,
         }}>
-          Coming
+          Something special is coming
         </div>
-        {/* "Soon" — bold weight, same color. Weight IS the accent. */}
         <div style={{
           fontSize: TYPE.s_3xl,
           fontWeight: WEIGHT.black,
-          color: headColor,
+          color: BRAND.white,
           lineHeight: 0.95,
-          letterSpacing: '-0.04em',
+          letterSpacing: '-0.03em',
+          fontFamily: FONT.display,
         }}>
-          Soon.
+          {listing.city || 'Chattanooga'},{'\n'}
+          {listing.state || 'TN'}
         </div>
+        {listing.price && (
+          <div style={{
+            fontSize: TYPE.s_xl,
+            fontWeight: WEIGHT.black,
+            color: BRAND.accentWarm,
+            letterSpacing: '-0.02em',
+            marginTop: 24,
+          }}>
+            {listing.price}
+          </div>
+        )}
       </div>
 
-      {/* Bottom: address + details */}
+      {/* Bottom: address + stats */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
-        <div style={{ height: 1, background: ruleColor, marginBottom: 24 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.18)', marginBottom: 24 }} />
         <div style={{
-          fontSize: TYPE.s_md,
-          fontWeight: WEIGHT.black,
-          color: headColor,
-          lineHeight: 1.02,
-          letterSpacing: '-0.03em',
+          fontSize: TYPE.s_lg,
+          fontWeight: WEIGHT.bold,
+          color: BRAND.white,
+          lineHeight: 1.05,
+          letterSpacing: '-0.015em',
           marginBottom: 12,
+          fontFamily: FONT.display,
         }}>
-          {listing.address}
+          {listing.address || 'Details Coming Soon'}
         </div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{ fontSize: TYPE.s_xs - 4, color: subColor, marginBottom: 14, letterSpacing: '0.01em' }}>
-              {listing.city}, {listing.state}
-              {listing.price ? `  ·  ${listing.price}` : ''}
-            </div>
-            <StatRow listing={listing} dark={isDark} size="sm" />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <StatRow listing={listing} dark size="md" />
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
+            {listing.agentPhone}
           </div>
-          <AgentLine listing={listing} dark={isDark} align="right" />
         </div>
       </div>
     </TemplateWrapper>
@@ -97,12 +121,9 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-//  UNDER CONTRACT — 1080 × 1080
-//
-//  Old: Rotated gold diagonal banner with box-shadow. Carnival aesthetic.
-//  New: A single large typographic statement. "Under Contract" in bold type,
-//       set flush left across the canvas. The confidence is in the scale,
-//       not in a decorative ribbon.
+//  UNDER CONTRACT
+//  Gold banner signals success. Strong overlay. Bold statement center.
+//  Price shown — people always want to know what it went for.
 // ════════════════════════════════════════════════════════════════════════════
 interface UnderContractProps { listing: Listing; scale?: number; id?: string }
 
@@ -111,64 +132,68 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Photo with strong overlay — text must dominate */}
       <PhotoBg listing={listing} overlay={OVERLAY.strong} />
 
-      {/* Top: status */}
-      <div style={{ position: 'absolute', top: E, left: E }}>
-        <StatusLabel text="Status Update" dark />
-      </div>
+      <Banner text="Under Contract" bg={BRAND.accentWarm} textColor={BRAND.white} />
 
-      {/* Center-left: the statement in large, confident type */}
+      {/* Center: large statement */}
       <div style={{
         position: 'absolute',
         top: '50%', left: E, right: E,
-        transform: 'translateY(-55%)',
+        transform: 'translateY(-58%)',
       }}>
-        {/* "Under" — light */}
-        <div style={{
-          fontSize: TYPE.s_2xl,
-          fontWeight: WEIGHT.light,
-          color: BRAND.white,
-          lineHeight: 0.92,
-          letterSpacing: '-0.035em',
-        }}>
-          Under
-        </div>
-        {/* "Contract." — black, period for finality */}
+        <div style={{ height: 3, background: BRAND.accentWarm, width: 60, marginBottom: 28 }} />
         <div style={{
           fontSize: TYPE.s_2xl,
           fontWeight: WEIGHT.black,
           color: BRAND.white,
-          lineHeight: 0.92,
-          letterSpacing: '-0.035em',
+          lineHeight: 0.95,
+          letterSpacing: '-0.03em',
+          fontFamily: FONT.display,
         }}>
-          Contract.
+          Under{'\n'}Contract.
+        </div>
+        <div style={{
+          fontSize: TYPE.s_sm,
+          fontWeight: WEIGHT.regular,
+          color: 'rgba(255,255,255,0.65)',
+          letterSpacing: '0.04em',
+          marginTop: 24,
+        }}>
+          Another client's dream, delivered.
         </div>
       </div>
 
-      {/* Bottom */}
+      {/* Bottom: address + price + stats */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
-        <Rule width={48} dark style={{ marginBottom: 24 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.18)', marginBottom: 24 }} />
+        {listing.price && (
+          <div style={{
+            fontSize: TYPE.s_xl,
+            fontWeight: WEIGHT.black,
+            color: BRAND.white,
+            letterSpacing: '-0.02em',
+            marginBottom: 10,
+          }}>
+            {listing.price}
+          </div>
+        )}
         <div style={{
           fontSize: TYPE.s_md,
-          fontWeight: WEIGHT.black,
+          fontWeight: WEIGHT.bold,
           color: BRAND.white,
-          lineHeight: 1.02,
-          letterSpacing: '-0.03em',
+          lineHeight: 1.05,
+          letterSpacing: '-0.015em',
           marginBottom: 12,
+          fontFamily: FONT.display,
         }}>
           {listing.address}
         </div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.55)', marginBottom: 14 }}>
-              {listing.city}, {listing.state}
-              {listing.price ? `  ·  ${listing.price}` : ''}
-            </div>
-            <StatRow listing={listing} dark size="sm" />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <StatRow listing={listing} dark size="sm" />
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
+            {listing.agentPhone}
           </div>
-          <AgentLine listing={listing} dark align="right" />
         </div>
       </div>
     </TemplateWrapper>
@@ -176,60 +201,69 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-//  JUST SOLD — 1080 × 1080
-//
-//  Old (gold-celebration): 130px glowing "SOLD" with textShadow glow. Garish.
-//  Old (minimal): Bordered box around "SOLD" — unnecessary frame.
-//  New: "Sold." as a typographic statement. Same pattern as Under Contract.
-//       Weight contrast IS the design. No glow, no borders, no celebration.
-//       The restraint is the sophistication.
+//  JUST SOLD
+//  Gold banner. "Sold for $X" is the hero — price is the entire center.
+//  This is a celebration AND a proof-of-performance post.
 // ════════════════════════════════════════════════════════════════════════════
 interface JustSoldProps { listing: Listing; variant?: 'gold-celebration' | 'minimal'; scale?: number; id?: string }
 
 export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 1, id }: JustSoldProps) {
   const elementId = id || `tpl-just-sold-square-${variant}`
 
-  // Both variants use the same restrained approach — variant drives overlay darkness
-  const overlayColor = variant === 'gold-celebration' ? OVERLAY.strong : OVERLAY.navy
-
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      <PhotoBg listing={listing} overlay={overlayColor} />
+      <PhotoBg listing={listing} overlay={OVERLAY.navyDeep} />
 
-      {/* Status */}
-      <div style={{ position: 'absolute', top: E, left: E }}>
-        <StatusLabel text="Just Sold" dark />
-      </div>
+      <Banner text="Just Sold" bg={BRAND.accentWarm} textColor={BRAND.white} />
 
-      {/* The statement */}
+      {/* Center: sold price as the hero */}
       <div style={{
         position: 'absolute',
         top: '50%', left: E, right: E,
-        transform: 'translateY(-55%)',
+        transform: 'translateY(-58%)',
       }}>
-        <div style={{
-          fontSize: TYPE.s_2xl,
-          fontWeight: WEIGHT.light,
-          color: BRAND.white,
-          lineHeight: 0.92,
-          letterSpacing: '-0.035em',
-        }}>
-          {variant === 'gold-celebration' ? 'Beautifully' : 'Just'}
-        </div>
-        <div style={{
-          fontSize: TYPE.s_2xl,
-          fontWeight: WEIGHT.black,
-          color: BRAND.white,
-          lineHeight: 0.92,
-          letterSpacing: '-0.035em',
-        }}>
-          {variant === 'gold-celebration' ? 'Sold.' : 'Sold.'}
-        </div>
+        {listing.price ? (
+          <>
+            <div style={{
+              fontSize: TYPE.s_sm,
+              fontWeight: WEIGHT.semibold,
+              color: 'rgba(255,255,255,0.65)',
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              marginBottom: 12,
+            }}>
+              {variant === 'gold-celebration' ? 'Sold for' : 'Closed at'}
+            </div>
+            <div style={{
+              fontSize: TYPE.s_3xl,
+              fontWeight: WEIGHT.black,
+              color: BRAND.accentWarm,
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+            }}>
+              {listing.price}
+            </div>
+          </>
+        ) : (
+          <>
+            <div style={{ height: 3, background: BRAND.accentWarm, width: 60, marginBottom: 28 }} />
+            <div style={{
+              fontSize: TYPE.s_2xl,
+              fontWeight: WEIGHT.black,
+              color: BRAND.white,
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              fontFamily: FONT.display,
+            }}>
+              {variant === 'gold-celebration' ? 'Beautifully\nSold.' : 'Just\nSold.'}
+            </div>
+          </>
+        )}
         {variant === 'gold-celebration' && (
           <div style={{
             fontSize: TYPE.s_xs,
             fontWeight: WEIGHT.regular,
-            color: BRAND.accentWarm,
+            color: 'rgba(255,255,255,0.55)',
             letterSpacing: '0.06em',
             marginTop: 28,
           }}>
@@ -238,28 +272,25 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         )}
       </div>
 
-      {/* Bottom */}
+      {/* Bottom: address + stats */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
-        <Rule width={48} dark style={{ marginBottom: 24 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.18)', marginBottom: 24 }} />
         <div style={{
-          fontSize: TYPE.s_md,
-          fontWeight: WEIGHT.black,
+          fontSize: TYPE.s_lg,
+          fontWeight: WEIGHT.bold,
           color: BRAND.white,
-          lineHeight: 1.02,
-          letterSpacing: '-0.03em',
+          lineHeight: 1.05,
+          letterSpacing: '-0.015em',
           marginBottom: 12,
+          fontFamily: FONT.display,
         }}>
           {listing.address}
         </div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.55)', marginBottom: 14 }}>
-              {listing.city}, {listing.state}
-              {listing.price ? `  ·  ${listing.price}` : ''}
-            </div>
-            <StatRow listing={listing} dark size="sm" />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <StatRow listing={listing} dark size="md" />
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
+            {listing.agentPhone}
           </div>
-          <AgentLine listing={listing} dark align="right" />
         </div>
       </div>
     </TemplateWrapper>
