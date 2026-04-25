@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  --brand-navy:      #1d3557;
+  --brand-blue:      #3B7EA6;
+  --brand-blue-light:#6AAFD4;
+  --brand-gold:      #BA7517;
+  --brand-cream:     #f9f9fb;
+  --brand-gray:      #5A5A6A;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-inter, 'Segoe UI', system-ui, sans-serif);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--brand-navy);
+  }
+}
+
+/* ── Component Utilities ────────────────────────────────────────────────── */
+@layer components {
+  /* Card */
+  .card {
+    @apply bg-white rounded-xl border border-gray-100 shadow-card;
+  }
+  .card-md {
+    @apply bg-white rounded-xl border border-gray-100 shadow-card-md;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium
+           transition-all duration-150 focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-brand-blue focus-visible:ring-offset-2 disabled:opacity-50
+           disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand-navy text-white hover:bg-[#162b47] active:scale-[0.98]
+           px-4 py-2 text-sm shadow-sm;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-brand-navy border border-gray-200 hover:border-gray-300
+           hover:bg-gray-50 active:scale-[0.98] px-4 py-2 text-sm;
+  }
+  .btn-gold {
+    @apply btn bg-brand-gold text-white hover:bg-[#a6680f] active:scale-[0.98]
+           px-4 py-2 text-sm shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 text-sm;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600 px-4 py-2 text-sm;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm
+           placeholder:text-gray-400 focus:border-brand-blue focus:outline-none
+           focus:ring-2 focus:ring-brand-blue/20 transition-colors;
+  }
+  .textarea {
+    @apply input resize-none;
+  }
+  .label {
+    @apply block text-xs font-medium text-gray-600 mb-1;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-blue  { @apply badge bg-brand-blue/10 text-brand-blue; }
+  .badge-gold  { @apply badge bg-brand-gold/10 text-brand-gold; }
+  .badge-navy  { @apply badge bg-brand-navy/10 text-brand-navy; }
+  .badge-green { @apply badge bg-emerald-50 text-emerald-700; }
+  .badge-gray  { @apply badge bg-gray-100 text-gray-600; }
+  .badge-red   { @apply badge bg-red-50 text-red-600; }
+
+  /* Sidebar nav link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+           text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all;
+  }
+  .nav-link-active {
+    @apply nav-link bg-brand-navy/8 text-brand-navy;
+  }
+
+  /* Section header */
+  .section-header {
+    @apply flex items-center justify-between mb-4;
+  }
+  .section-title {
+    @apply text-base font-semibold text-brand-navy;
+  }
+
+  /* Form group */
+  .form-group {
+    @apply space-y-1;
+  }
+  .form-row {
+    @apply grid gap-4;
+  }
+}
+
+/* ── Template Canvas Styles (no Tailwind purge) ─────────────────────────── */
+.template-canvas {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-inter, 'Segoe UI', sans-serif);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Drag and drop */
+.drag-active {
+  @apply border-brand-blue bg-brand-blue/5;
+}
+
+/* Print optimizations */
+@media print {
+  .no-print { display: none !important; }
+  .template-canvas { box-shadow: none !important; }
+}
