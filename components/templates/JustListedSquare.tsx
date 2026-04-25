@@ -1,7 +1,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, OVERLAY, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
-import { PhotoBg, StatusLabel, Rule, StatRow, AgentLine, PriceDisplay, TemplateWrapper } from '@/components/templates/shared'
+import { PhotoBg, StatusLabel, Rule, StatRow, AgentLine, PriceDisplay, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  JUST LISTED — 1080 × 1080
@@ -92,10 +92,15 @@ function DarkOverlay({ listing }: { listing: Listing }) {
           {listing.price ? `  ·  ${listing.price}` : ''}
         </div>
 
-        {/* Stats + agent attribution in one row — balanced left/right */}
+        {/* Stats + logo/phone — balanced left/right */}
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
-          <AgentLine listing={listing} dark align="right" />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
+            <Logo variant="white" height={42} />
+            <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
+              {listing.agentPhone}
+            </div>
+          </div>
         </div>
       </div>
     </>
@@ -163,12 +168,9 @@ function SplitPanel({ listing }: { listing: Listing }) {
           <PriceDisplay price={listing.price} dark size="md" />
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
             <StatRow listing={listing} dark size="sm" />
-            <div style={{
-              fontSize: TYPE.s_xs - 6,
-              color: 'rgba(255,255,255,0.45)',
-              letterSpacing: '0.03em',
-            }}>
-              {listing.agentName}  ·  {listing.agentPhone}
+            <Logo variant="white" height={34} />
+            <div style={{ fontSize: TYPE.s_xs - 6, color: 'rgba(255,255,255,0.50)', letterSpacing: '0.03em' }}>
+              {listing.agentPhone}
             </div>
           </div>
         </div>
@@ -248,7 +250,12 @@ function MinimalWhite({ listing }: { listing: Listing }) {
             </div>
             <StatRow listing={listing} dark={false} size="sm" />
           </div>
-          <AgentLine listing={listing} dark={false} align="right" />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
+            <Logo variant="dark" height={38} />
+            <div style={{ fontSize: TYPE.s_xs - 4, color: BRAND.gray, letterSpacing: '0.04em' }}>
+              {listing.agentPhone}
+            </div>
+          </div>
         </div>
       </div>
     </div>

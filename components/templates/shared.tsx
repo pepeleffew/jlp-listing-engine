@@ -294,6 +294,25 @@ export function FeatureList({ features, dark = false, max = 8, size = 'sm', styl
   )
 }
 
+// ── Logo ─────────────────────────────────────────────────────────────────────
+// variant='dark' → full-color logo (for light backgrounds)
+// variant='white' → all-white logo (for dark/photo backgrounds)
+export function Logo({ variant = 'white', height = 40, style }: {
+  variant?: 'white' | 'dark'
+  height?: number
+  style?: CSSProperties
+}) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={variant === 'dark' ? '/logo-dark.png' : '/logo-white.png'}
+      alt="Joe Leffew Properties | Keller Williams"
+      crossOrigin="anonymous"
+      style={{ height, width: 'auto', objectFit: 'contain', display: 'block', ...style }}
+    />
+  )
+}
+
 // ── Template wrapper ────────────────────────────────────────────────────────
 interface TemplateWrapperProps {
   id: string

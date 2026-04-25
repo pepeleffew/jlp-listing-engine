@@ -2,7 +2,7 @@ import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, FONT } from '@/lib/templates/brand'
 import {
-  StatusLabel,
+  StatusLabel, Logo,
   PriceDisplay, Rule, StatRow, FeatureList, TemplateWrapper,
 } from '@/components/templates/shared'
 
@@ -27,20 +27,11 @@ function FlyerHeader({ listing, light = false }: { listing: Listing; light?: boo
   return (
     <div style={{
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '14px 36px',
+      padding: '10px 36px',
       background: light ? BRAND.white : BRAND.navy,
       borderBottom: `3px solid ${BRAND.accentWarm}`,
     }}>
-      {/* Agent name + brokerage */}
-      <div>
-        <div style={{ fontSize: 14, fontWeight: 800, color: light ? BRAND.navy : BRAND.white, letterSpacing: '0.02em' }}>
-          {listing.agentName}
-        </div>
-        <div style={{ fontSize: 10, color: light ? BRAND.gray : BRAND.navyLight, marginTop: 1, letterSpacing: '0.04em' }}>
-          {listing.brokerageName} · Chattanooga, TN
-        </div>
-      </div>
-      {/* Contact */}
+      <Logo variant={light ? 'dark' : 'white'} height={34} />
       <div style={{ textAlign: 'right' }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: light ? BRAND.navy : BRAND.white }}>{listing.agentPhone}</div>
         <div style={{ fontSize: 10, color: light ? BRAND.gray : BRAND.navyLight, marginTop: 1 }}>{listing.agentEmail}</div>
@@ -53,15 +44,19 @@ function FlyerHeader({ listing, light = false }: { listing: Listing; light?: boo
 function FlyerFooter({ listing, light = false }: { listing: Listing; light?: boolean }) {
   return (
     <div style={{
-      padding: '12px 36px',
+      padding: '8px 36px',
       background: light ? BRAND.offWhite : BRAND.navy,
       borderTop: `1px solid ${light ? BRAND.grayLight : 'rgba(255,255,255,0.1)'}`,
+      display: 'flex', alignItems: 'center', gap: 14,
     }}>
-      <div style={{ fontSize: 8, color: light ? BRAND.gray : 'rgba(255,255,255,0.45)', lineHeight: 1.5 }}>
-        {listing.disclaimer || 'Information deemed reliable but not guaranteed. Equal Housing Opportunity.'}
-      </div>
-      <div style={{ fontSize: 8, color: light ? BRAND.gray : 'rgba(255,255,255,0.4)', marginTop: 2 }}>
-        {listing.agentWebsite} · {listing.mlsNumber ? `MLS# ${listing.mlsNumber}` : ''}
+      <Logo variant={light ? 'dark' : 'white'} height={22} style={{ opacity: 0.7, flexShrink: 0 }} />
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 7.5, color: light ? BRAND.gray : 'rgba(255,255,255,0.45)', lineHeight: 1.5 }}>
+          {listing.disclaimer || 'Information deemed reliable but not guaranteed. Equal Housing Opportunity.'}
+        </div>
+        <div style={{ fontSize: 7.5, color: light ? BRAND.gray : 'rgba(255,255,255,0.4)', marginTop: 1 }}>
+          {listing.agentWebsite}{listing.mlsNumber ? ` · MLS# ${listing.mlsNumber}` : ''}
+        </div>
       </div>
     </div>
   )
@@ -87,17 +82,10 @@ function ModernHero({ listing }: { listing: Listing }) {
         )}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,17,26,0.96) 0%, rgba(0,0,0,0.22) 52%, transparent 78%)' }} />
 
-        {/* Top: status label + agent */}
+        {/* Top: status label + logo */}
         <div style={{ position: 'absolute', top: 26, left: 36, right: 36, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <StatusLabel text="Just Listed" dark />
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.88)', letterSpacing: '0.04em' }}>
-              {listing.agentName}
-            </div>
-            <div style={{ fontSize: 9.5, color: 'rgba(255,255,255,0.50)', marginTop: 3, letterSpacing: '0.04em' }}>
-              {listing.brokerageName}
-            </div>
-          </div>
+          <Logo variant="white" height={36} />
         </div>
 
         {/* Bottom: address + price + stats emerge from gradient */}
@@ -262,12 +250,12 @@ function GridPhotos({ listing }: { listing: Listing }) {
           )}
 
           {/* Contact block at bottom */}
-          <div style={{ marginTop: 'auto', paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: BRAND.accentWarm, marginBottom: 6 }}>
+          <div style={{ marginTop: 'auto', paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.12)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: BRAND.accentWarm, marginBottom: 10 }}>
               {listing.ctaText || 'Schedule a Showing'}
             </div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: BRAND.white }}>{listing.agentName}</div>
-            <div style={{ fontSize: 11, color: BRAND.navyLight, marginTop: 3 }}>{listing.agentPhone}</div>
+            <Logo variant="white" height={30} style={{ marginBottom: 8 }} />
+            <div style={{ fontSize: 11, color: BRAND.navyLight }}>{listing.agentPhone}</div>
             <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>{listing.agentWebsite}</div>
           </div>
         </div>
@@ -291,10 +279,8 @@ function LuxuryMinimal({ listing }: { listing: Listing }) {
       <div style={{ height: 4, background: BRAND.navy }} />
 
       {/* Agent line */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 44px', borderBottom: `1px solid ${BRAND.grayLight}` }}>
-        <div style={{ fontSize: 10, fontWeight: 700, color: BRAND.navy, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-          {listing.agentName} · {listing.brokerageName}
-        </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 44px', borderBottom: `1px solid ${BRAND.grayLight}` }}>
+        <Logo variant="dark" height={30} />
         <div style={{ fontSize: 10, color: BRAND.gray, letterSpacing: '0.04em' }}>
           {listing.agentPhone} · {listing.agentWebsite}
         </div>

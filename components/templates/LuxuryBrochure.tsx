@@ -1,7 +1,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, GRADIENTS, FONT } from '@/lib/templates/brand'
-import { FeatureList, Rule, PriceDisplay, StatRow, TemplateWrapper } from '@/components/templates/shared'
+import { FeatureList, Rule, PriceDisplay, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 const PriceTag = PriceDisplay
 const StatBar  = StatRow
@@ -45,9 +45,7 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
           <div style={{ flex: 1, padding: '48px 40px 32px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             {/* Branding */}
             <div>
-              <div style={{ fontSize: 9, color: BRAND.accentWarm, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 20 }}>
-                {listing.agentName} · {listing.brokerageName}
-              </div>
+              <Logo variant="white" height={34} style={{ marginBottom: 16 }} />
               <div style={{ width: 32, height: 1, background: BRAND.accentWarm, marginBottom: 20 }} />
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 12 }}>
                 Exclusively Presented
@@ -173,11 +171,8 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
           )}
 
           {/* Agent bar */}
-          <div style={{ background: '#0a111a', padding: '14px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 800, color: BRAND.white }}>{listing.agentName}</div>
-              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{listing.brokerageName} · Chattanooga, TN</div>
-            </div>
+          <div style={{ background: '#0a111a', padding: '10px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Logo variant="white" height={30} />
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>
                 {listing.disclaimer?.slice(0, 100) || 'Information deemed reliable but not guaranteed. Equal Housing Opportunity.'}
