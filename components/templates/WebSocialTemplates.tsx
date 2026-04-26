@@ -18,8 +18,8 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const bg        = isDark ? BRAND.navy    : BRAND.offWhite
   const headColor = isDark ? BRAND.white   : BRAND.navy
   const subColor  = isDark ? 'rgba(255,255,255,0.62)' : BRAND.gray
-  const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navy
-  const ruleColor = isDark ? 'rgba(255,255,255,0.18)' : 'rgba(26,56,82,0.10)'
+  const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navyDeep
+  const ruleColor = isDark ? 'rgba(255,255,255,0.18)' : 'rgba(26,56,82,0.18)'
 
   // 3 max — generous breathing room per item
   const features = listing.features.slice(0, 3)
@@ -30,10 +30,14 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
 
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
-      {isDark
-        ? <PhotoBg listing={listing} overlay="transparent" />
-        : <div style={{ position: 'absolute', inset: 0, background: BRAND.stone }} />
-      }
+      <PhotoBg listing={listing} overlay="transparent" />
+      {!isDark && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to bottom, rgba(244,242,239,0.92) 0%, rgba(244,242,239,0.30) 28%, rgba(244,242,239,0.45) 64%, rgba(244,242,239,0.92) 100%)',
+          zIndex: 1,
+        }} />
+      )}
 
       {/* Dark: hard dark zones at header/footer, photo fully clear in feature zone */}
       {isDark && (
@@ -109,7 +113,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
             {/* Number column */}
             <div style={{ flexShrink: 0, paddingTop: 2 }}>
               <div style={{
-                fontSize: 13,
+                fontSize: 20,
                 fontWeight: WEIGHT.black,
                 color: BRAND.accentWarm,
                 letterSpacing: '0.10em',
@@ -120,12 +124,14 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               <div style={{ width: 24, height: 1.5, background: BRAND.accentWarm, marginTop: 7 }} />
             </div>
             <div style={{
-              fontSize: 40,
+              fontSize: 44,
               fontWeight: WEIGHT.bold,
               color: itemColor,
-              lineHeight: 1.40,
+              lineHeight: 1.25,
               letterSpacing: '-0.01em',
-              ...(isDark ? { textShadow: '0 2px 36px rgba(26,56,82,1), 0 0 80px rgba(26,56,82,0.90)' } : {}),
+              ...(isDark
+                ? { textShadow: '0 2px 36px rgba(26,56,82,1), 0 0 80px rgba(26,56,82,0.90)' }
+                : { textShadow: '0 0 20px rgba(244,242,239,1), 0 0 40px rgba(244,242,239,0.95)' }),
             }}>
               {feat}
             </div>

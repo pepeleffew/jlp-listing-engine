@@ -47,7 +47,7 @@ function ComingSoonDark({ listing }: { listing: Listing }) {
         }}>Listed at</div>
         {listing.price ? (
           <div style={{
-            fontSize: TYPE.s_3xl, fontWeight: WEIGHT.black, color: BRAND.white,
+            fontSize: 124, fontWeight: WEIGHT.black, color: BRAND.white,
             lineHeight: 0.88, letterSpacing: '-0.04em',
             textShadow: '0 6px 48px rgba(26,56,82,0.95), 0 2px 12px rgba(26,56,82,0.70)',
           }}>{listing.price}</div>
@@ -100,7 +100,7 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
 
       <div style={{
         position: 'absolute', top: 86, left: 28, right: 28, height: PHOTO_H,
-        borderRadius: 16, overflow: 'hidden', boxShadow: '0 12px 52px rgba(26,56,82,0.32)',
+        borderRadius: 16, overflow: 'hidden', boxShadow: '0 12px 52px rgba(26,56,82,0.50)',
       }}>
         {photo?.url ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -115,10 +115,10 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
       }}>
         <div>
-          <div style={{ width: 36, height: 2, background: BRAND.accentWarm, marginBottom: 18 }} />
+          <div style={{ width: 36, height: 3, background: BRAND.accentWarm, marginBottom: 18 }} />
           {listing.price ? (
             <div style={{
-              fontSize: TYPE.s_2xl, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
+              fontSize: TYPE.s_3xl, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
               lineHeight: 1.0, letterSpacing: '-0.03em', marginBottom: 14,
             }}>{listing.price}</div>
           ) : (

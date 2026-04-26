@@ -119,7 +119,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
         </div>
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_lg,
+            fontSize: TYPE.s_xl,
             fontWeight: WEIGHT.black,
             color: BRAND.white,
             letterSpacing: '-0.025em',
@@ -226,7 +226,7 @@ function NavySplit({ listing }: { listing: Listing }) {
           <div style={{
             fontSize: TYPE.s_sm,
             fontWeight: WEIGHT.semibold,
-            color: 'rgba(255,255,255,0.88)',
+            color: BRAND.white,
             letterSpacing: '-0.01em',
             fontFamily: FONT.display,
             marginBottom: 4,
@@ -238,7 +238,7 @@ function NavySplit({ listing }: { listing: Listing }) {
           </div>
           {listing.price && (
             <div style={{
-              fontSize: TYPE.s_lg,
+              fontSize: TYPE.s_xl,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
               letterSpacing: '-0.025em',

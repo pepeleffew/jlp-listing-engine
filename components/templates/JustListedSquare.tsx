@@ -34,10 +34,10 @@ function DarkOverlay({ listing }: { listing: Listing }) {
       {/* Near-invisible steel-blue tint */}
       <PhotoBg listing={listing} overlay="rgba(26,56,82,0.06)" />
 
-      {/* Steel-blue bottom gradient */}
+      {/* Steel-blue bottom gradient — dark navy covers bottom half, photo only visible in top 22% */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 14%, rgba(26,56,82,0.86) 30%, rgba(26,56,82,0.26) 50%, transparent 65%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 22%, rgba(26,56,82,0.94) 36%, rgba(26,56,82,0.68) 50%, rgba(26,56,82,0.22) 66%, transparent 78%)',
       }} />
 
       {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
@@ -68,7 +68,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               Listed at
             </div>
             <div style={{
-              fontSize: 122,
+              fontSize: 132,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
               lineHeight: 0.86,
@@ -85,7 +85,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.32)', marginBottom: 20 }} />
         <div style={{
-          fontSize: TYPE.s_md, fontWeight: WEIGHT.bold, color: BRAND.white,
+          fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
           lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 10,
           textShadow: '0 2px 22px rgba(26,56,82,0.85)',
         }}>
