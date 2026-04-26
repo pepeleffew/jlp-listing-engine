@@ -26,16 +26,16 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Light base tint — photo reads clearly in upper 55% of canvas */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.25)" />
+      {/* Very light base tint — photo dominates the full canvas */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.14)" />
 
-      {/* Bottom gradient — creates dark text zone, photo clear above */}
+      {/* Bottom gradient — dark text zone only in lower 45%, photo fully clear above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(8,14,22,1.00) 0%, rgba(8,14,22,0.97) 28%, rgba(8,14,22,0.65) 48%, transparent 68%)',
+        background: 'linear-gradient(to top, rgba(8,14,22,0.96) 0%, rgba(8,14,22,0.88) 22%, rgba(8,14,22,0.45) 42%, transparent 62%)',
       }} />
 
-      {/* Top: Logo left, small gold label right — floats on clear photo */}
+      {/* Top: Logo left, premium "Coming Soon" label right */}
       <div style={{
         position: 'absolute', top: E, left: E, right: E,
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -43,13 +43,18 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
       }}>
         <Logo variant="white" height={36} />
         <div style={{
-          fontSize: 15,
-          fontWeight: WEIGHT.semibold,
-          color: BRAND.accentWarm,
-          letterSpacing: '0.24em',
-          textTransform: 'uppercase' as const,
+          display: 'inline-flex', alignItems: 'center', gap: 10,
         }}>
-          Coming Soon
+          <div style={{ width: 18, height: 1.5, background: BRAND.accentWarm }} />
+          <div style={{
+            fontSize: 17,
+            fontWeight: WEIGHT.semibold,
+            color: BRAND.accentWarm,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase' as const,
+          }}>
+            Coming Soon
+          </div>
         </div>
       </div>
 
@@ -68,11 +73,12 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           fontFamily: FONT.display,
           fontStyle: 'italic',
           marginBottom: 8,
+          textShadow: '0 2px 20px rgba(0,0,0,0.5)',
         }}>
           Coming
         </div>
 
-        {/* "SOON." — the dominant cinematic anchor, oversized beyond scale */}
+        {/* "SOON." — dominant cinematic anchor */}
         <div style={{
           fontSize: 140,
           fontWeight: WEIGHT.black,
@@ -81,6 +87,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           letterSpacing: '-0.04em',
           fontFamily: FONT.display,
           marginBottom: 32,
+          textShadow: '0 4px 32px rgba(0,0,0,0.45)',
         }}>
           Soon.
         </div>
@@ -216,109 +223,94 @@ interface JustSoldProps { listing: Listing; variant?: 'gold-celebration' | 'mini
 
 export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 1, id }: JustSoldProps) {
   const elementId = id || `tpl-just-sold-square-${variant}`
-  const PHOTO_H = 580
-  const photo = listing.photos.find(p => p.id === listing.primaryPhotoId) || listing.photos[0]
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
+      {/* Photo fills full canvas — light base tint, photo is the primary element */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.18)" />
 
-      {/* Photo zone — top 580px, light overlay so photo is clearly visible */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: PHOTO_H, overflow: 'hidden' }}>
-        {photo?.url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={photo.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        ) : (
-          <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
-        )}
-        {/* Light overlay — photo is the hero, warm bottom fade into gold panel */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.10) 55%, rgba(180,130,70,0.55) 100%)',
-        }} />
+      {/* Bottom gradient — dark text zone anchored at foot */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to top, rgba(10,17,26,0.96) 0%, rgba(10,17,26,0.88) 20%, rgba(10,17,26,0.40) 44%, transparent 64%)',
+      }} />
 
-        {/* Logo + pill badge float over photo */}
+      {/* Top: Logo left, small gold "Just Sold" badge right */}
+      <div style={{
+        position: 'absolute', top: E, left: E, right: E,
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        zIndex: 10,
+      }}>
+        <Logo variant="white" height={38} />
         <div style={{
-          position: 'absolute', top: E, left: E, right: E,
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          zIndex: 10,
+          display: 'inline-flex', alignItems: 'center',
+          background: BRAND.accentWarm,
+          borderRadius: 100, padding: '10px 24px',
+          fontSize: 18, fontWeight: WEIGHT.black, color: BRAND.white,
+          letterSpacing: '0.14em', textTransform: 'uppercase' as const,
         }}>
-          <Logo variant="white" height={38} />
-          <div style={{
-            background: BRAND.navyDeep,
-            borderRadius: 100, padding: '12px 28px',
-            fontSize: 20, fontWeight: WEIGHT.black, color: BRAND.white,
-            letterSpacing: '0.14em', textTransform: 'uppercase' as const,
-          }}>
-            Just Sold
-          </div>
+          Just Sold
         </div>
       </div>
 
-      {/* Gold celebration zone — bottom panel */}
+      {/* Mid: "Sold for" label + gold price — floating above the dark zone */}
       <div style={{
         position: 'absolute',
-        top: PHOTO_H, left: 0, right: 0, bottom: 0,
-        background: 'linear-gradient(160deg, #c8a96e 0%, #b8956a 55%, #a07c55 100%)',
-        padding: `32px ${E}px ${E}px`,
-        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        bottom: 300, left: E, right: E,
+        zIndex: 10,
       }}>
-        <div>
-          {/* "Sold for" label */}
-          <div style={{
-            fontSize: 13,
-            fontWeight: WEIGHT.semibold,
-            color: 'rgba(17,31,53,0.60)',
-            letterSpacing: '0.20em',
-            textTransform: 'uppercase' as const,
-            marginBottom: 10,
-          }}>
-            {variant === 'gold-celebration' ? 'Sold for' : 'Closed at'}
-          </div>
-
-          {/* Price — dominant navy on gold */}
-          {listing.price ? (
-            <div style={{
-              fontSize: TYPE.s_3xl,
-              fontWeight: WEIGHT.black,
-              color: BRAND.navyDeep,
-              lineHeight: 0.88,
-              letterSpacing: '-0.04em',
-              marginBottom: 20,
-            }}>
-              {listing.price}
-            </div>
-          ) : (
-            <div style={{
-              fontSize: TYPE.s_2xl,
-              fontWeight: WEIGHT.black,
-              color: BRAND.navyDeep,
-              lineHeight: 0.90,
-              letterSpacing: '-0.035em',
-              fontFamily: FONT.display,
-              marginBottom: 20,
-            }}>
-              Beautifully<br />Sold.
-            </div>
-          )}
-
-          {/* Address */}
-          <div style={{
-            fontSize: TYPE.s_sm,
-            fontWeight: WEIGHT.bold,
-            color: BRAND.navyDeep,
-            lineHeight: 1.05,
-            letterSpacing: '-0.01em',
-            fontFamily: FONT.display,
-            opacity: 0.85,
-          }}>
-            {listing.address}
-          </div>
+        <div style={{
+          fontSize: 13,
+          fontWeight: WEIGHT.semibold,
+          color: 'rgba(255,255,255,0.52)',
+          letterSpacing: '0.20em',
+          textTransform: 'uppercase' as const,
+          marginBottom: 12,
+        }}>
+          {variant === 'gold-celebration' ? 'Sold for' : 'Closed at'}
         </div>
+        {listing.price ? (
+          <div style={{
+            fontSize: TYPE.s_3xl,
+            fontWeight: WEIGHT.black,
+            color: BRAND.accentWarm,
+            lineHeight: 0.88,
+            letterSpacing: '-0.04em',
+            textShadow: '0 4px 28px rgba(0,0,0,0.40)',
+          }}>
+            {listing.price}
+          </div>
+        ) : (
+          <div style={{
+            fontSize: TYPE.s_2xl,
+            fontWeight: WEIGHT.black,
+            color: BRAND.accentWarm,
+            lineHeight: 0.90,
+            letterSpacing: '-0.035em',
+            fontFamily: FONT.display,
+          }}>
+            Beautifully<br />Sold.
+          </div>
+        )}
+      </div>
 
-        {/* Stats row + phone — dark navy on gold */}
+      {/* Bottom: rule + address + stats */}
+      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 22 }} />
+        <div style={{
+          fontSize: TYPE.s_md,
+          fontWeight: WEIGHT.bold,
+          color: BRAND.white,
+          lineHeight: 1.05,
+          letterSpacing: '-0.015em',
+          fontFamily: FONT.display,
+          marginBottom: 18,
+        }}>
+          {listing.address}
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark={false} size="md" />
-          <div style={{ fontSize: 20, color: 'rgba(17,31,53,0.60)', letterSpacing: '0.04em' }}>
+          <StatRow listing={listing} dark size="md" />
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.52)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>

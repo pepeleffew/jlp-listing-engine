@@ -21,10 +21,12 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navy
   const ruleColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(17,31,53,0.08)'
 
-  // 4 max — more breathing room per item
-  const features = listing.features.slice(0, 4)
-  const placeholders = ['Spacious open floor plan', 'Chef\'s kitchen with premium appliances', 'Primary suite with spa bath', 'Private backyard retreat']
-  const items = features.length > 0 ? features : placeholders
+  // 3 max — generous breathing room per item
+  const features = listing.features.slice(0, 3)
+  const placeholders = ['Spacious open floor plan', 'Chef\'s kitchen with premium appliances', 'Primary suite with spa bath']
+  const items = (features.length > 0 ? features : placeholders).map(f =>
+    f.length > 52 ? f.slice(0, 52).trimEnd() + '…' : f
+  )
 
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
@@ -46,12 +48,12 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: BRAND.accentWarm,
               letterSpacing: '0.22em',
               textTransform: 'uppercase' as const,
-              marginBottom: 16,
+              marginBottom: 18,
             }}>
               Property Highlights
             </div>
             <div style={{
-              fontSize: TYPE.s_xl,
+              fontSize: TYPE.s_lg,
               fontWeight: WEIGHT.black,
               color: headColor,
               lineHeight: 1.02,
@@ -69,7 +71,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
                 color: BRAND.accentWarm,
                 letterSpacing: '-0.02em',
                 lineHeight: 1.0,
-                marginTop: 14,
+                marginTop: 16,
               }}>
                 {listing.price}
               </div>
@@ -79,37 +81,37 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         </div>
       </div>
 
-      {/* Feature list — 4 items, generous per-item spacing */}
+      {/* Feature list — 3 items, generous spacing */}
       <div style={{
         position: 'absolute',
-        top: 320, left: E, right: E, bottom: E + 72,
+        top: 340, left: E, right: E, bottom: E + 80,
         display: 'flex', flexDirection: 'column',
         justifyContent: 'space-between',
       }}>
         {items.map((feat, i) => (
           <div key={i} style={{
-            display: 'flex', alignItems: 'flex-start', gap: 22,
-            padding: '24px 0',
+            display: 'flex', alignItems: 'flex-start', gap: 28,
+            paddingTop: 36, paddingBottom: 36,
             borderBottom: i < items.length - 1 ? `1px solid ${ruleColor}` : 'none',
           }}>
-            {/* Gold dash + "01"-style number */}
-            <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10, paddingTop: 4 }}>
-              <div style={{ width: 20, height: 2, background: BRAND.accentWarm }} />
+            {/* Number column — premium oversized gold numeral */}
+            <div style={{ flexShrink: 0, paddingTop: 2 }}>
               <div style={{
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: WEIGHT.black,
                 color: BRAND.accentWarm,
-                letterSpacing: '0.06em',
-                minWidth: 24,
+                letterSpacing: '0.10em',
+                lineHeight: 1,
               }}>
                 {String(i + 1).padStart(2, '0')}
               </div>
+              <div style={{ width: 24, height: 1.5, background: BRAND.accentWarm, marginTop: 7 }} />
             </div>
             <div style={{
-              fontSize: TYPE.s_sm,
+              fontSize: TYPE.s_base,
               fontWeight: WEIGHT.semibold,
               color: itemColor,
-              lineHeight: 1.38,
+              lineHeight: 1.45,
               letterSpacing: '-0.01em',
             }}>
               {feat}
