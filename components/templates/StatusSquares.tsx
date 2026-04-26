@@ -17,10 +17,10 @@ interface ComingSoonProps { listing: Listing; variant?: 'dark' | 'light'; scale?
 function ComingSoonDark({ listing }: { listing: Listing }) {
   return (
     <>
-      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.05)" />
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.08)" />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 16%, rgba(26,56,82,0.86) 34%, rgba(26,56,82,0.24) 54%, transparent 68%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 20%, rgba(26,56,82,0.90) 36%, rgba(26,56,82,0.32) 56%, transparent 72%)',
       }} />
 
       <div style={{
@@ -67,12 +67,12 @@ function ComingSoonDark({ listing }: { listing: Listing }) {
           lineHeight: 1.05, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 6,
           textShadow: '0 1px 12px rgba(26,56,82,0.55)',
         }}>{listing.address || 'Details Coming Soon'}</div>
-        <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.60)', marginBottom: 16, letterSpacing: '0.02em' }}>
+        <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', marginBottom: 16, letterSpacing: '0.02em' }}>
           {listing.city}, {listing.state}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.60)', letterSpacing: '0.04em' }}>{listing.agentPhone}</div>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.04em' }}>{listing.agentPhone}</div>
         </div>
       </div>
     </>
@@ -92,7 +92,7 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{
-          fontSize: 13, fontWeight: WEIGHT.black, color: BRAND.navy,
+          fontSize: 13, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
           letterSpacing: '0.22em', textTransform: 'uppercase' as const,
         }}>Coming Soon</div>
         <Logo variant="dark" height={34} />
@@ -115,7 +115,7 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
       }}>
         <div>
-          <div style={{ width: 36, height: 3, background: BRAND.accentWarm, marginBottom: 18 }} />
+          <div style={{ width: 48, height: 3, background: BRAND.accentWarm, marginBottom: 18 }} />
           {listing.price ? (
             <div style={{
               fontSize: TYPE.s_3xl, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
@@ -128,16 +128,19 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
             }}>Details Coming Soon</div>
           )}
           <div style={{
-            fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.navyDeep,
+            fontSize: TYPE.s_sm, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
             lineHeight: 1.05, letterSpacing: '-0.015em', fontFamily: FONT.display, marginBottom: 8,
           }}>{listing.address || 'Address Coming Soon'}</div>
-          <div style={{ fontSize: TYPE.s_xs, color: BRAND.gray, letterSpacing: '0.03em' }}>
+          <div style={{ fontSize: TYPE.s_xs, color: BRAND.navy, letterSpacing: '0.03em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark={false} size="sm" />
-          <div style={{ fontSize: 18, color: BRAND.gray, letterSpacing: '0.04em' }}>{listing.agentPhone}</div>
+        <div>
+          <div style={{ height: 1, background: 'rgba(26,56,82,0.15)', marginBottom: 16 }} />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <StatRow listing={listing} dark={false} size="sm" />
+            <div style={{ fontSize: 18, color: BRAND.navy, letterSpacing: '0.04em' }}>{listing.agentPhone}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -189,19 +192,19 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 16%, rgba(26,56,82,0.74) 40%, transparent 62%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 20%, rgba(26,56,82,0.82) 44%, transparent 65%)',
         padding: `80px ${E}px ${E}px`,
         zIndex: 5,
       }}>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.30)', marginBottom: 22 }} />
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_2xl, fontWeight: WEIGHT.black, color: BRAND.white,
+            fontSize: 100, fontWeight: WEIGHT.black, color: BRAND.white,
             letterSpacing: '-0.03em', lineHeight: 1.0, marginBottom: 10,
           }}>{listing.price}</div>
         )}
         <div style={{
-          fontSize: TYPE.s_xs, fontWeight: WEIGHT.bold, color: 'rgba(255,255,255,0.80)',
+          fontSize: TYPE.s_xs, fontWeight: WEIGHT.bold, color: 'rgba(255,255,255,0.90)',
           lineHeight: 1.05, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 12,
         }}>{listing.address}</div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -223,10 +226,10 @@ interface JustSoldProps { listing: Listing; variant?: 'gold-celebration' | 'mini
 function JustSoldDrama({ listing }: { listing: Listing }) {
   return (
     <>
-      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.05)" />
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.08)" />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 18%, rgba(26,56,82,0.80) 32%, rgba(26,56,82,0.14) 48%, transparent 62%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 22%, rgba(26,56,82,0.84) 36%, rgba(26,56,82,0.22) 52%, transparent 66%)',
       }} />
 
       <div style={{ position: 'absolute', top: E, left: E, zIndex: 10 }}>
@@ -253,7 +256,7 @@ function JustSoldDrama({ listing }: { listing: Listing }) {
         }}>Sold for</div>
         {listing.price ? (
           <div style={{
-            fontSize: 126, fontWeight: WEIGHT.black, color: BRAND.white,
+            fontSize: 134, fontWeight: WEIGHT.black, color: BRAND.white,
             lineHeight: 0.87, letterSpacing: '-0.04em',
             textShadow: '0 8px 56px rgba(26,56,82,0.95), 0 2px 16px rgba(26,56,82,0.70)',
           }}>{listing.price}</div>
@@ -332,23 +335,23 @@ function JustSoldMinimal({ listing }: { listing: Listing }) {
           }}>Closed at</div>
           {listing.price && (
             <div style={{
-              fontSize: TYPE.s_2xl, fontWeight: WEIGHT.black, color: BRAND.white,
+              fontSize: TYPE.s_3xl, fontWeight: WEIGHT.black, color: BRAND.white,
               lineHeight: 1.0, letterSpacing: '-0.025em', marginBottom: 22,
             }}>{listing.price}</div>
           )}
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.22)', marginBottom: 22 }} />
+          <div style={{ height: 1.5, background: 'rgba(255,255,255,0.32)', marginBottom: 22 }} />
           <div style={{
             fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
             lineHeight: 1.1, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 10,
           }}>{listing.address}</div>
-          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.68)', letterSpacing: '0.02em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
 
         <div>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.55)', marginTop: 14, letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.68)', marginTop: 14, letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>

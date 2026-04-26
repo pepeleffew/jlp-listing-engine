@@ -31,13 +31,13 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 
   return (
     <>
-      {/* Near-invisible steel-blue tint */}
-      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.06)" />
+      {/* Steel-blue tint to anchor photo in brand palette */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.12)" />
 
-      {/* Steel-blue bottom gradient — dark navy covers bottom half, photo only visible in top 22% */}
+      {/* Hard navy shelf — bottom 54% is clearly dark, photo only in top ~18% */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 22%, rgba(26,56,82,0.94) 36%, rgba(26,56,82,0.68) 50%, rgba(26,56,82,0.22) 66%, transparent 78%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 28%, rgba(26,56,82,0.97) 42%, rgba(26,56,82,0.80) 54%, rgba(26,56,82,0.34) 68%, transparent 82%)',
       }} />
 
       {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
@@ -68,11 +68,11 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               Listed at
             </div>
             <div style={{
-              fontSize: 132,
+              fontSize: 140,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
               lineHeight: 0.86,
-              letterSpacing: '-0.045em',
+              letterSpacing: '-0.048em',
               textShadow: '0 4px 44px rgba(26,56,82,0.95), 0 1px 12px rgba(26,56,82,0.70)',
             }}>
               {listing.price}
@@ -83,7 +83,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 
       {/* Address + stats — intentionally smaller than price, anchored at foot */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.32)', marginBottom: 20 }} />
+        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.40)', marginBottom: 20 }} />
         <div style={{
           fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
           lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 10,
@@ -91,12 +91,12 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         }}>
           {listing.address}
         </div>
-        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.02em', marginBottom: 22 }}>
+        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.02em', marginBottom: 22 }}>
           {listing.city}, {listing.state}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="md" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.70)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>
@@ -147,17 +147,17 @@ function SplitPanel({ listing }: { listing: Listing }) {
         <div>
           {listing.price && (
             <div style={{
-              fontSize: TYPE.s_2xl,
+              fontSize: 100,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
               lineHeight: 1.0,
-              letterSpacing: '-0.025em',
+              letterSpacing: '-0.03em',
               marginBottom: 22,
             }}>
               {listing.price}
             </div>
           )}
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.25)', marginBottom: 22 }} />
+          <div style={{ height: 1.5, background: 'rgba(255,255,255,0.35)', marginBottom: 22 }} />
           <div style={{
             fontSize: TYPE.s_sm,
             fontWeight: WEIGHT.bold,
@@ -169,7 +169,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.02em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
@@ -177,7 +177,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
         {/* Stats + phone */}
         <div>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.62)', marginTop: 14, letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', marginTop: 14, letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>
@@ -236,7 +236,7 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         height: PHOTO_H,
         borderRadius: 16,
         overflow: 'hidden',
-        boxShadow: '0 12px 52px rgba(26,56,82,0.38)',
+        boxShadow: '0 16px 60px rgba(26,56,82,0.52)',
       }}>
         {photo?.url ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -255,12 +255,12 @@ function MinimalWhite({ listing }: { listing: Listing }) {
       }}>
         <div>
           {/* Gold rule between photo and info */}
-          <div style={{ width: 36, height: 2, background: BRAND.accentWarm, marginBottom: 18 }} />
+          <div style={{ width: 48, height: 3, background: BRAND.accentWarm, marginBottom: 18 }} />
           {listing.price && (
             <div style={{
-              fontSize: TYPE.s_2xl,
+              fontSize: TYPE.s_3xl,
               fontWeight: WEIGHT.black,
-              color: BRAND.navy,
+              color: BRAND.navyDeep,
               lineHeight: 1.0,
               letterSpacing: '-0.03em',
               marginBottom: 14,
@@ -270,8 +270,8 @@ function MinimalWhite({ listing }: { listing: Listing }) {
           )}
           <div style={{
             fontSize: TYPE.s_sm,
-            fontWeight: WEIGHT.bold,
-            color: BRAND.navy,
+            fontWeight: WEIGHT.black,
+            color: BRAND.navyDeep,
             lineHeight: 1.05,
             letterSpacing: '-0.015em',
             fontFamily: FONT.display,
@@ -279,14 +279,14 @@ function MinimalWhite({ listing }: { listing: Listing }) {
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: TYPE.s_xs, color: BRAND.gray, letterSpacing: '0.03em' }}>
+          <div style={{ fontSize: TYPE.s_xs, color: BRAND.navy, letterSpacing: '0.03em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark={false} size="sm" />
-          <div style={{ fontSize: 18, color: BRAND.gray, letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 18, color: BRAND.navy, letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>

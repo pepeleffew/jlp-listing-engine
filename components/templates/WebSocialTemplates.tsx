@@ -18,8 +18,8 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const bg        = isDark ? BRAND.navy    : BRAND.offWhite
   const headColor = isDark ? BRAND.white   : BRAND.navy
   const subColor  = isDark ? 'rgba(255,255,255,0.62)' : BRAND.gray
-  const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navyDeep
-  const ruleColor = isDark ? 'rgba(255,255,255,0.18)' : 'rgba(26,56,82,0.18)'
+  const itemColor = isDark ? BRAND.white : BRAND.navyDeep
+  const ruleColor = isDark ? 'rgba(255,255,255,0.24)' : 'rgba(26,56,82,0.22)'
 
   // 3 max — generous breathing room per item
   const features = listing.features.slice(0, 3)
@@ -43,7 +43,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
       {isDark && (
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(26,56,82,0.92) 0%, transparent 30%, transparent 62%, rgba(26,56,82,0.94) 100%)',
+          background: 'linear-gradient(to bottom, rgba(26,56,82,0.96) 0%, transparent 28%, transparent 60%, rgba(26,56,82,0.96) 100%)',
           zIndex: 1,
         }} />
       )}
@@ -107,13 +107,13 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         {items.map((feat, i) => (
           <div key={i} style={{
             display: 'flex', alignItems: 'flex-start', gap: 28,
-            paddingTop: 54, paddingBottom: 54,
-            borderBottom: i < items.length - 1 ? `1px solid ${ruleColor}` : 'none',
+            paddingTop: 64, paddingBottom: 64,
+            borderBottom: i < items.length - 1 ? `1.5px solid ${ruleColor}` : 'none',
           }}>
             {/* Number column */}
-            <div style={{ flexShrink: 0, paddingTop: 2 }}>
+            <div style={{ flexShrink: 0, paddingTop: 4 }}>
               <div style={{
-                fontSize: 20,
+                fontSize: 22,
                 fontWeight: WEIGHT.black,
                 color: BRAND.accentWarm,
                 letterSpacing: '0.10em',
@@ -121,17 +121,17 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               }}>
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <div style={{ width: 24, height: 1.5, background: BRAND.accentWarm, marginTop: 7 }} />
+              <div style={{ width: 28, height: 2, background: BRAND.accentWarm, marginTop: 8 }} />
             </div>
             <div style={{
-              fontSize: 44,
-              fontWeight: WEIGHT.bold,
+              fontSize: 48,
+              fontWeight: WEIGHT.black,
               color: itemColor,
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
+              lineHeight: 1.22,
+              letterSpacing: '-0.015em',
               ...(isDark
                 ? { textShadow: '0 2px 36px rgba(26,56,82,1), 0 0 80px rgba(26,56,82,0.90)' }
-                : { textShadow: '0 0 20px rgba(244,242,239,1), 0 0 40px rgba(244,242,239,0.95)' }),
+                : { textShadow: '0 0 24px rgba(244,242,239,1), 0 0 48px rgba(244,242,239,0.98)' }),
             }}>
               {feat}
             </div>
