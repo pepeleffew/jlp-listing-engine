@@ -168,7 +168,7 @@ function ModernHero({ listing }: { listing: Listing }) {
       </div>
 
       {/* CTA strip */}
-      <div style={{ background: BRAND.accentWarm, padding: '11px 36px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+      <div style={{ background: BRAND.navyMid, padding: '11px 36px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: BRAND.white }}>
           {listing.ctaText || 'Schedule Your Private Showing Today'}
         </div>
@@ -376,7 +376,7 @@ function LuxuryMinimal({ listing }: { listing: Listing }) {
               </div>
             ))}
             <div style={{ marginTop: 'auto', paddingTop: 12 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: BRAND.accentWarm }}>{listing.agentPhone}</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: BRAND.white }}>{listing.agentPhone}</div>
               <div style={{ fontSize: 10, color: BRAND.navyLight, marginTop: 3 }}>{listing.agentEmail}</div>
             </div>
           </div>
@@ -385,7 +385,7 @@ function LuxuryMinimal({ listing }: { listing: Listing }) {
 
       {/* Bottom CTA */}
       <div style={{ padding: '10px 44px', background: BRAND.navy, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: BRAND.accentWarm, letterSpacing: '0.04em' }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: BRAND.white, letterSpacing: '0.04em' }}>
           {listing.ctaText || 'Schedule Your Private Showing Today'}
         </div>
         <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)' }}>

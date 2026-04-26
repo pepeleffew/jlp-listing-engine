@@ -25,7 +25,7 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      <div style={{ position: 'absolute', inset: 0, background: '#0f1923', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ position: 'absolute', inset: 0, background: BRAND.navyDeep, display: 'flex', flexDirection: 'column' }}>
 
         {/* ── Hero section — left photo, right dark content ──────── */}
         <div style={{ display: 'flex', height: 480, flexShrink: 0 }}>
@@ -94,8 +94,8 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
             )) : (
               // Placeholder blocks if no extra photos
               <>
-                <div style={{ flex: 1, background: '#1a2535' }} />
-                <div style={{ flex: 1, background: '#162030' }} />
+                <div style={{ flex: 1, background: BRAND.navy }} />
+                <div style={{ flex: 1, background: BRAND.navyDeep }} />
               </>
             )}
           </div>
@@ -156,7 +156,7 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
         <div style={{ flexShrink: 0 }}>
           {/* Open house callout if exists */}
           {(listing.openHouseDate || listing.openHouseTime) && (
-            <div style={{ background: BRAND.accentWarm, padding: '12px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ background: BRAND.navyMid, padding: '12px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ fontSize: 12, fontWeight: 900, color: BRAND.white, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                 Open House
               </div>
@@ -171,7 +171,7 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
           )}
 
           {/* Agent bar */}
-          <div style={{ background: '#0a111a', padding: '10px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ background: BRAND.navyDeep, padding: '10px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Logo variant="white" height={30} />
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>
@@ -179,7 +179,7 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
               </div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: BRAND.accentWarm }}>{listing.agentPhone}</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: BRAND.navyLight }}>{listing.agentPhone}</div>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{listing.agentWebsite}</div>
             </div>
           </div>

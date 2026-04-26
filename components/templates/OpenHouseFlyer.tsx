@@ -44,7 +44,7 @@ export default function OpenHouseFlyer({ listing, variant = 'default', scale = 1
             </div>
             {hasOpenHouse && (
               <div style={{
-                background: BRAND.accentWarm, borderRadius: 12, padding: '16px 28px', textAlign: 'center',
+                background: BRAND.navyMid, borderRadius: 12, padding: '16px 28px', textAlign: 'center',
               }}>
                 <div style={{ fontSize: 20, fontWeight: 900, color: BRAND.white, lineHeight: 1.1 }}>
                   {listing.openHouseDate}
@@ -137,7 +137,7 @@ export default function OpenHouseFlyer({ listing, variant = 'default', scale = 1
         </div>
 
         {/* ── Bottom: CTA + agent ──────────────────────────────────── */}
-        <div style={{ background: BRAND.accentWarm, padding: '14px 44px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+        <div style={{ background: BRAND.navyDeep, padding: '14px 44px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
           <div>
             <div style={{ fontSize: 14, fontWeight: 900, color: BRAND.white }}>
               {listing.ctaText || 'No Appointment Needed — All Are Welcome!'}

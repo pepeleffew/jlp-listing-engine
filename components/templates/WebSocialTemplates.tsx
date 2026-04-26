@@ -78,7 +78,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               <div style={{
                 fontSize: TYPE.s_lg,
                 fontWeight: WEIGHT.black,
-                color: BRAND.accentWarm,
+                color: isDark ? BRAND.white : BRAND.navyMid,
                 letterSpacing: '-0.02em',
                 lineHeight: 1.0,
                 marginTop: 14,

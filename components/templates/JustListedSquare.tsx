@@ -128,7 +128,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
           <Logo variant="white" height={34} style={{ marginBottom: 28 }} />
           <div style={{
             display: 'inline-flex', alignItems: 'center',
-            background: BRAND.accentWarm,
+            background: BRAND.navyMid,
             borderRadius: 100, padding: '10px 22px',
           }}>
             <div style={{

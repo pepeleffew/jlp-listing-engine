@@ -47,7 +47,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
       }}>
         <Logo variant="white" height={38} />
         <div style={{
-          background: BRAND.accentWarm,
+          background: BRAND.navyMid,
           borderRadius: 100, padding: '10px 24px',
           fontSize: 17, fontWeight: WEIGHT.black, color: BRAND.white,
           letterSpacing: '0.16em', textTransform: 'uppercase' as const,
@@ -76,7 +76,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
               <div style={{
                 fontSize: TYPE.s_xl,
                 fontWeight: WEIGHT.bold,
-                color: BRAND.accentWarm,
+                color: BRAND.navyLight,
                 letterSpacing: '-0.02em',
                 marginBottom: 22,
                 textShadow: '0 2px 20px rgba(0,0,0,0.40)',
@@ -101,8 +101,8 @@ function PhotoDate({ listing }: { listing: Listing }) {
           </div>
         )}
 
-        {/* Gold divider */}
-        <div style={{ height: 1.5, background: BRAND.accentWarm, opacity: 0.50, marginBottom: 18 }} />
+        {/* Divider */}
+        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.28)', marginBottom: 18 }} />
 
         {/* Address + price */}
         <div style={{
@@ -121,7 +121,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
           <div style={{
             fontSize: TYPE.s_lg,
             fontWeight: WEIGHT.black,
-            color: BRAND.accentWarm,
+            color: BRAND.white,
             letterSpacing: '-0.025em',
             lineHeight: 1.0,
             textShadow: '0 2px 20px rgba(0,0,0,0.50)',
@@ -172,7 +172,7 @@ function NavySplit({ listing }: { listing: Listing }) {
         </div>
         <div style={{
           position: 'absolute', top: E, right: E,
-          background: BRAND.accentWarm,
+          background: BRAND.navyMid,
           borderRadius: 100, padding: '10px 22px',
           fontSize: 17, fontWeight: WEIGHT.black, color: BRAND.white,
           letterSpacing: '0.16em', textTransform: 'uppercase' as const,
@@ -214,7 +214,7 @@ function NavySplit({ listing }: { listing: Listing }) {
             <div style={{
               fontSize: TYPE.s_xl,
               fontWeight: WEIGHT.bold,
-              color: BRAND.accentWarm,
+              color: BRAND.navyLight,
               letterSpacing: '-0.02em',
               marginBottom: 16,
             }}>
@@ -240,7 +240,7 @@ function NavySplit({ listing }: { listing: Listing }) {
             <div style={{
               fontSize: TYPE.s_lg,
               fontWeight: WEIGHT.black,
-              color: BRAND.accentWarm,
+              color: BRAND.white,
               letterSpacing: '-0.025em',
               lineHeight: 1.0,
             }}>

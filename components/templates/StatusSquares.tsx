@@ -44,15 +44,15 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
         <Logo variant="white" height={36} />
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          border: '1.5px solid rgba(200,169,110,0.55)',
+          border: '1.5px solid rgba(255,255,255,0.38)',
           borderRadius: 100,
           padding: '8px 18px',
         }}>
-          <div style={{ width: 5, height: 5, borderRadius: '50%', background: BRAND.accentWarm, flexShrink: 0 }} />
+          <div style={{ width: 5, height: 5, borderRadius: '50%', background: BRAND.navyLight, flexShrink: 0 }} />
           <div style={{
             fontSize: 13,
             fontWeight: WEIGHT.semibold,
-            color: BRAND.accentWarm,
+            color: 'rgba(255,255,255,0.85)',
             letterSpacing: '0.18em',
             textTransform: 'uppercase' as const,
           }}>
@@ -101,7 +101,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
       {/* Bottom block: address + stats */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        <div style={{ width: 40, height: 2.5, background: BRAND.accentWarm, marginBottom: 16 }} />
+        <div style={{ width: 40, height: 2.5, background: BRAND.navyLight, marginBottom: 16 }} />
         <div style={{
           fontSize: TYPE.s_sm,
           fontWeight: WEIGHT.bold,
@@ -142,13 +142,13 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
       {/* Steel-blue tint — photo reads clearly, diagonal band creates contrast */}
       <PhotoBg listing={listing} overlay="rgba(26,56,82,0.18)" />
 
-      {/* Diagonal gold band — signature design element */}
+      {/* Diagonal steel-blue band — clean brand-aligned status signal */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
         <div style={{
           position: 'absolute',
           top: '50%', left: '-20%', right: '-20%',
           transform: 'translateY(-50%) rotate(-12deg)',
-          background: BRAND.accentWarm,
+          background: BRAND.navyMid,
           padding: '44px 0',
           display: 'flex', justifyContent: 'center', alignItems: 'center',
         }}>
@@ -243,13 +243,13 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         transform: 'rotate(-8deg)',
         zIndex: 10,
         padding: '10px 24px',
-        border: '3px solid rgba(200,169,110,0.88)',
+        border: '3px solid rgba(255,255,255,0.72)',
         borderRadius: 4,
       }}>
         <div style={{
           fontSize: 58,
           fontWeight: WEIGHT.black,
-          color: BRAND.accentWarm,
+          color: BRAND.white,
           letterSpacing: '0.20em',
           textTransform: 'uppercase' as const,
           lineHeight: 1,
@@ -279,7 +279,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
           <div style={{
             fontSize: 126,
             fontWeight: WEIGHT.black,
-            color: BRAND.accentWarm,
+            color: BRAND.white,
             lineHeight: 0.87,
             letterSpacing: '-0.04em',
             textShadow: '0 8px 52px rgba(0,0,0,0.65)',
@@ -290,7 +290,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
           <div style={{
             fontSize: TYPE.s_2xl,
             fontWeight: WEIGHT.black,
-            color: BRAND.accentWarm,
+            color: BRAND.white,
             lineHeight: 0.90,
             letterSpacing: '-0.035em',
             fontFamily: FONT.display,
