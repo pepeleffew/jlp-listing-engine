@@ -1,7 +1,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, OVERLAY, TYPE, WEIGHT, M } from '@/lib/templates/brand'
-import { PhotoBg, StatusLabel, Rule, StatRow, AgentLine, PriceDisplay, TemplateWrapper } from '@/components/templates/shared'
+import { PhotoBg, StatusLabel, Rule, StatRow, PriceDisplay, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 const E = M.social.edge
 
@@ -77,10 +77,17 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         ))}
       </div>
 
-      {/* Agent line */}
+      {/* Logo + phone */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         <StatRow listing={listing} dark={isDark} size="sm" />
-        <AgentLine listing={listing} dark={isDark} align="right" />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+          <Logo variant={isDark ? 'white' : 'dark'} height={34} />
+          {listing.agentPhone && (
+            <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.50)' : BRAND.gray, letterSpacing: '0.02em' }}>
+              {listing.agentPhone}
+            </div>
+          )}
+        </div>
       </div>
     </TemplateWrapper>
   )

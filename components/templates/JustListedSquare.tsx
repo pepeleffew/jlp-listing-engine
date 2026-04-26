@@ -5,11 +5,12 @@ import { BRAND, OVERLAY, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
 import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  JUST LISTED — 1080 × 1080  (social-performance rebuild)
+//  JUST LISTED — 1080 × 1080
 //
-//  Hierarchy: HOOK BANNER → PRICE → ADDRESS → STATS
-//  Price is now the second-largest element — the scroll-stopper.
-//  Readability target: all key info legible in < 2 seconds on a phone.
+//  Each variant is a distinct design system:
+//  A: Dark Overlay  — floating white price card on photo gradient
+//  B: Split Panel   — left navy editorial strip, photo fills right
+//  C: Minimal White — luxury print-ad with framed photo
 // ─────────────────────────────────────────────────────────────────────────────
 
 const W = 1080
@@ -22,32 +23,8 @@ interface Props {
   id?: string
 }
 
-// Shared hook banner — gold, full-width, immediately scannable
-function HookBanner({ text, logo = true }: { text: string; logo?: boolean }) {
-  return (
-    <div style={{
-      position: 'absolute', top: 0, left: 0, right: 0,
-      background: BRAND.accentWarm,
-      padding: '20px 60px',
-      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      zIndex: 10,
-    }}>
-      <div style={{
-        fontSize: 28,
-        fontWeight: WEIGHT.black,
-        color: BRAND.white,
-        letterSpacing: '0.16em',
-        textTransform: 'uppercase' as const,
-      }}>
-        {text}
-      </div>
-      {logo && <Logo variant="white" height={42} />}
-    </div>
-  )
-}
-
 // ── Variant A: Dark Overlay ───────────────────────────────────────────────────
-// Full-bleed photo. Hook banner top. Price → Address → Stats bottom.
+// Soft gradient fade. Gold pill badge. Floating white price card bottom.
 function DarkOverlay({ listing }: { listing: Listing }) {
   const E = M.social.edge
 
@@ -55,55 +32,92 @@ function DarkOverlay({ listing }: { listing: Listing }) {
     <>
       <PhotoBg
         listing={listing}
-        overlay="linear-gradient(to top, rgba(10,17,26,0.97) 0%, rgba(0,0,0,0.30) 52%, transparent 75%)"
+        overlay="linear-gradient(to top, rgba(10,17,26,0.92) 0%, rgba(10,17,26,0.50) 40%, rgba(0,0,0,0.08) 65%, transparent 84%)"
       />
 
-      <HookBanner text="Just Listed" />
-
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
-        {/* Price — scroll-stopper */}
-        {listing.price && (
+      {/* Top: gold pill badge left, logo right */}
+      <div style={{
+        position: 'absolute', top: E, left: E, right: E,
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        zIndex: 10,
+      }}>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center',
+          background: BRAND.accentWarm,
+          borderRadius: 100,
+          padding: '14px 32px',
+        }}>
           <div style={{
-            fontSize: TYPE.s_2xl,
+            fontSize: 22,
             fontWeight: WEIGHT.black,
             color: BRAND.white,
-            lineHeight: 1.0,
-            letterSpacing: '-0.025em',
-            marginBottom: 18,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase' as const,
           }}>
-            {listing.price}
+            Just Listed
           </div>
-        )}
-
-        {/* Address — large Playfair serif */}
-        <div style={{
-          fontSize: TYPE.s_lg,
-          fontWeight: WEIGHT.bold,
-          color: BRAND.white,
-          lineHeight: 1.05,
-          letterSpacing: '-0.015em',
-          marginBottom: 14,
-          fontFamily: FONT.display,
-        }}>
-          {listing.address}
         </div>
+        <Logo variant="white" height={40} />
+      </div>
 
-        {/* City, State */}
+      {/* Bottom: floating white price card */}
+      <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
         <div style={{
-          fontSize: TYPE.s_sm,
-          fontWeight: WEIGHT.regular,
-          color: 'rgba(255,255,255,0.60)',
-          letterSpacing: '0.02em',
-          marginBottom: 30,
+          background: 'rgba(255,255,255,0.97)',
+          borderRadius: 20,
+          boxShadow: '0 16px 48px rgba(0,0,0,0.38)',
+          padding: '32px 40px 28px',
         }}>
-          {listing.city}, {listing.state}
-        </div>
+          <div style={{
+            fontSize: 13,
+            fontWeight: WEIGHT.semibold,
+            color: BRAND.gray,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase' as const,
+            marginBottom: 8,
+          }}>
+            Listed at
+          </div>
+          {listing.price && (
+            <div style={{
+              fontSize: TYPE.s_xl,
+              fontWeight: WEIGHT.black,
+              color: BRAND.navy,
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+              marginBottom: 18,
+            }}>
+              {listing.price}
+            </div>
+          )}
 
-        {/* Stats + phone */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark size="md" />
-          <div style={{ fontSize: 20, fontWeight: WEIGHT.medium, color: 'rgba(255,255,255,0.70)', letterSpacing: '0.04em' }}>
-            {listing.agentPhone}
+          <div style={{ height: 1, background: BRAND.grayLight, marginBottom: 18 }} />
+
+          <div style={{
+            fontSize: TYPE.s_md,
+            fontWeight: WEIGHT.bold,
+            color: BRAND.navy,
+            lineHeight: 1.05,
+            letterSpacing: '-0.015em',
+            fontFamily: FONT.display,
+            marginBottom: 8,
+          }}>
+            {listing.address}
+          </div>
+          <div style={{
+            fontSize: TYPE.s_xs - 2,
+            color: BRAND.gray,
+            letterSpacing: '0.02em',
+            marginBottom: 20,
+          }}>
+            {listing.city}, {listing.state}
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <StatRow listing={listing} dark={false} size="sm" />
+            <div style={{ fontSize: 18, color: BRAND.gray, letterSpacing: '0.04em' }}>
+              {listing.agentPhone}
+            </div>
           </div>
         </div>
       </div>
@@ -112,36 +126,44 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 }
 
 // ── Variant B: Split Panel ────────────────────────────────────────────────────
-// Gold hook banner → photo → navy panel with price + address.
+// Left navy editorial strip. Right photo fills to edge. Magazine layout.
 function SplitPanel({ listing }: { listing: Listing }) {
-  const BANNER_H = 84
-  const PHOTO_H  = 480
-  const PANEL_TOP = BANNER_H + PHOTO_H
   const E = M.social.edge
   const photo = listing.photos.find(p => p.id === listing.primaryPhotoId) || listing.photos[0]
 
   return (
-    <div style={{ position: 'absolute', inset: 0, background: BRAND.navyDeep }}>
-      <HookBanner text="Just Listed" />
+    <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
 
-      {/* Photo */}
-      <div style={{ position: 'absolute', top: BANNER_H, left: 0, right: 0, height: PHOTO_H, overflow: 'hidden' }}>
-        {photo?.url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={photo.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        ) : (
-          <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
-        )}
-        {/* Bottom fade into navy panel */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(10,17,26,0.9) 100%)' }} />
-      </div>
-
-      {/* Navy content panel */}
+      {/* Left navy strip */}
       <div style={{
-        position: 'absolute', top: PANEL_TOP, left: 0, right: 0, bottom: 0,
-        padding: `28px ${E}px ${E}px`,
+        width: 340,
+        flexShrink: 0,
+        background: BRAND.navyDeep,
+        padding: `${E}px 36px`,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        zIndex: 1,
       }}>
+        {/* Logo + badge */}
+        <div>
+          <Logo variant="white" height={34} style={{ marginBottom: 28 }} />
+          <div style={{
+            display: 'inline-flex', alignItems: 'center',
+            background: BRAND.accentWarm,
+            borderRadius: 100, padding: '10px 22px',
+          }}>
+            <div style={{
+              fontSize: 18,
+              fontWeight: WEIGHT.black,
+              color: BRAND.white,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase' as const,
+            }}>
+              Just Listed
+            </div>
+          </div>
+        </div>
+
+        {/* Price + address */}
         <div>
           {listing.price && (
             <div style={{
@@ -150,52 +172,92 @@ function SplitPanel({ listing }: { listing: Listing }) {
               color: BRAND.white,
               lineHeight: 1.0,
               letterSpacing: '-0.025em',
-              marginBottom: 14,
+              marginBottom: 22,
             }}>
               {listing.price}
             </div>
           )}
+          <div style={{ height: 1, background: 'rgba(255,255,255,0.10)', marginBottom: 22 }} />
           <div style={{
-            fontSize: TYPE.s_md,
+            fontSize: TYPE.s_sm,
             fontWeight: WEIGHT.bold,
             color: BRAND.white,
-            lineHeight: 1.08,
-            letterSpacing: '-0.015em',
+            lineHeight: 1.1,
+            letterSpacing: '-0.01em',
             fontFamily: FONT.display,
             marginBottom: 10,
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.02em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        {/* Stats + phone */}
+        <div>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', marginTop: 14, letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>
+      </div>
+
+      {/* Right: full-bleed photo */}
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+        {photo?.url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={photo.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        ) : (
+          <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
+        )}
+        {/* Subtle left fade into navy strip */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(17,31,53,0.45) 0%, transparent 28%)' }} />
       </div>
     </div>
   )
 }
 
 // ── Variant C: Minimal White ──────────────────────────────────────────────────
-// Light mode. Gold hook banner → photo → clean white panel with big navy price.
+// Luxury print-ad aesthetic. Gold accent bar. Framed photo with shadow.
 function MinimalWhite({ listing }: { listing: Listing }) {
-  const BANNER_H = 84
-  const PHOTO_H  = 560
   const E = M.social.edge
   const photo = listing.photos.find(p => p.id === listing.primaryPhotoId) || listing.photos[0]
+  const PHOTO_TOP = 86
+  const PHOTO_H   = 560
 
   return (
     <div style={{ position: 'absolute', inset: 0, background: BRAND.offWhite }}>
-      <HookBanner text="Just Listed" />
 
-      {/* Photo */}
-      <div style={{ position: 'absolute', top: BANNER_H, left: 0, right: 0, height: PHOTO_H, overflow: 'hidden' }}>
+      {/* Gold accent bar — the one structural signature */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: BRAND.accentWarm }} />
+
+      {/* Header row */}
+      <div style={{
+        position: 'absolute', top: 6, left: E, right: E, height: 80,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <div style={{
+          fontSize: 20,
+          fontWeight: WEIGHT.black,
+          color: BRAND.navy,
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase' as const,
+        }}>
+          Just Listed
+        </div>
+        <Logo variant="dark" height={34} />
+      </div>
+
+      {/* Framed photo — rounded corners + shadow */}
+      <div style={{
+        position: 'absolute',
+        top: PHOTO_TOP, left: 28, right: 28,
+        height: PHOTO_H,
+        borderRadius: 14,
+        overflow: 'hidden',
+        boxShadow: '0 8px 36px rgba(17,31,53,0.18)',
+      }}>
         {photo?.url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={photo.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -204,18 +266,17 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      {/* White info panel */}
+      {/* Info panel */}
       <div style={{
         position: 'absolute',
-        top: BANNER_H + PHOTO_H,
-        left: 0, right: 0, bottom: 0,
-        padding: `26px ${E}px`,
+        top: PHOTO_TOP + PHOTO_H + 28,
+        left: E, right: E, bottom: E,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
       }}>
         <div>
           {listing.price && (
             <div style={{
-              fontSize: TYPE.s_xl,
+              fontSize: TYPE.s_2xl,
               fontWeight: WEIGHT.black,
               color: BRAND.navy,
               lineHeight: 1.0,
@@ -229,7 +290,7 @@ function MinimalWhite({ listing }: { listing: Listing }) {
             fontSize: TYPE.s_md,
             fontWeight: WEIGHT.bold,
             color: BRAND.navy,
-            lineHeight: 1.08,
+            lineHeight: 1.05,
             letterSpacing: '-0.015em',
             fontFamily: FONT.display,
             marginBottom: 8,
