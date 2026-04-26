@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import { Listing } from '@/types'
-import { BRAND, OVERLAY, WEIGHT, TYPE, M } from '@/lib/templates/brand'
+import { BRAND, FONT, OVERLAY, WEIGHT, TYPE, M, ZONES } from '@/lib/templates/brand'
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  DESIGN RULES (enforced here, not in templates):
@@ -310,6 +310,52 @@ export function Logo({ variant = 'white', height = 40, style }: {
       crossOrigin="anonymous"
       style={{ height, width: 'auto', objectFit: 'contain', display: 'block', ...style }}
     />
+  )
+}
+
+// ── Bottom zone — fixed address + stats + phone container ────────────────────
+// Occupies the bottom ZONES.social.BOTTOM_H pixels. Always above bottom padding.
+// Use `dark` for photo/navy backgrounds, `divider` for a rule at the top edge.
+// Pass `style` to add background or other overrides (e.g. navyDeep for JustSold).
+interface BottomZoneProps {
+  listing: Listing
+  dark?: boolean
+  divider?: boolean
+  zIndex?: number
+  style?: CSSProperties
+}
+export function BottomZone({ listing, dark = true, divider = true, zIndex = 10, style }: BottomZoneProps) {
+  const E = M.social.edge
+  const textColor    = dark ? BRAND.white    : BRAND.navyDeep
+  const subColor     = dark ? 'rgba(255,255,255,0.72)' : BRAND.navy
+  const dividerColor = dark ? 'rgba(255,255,255,0.40)' : 'rgba(26,56,82,0.15)'
+  return (
+    <div style={{
+      position: 'absolute', bottom: 0, left: 0, right: 0,
+      height: ZONES.social.BOTTOM_H,
+      padding: `24px ${E}px ${E}px`,
+      overflow: 'hidden',
+      zIndex,
+      ...style,
+    }}>
+      {divider && <div style={{ height: 1.5, background: dividerColor, marginBottom: 16 }} />}
+      <div style={{
+        fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: textColor,
+        lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display,
+        marginBottom: 6, overflow: 'hidden',
+      }}>
+        {listing.address}
+      </div>
+      <div style={{ fontSize: TYPE.s_xs, color: subColor, letterSpacing: '0.02em', marginBottom: 20 }}>
+        {listing.city}, {listing.state}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <StatRow listing={listing} dark={dark} size="sm" />
+        <div style={{ fontSize: 18, color: subColor, letterSpacing: '0.04em' }}>
+          {listing.agentPhone}
+        </div>
+      </div>
+    </div>
   )
 }
 

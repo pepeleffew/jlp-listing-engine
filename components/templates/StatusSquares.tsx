@@ -2,7 +2,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
-import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
+import { PhotoBg, StatRow, TemplateWrapper, Logo, BottomZone } from '@/components/templates/shared'
 
 const W = 1080, H = 1080
 const E = M.social.edge
@@ -60,29 +60,7 @@ function ComingSoonDark({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      {/* Zone 3 — fixed bottom zone */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
-        height: ZONES.social.BOTTOM_H,
-        padding: `24px ${E}px ${E}px`,
-        zIndex: 10,
-        overflow: 'hidden',
-      }}>
-        <div style={{ width: 40, height: 2.5, background: BRAND.navyLight, marginBottom: 14 }} />
-        <div style={{
-          fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
-          lineHeight: 1.05, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 6,
-          textShadow: '0 1px 12px rgba(26,56,82,0.55)',
-          overflow: 'hidden',
-        }}>{listing.address || 'Details Coming Soon'}</div>
-        <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', marginBottom: 14, letterSpacing: '0.02em' }}>
-          {listing.city}, {listing.state}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.04em' }}>{listing.agentPhone}</div>
-        </div>
-      </div>
+      <BottomZone listing={listing} dark divider={false} zIndex={10} />
     </>
   )
 }
@@ -277,31 +255,7 @@ function JustSoldDrama({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      {/* Zone 3 — fixed bottom zone */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
-        height: ZONES.social.BOTTOM_H,
-        background: BRAND.navyDeep,
-        padding: `24px ${E}px ${E}px`,
-        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        zIndex: 10,
-        overflow: 'hidden',
-      }}>
-        <div>
-          <div style={{
-            fontSize: TYPE.s_sm, fontWeight: WEIGHT.black, color: BRAND.white,
-            lineHeight: 1.0, letterSpacing: '-0.01em', fontFamily: FONT.display,
-            marginBottom: 6, overflow: 'hidden',
-          }}>{listing.address}</div>
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>
-            {listing.city}, {listing.state}
-          </div>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>{listing.agentPhone}</div>
-        </div>
-      </div>
+      <BottomZone listing={listing} dark divider={false} zIndex={10} style={{ background: BRAND.navyDeep }} />
     </>
   )
 }

@@ -2,7 +2,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
-import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
+import { PhotoBg, StatRow, TemplateWrapper, Logo, BottomZone } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  JUST LISTED — 1080 × 1080
@@ -81,33 +81,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      {/* Zone 3 — fixed bottom zone, nothing from middle zone may overlap */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
-        height: ZONES.social.BOTTOM_H,
-        padding: `24px ${E}px ${E}px`,
-        zIndex: 10,
-        overflow: 'hidden',
-      }}>
-        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.40)', marginBottom: 16 }} />
-        <div style={{
-          fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
-          lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 8,
-          textShadow: '0 2px 22px rgba(26,56,82,0.85)',
-          overflow: 'hidden',
-        }}>
-          {listing.address}
-        </div>
-        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.02em', marginBottom: 16 }}>
-          {listing.city}, {listing.state}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark size="md" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.04em' }}>
-            {listing.agentPhone}
-          </div>
-        </div>
-      </div>
+      <BottomZone listing={listing} dark zIndex={10} />
     </>
   )
 }
