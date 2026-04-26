@@ -40,21 +40,19 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         background: 'linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.72) 20%, rgba(0,0,0,0.26) 40%, transparent 58%)',
       }} />
 
-      {/* Top: pill badge + logo — floating on the clear photo */}
+      {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
+      <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 6, background: BRAND.accentWarm, zIndex: 10 }} />
+
+      {/* Top: small tracked label left, Logo right */}
       <div style={{
         position: 'absolute', top: E, left: E, right: E, zIndex: 10,
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
         <div style={{
-          display: 'inline-flex', alignItems: 'center',
-          background: BRAND.accentWarm, borderRadius: 100, padding: '12px 28px',
+          fontSize: 13, fontWeight: WEIGHT.black, color: BRAND.accentWarm,
+          letterSpacing: '0.22em', textTransform: 'uppercase' as const,
         }}>
-          <div style={{
-            fontSize: 20, fontWeight: WEIGHT.black, color: BRAND.white,
-            letterSpacing: '0.16em', textTransform: 'uppercase' as const,
-          }}>
-            Just Listed
-          </div>
+          Just Listed
         </div>
         <Logo variant="white" height={38} />
       </div>
@@ -70,12 +68,12 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               Listed at
             </div>
             <div style={{
-              fontSize: TYPE.s_3xl,
+              fontSize: 122,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
-              lineHeight: 0.88,
-              letterSpacing: '-0.04em',
-              textShadow: '0 4px 36px rgba(0,0,0,0.60)',
+              lineHeight: 0.86,
+              letterSpacing: '-0.045em',
+              textShadow: '0 4px 40px rgba(0,0,0,0.65)',
             }}>
               {listing.price}
             </div>

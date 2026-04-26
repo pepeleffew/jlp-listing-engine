@@ -76,58 +76,53 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
         SOON
       </div>
 
-      {/* Bottom block: all typography anchored to dark zone */}
+      {/* "Coming" — floats in upper photo zone, ~130px above SOON. for tension */}
+      <div style={{
+        position: 'absolute', bottom: 600, left: E,
+        zIndex: 10,
+        fontSize: TYPE.s_xl,
+        fontWeight: WEIGHT.bold,
+        color: 'rgba(255,255,255,0.38)',
+        lineHeight: 0.90,
+        letterSpacing: '-0.02em',
+        fontFamily: FONT.display,
+        fontStyle: 'italic',
+        textShadow: '0 2px 28px rgba(0,0,0,0.65)',
+      }}>
+        Coming
+      </div>
+
+      {/* "SOON." — anchored lower, separated by canvas space from "Coming" */}
+      <div style={{
+        position: 'absolute', bottom: 340, left: E,
+        zIndex: 10,
+        fontSize: 160,
+        fontWeight: WEIGHT.black,
+        color: BRAND.white,
+        lineHeight: 0.84,
+        letterSpacing: '-0.05em',
+        fontFamily: FONT.display,
+        textShadow: '0 6px 52px rgba(0,0,0,0.70)',
+      }}>
+        Soon.
+      </div>
+
+      {/* Bottom block: price + address + stats only */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        {/* Gold accent dash */}
-        <div style={{ width: 48, height: 3, background: BRAND.accentWarm, marginBottom: 28 }} />
-
-        {/* "Coming" — smaller italic ghost, recessive qualifier word */}
-        <div style={{
-          fontSize: TYPE.s_xl,
-          fontWeight: WEIGHT.bold,
-          color: 'rgba(255,255,255,0.40)',
-          lineHeight: 0.90,
-          letterSpacing: '-0.02em',
-          fontFamily: FONT.display,
-          fontStyle: 'italic',
-          marginBottom: 14,
-          textShadow: '0 2px 24px rgba(0,0,0,0.60)',
-        }}>
-          Coming
-        </div>
-
-        {/* "SOON." — much bigger than "Coming" for maximum type contrast */}
-        <div style={{
-          fontSize: 160,
-          fontWeight: WEIGHT.black,
-          color: BRAND.white,
-          lineHeight: 0.84,
-          letterSpacing: '-0.05em',
-          fontFamily: FONT.display,
-          marginBottom: 32,
-          textShadow: '0 6px 52px rgba(0,0,0,0.70)',
-        }}>
-          Soon.
-        </div>
-
-        {/* Price: second dominant, gold */}
+        <div style={{ width: 48, height: 3, background: BRAND.accentWarm, marginBottom: 18 }} />
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_xl,
+            fontSize: TYPE.s_lg,
             fontWeight: WEIGHT.black,
             color: BRAND.accentWarm,
             letterSpacing: '-0.025em',
             lineHeight: 1.0,
-            marginBottom: 20,
+            marginBottom: 16,
           }}>
             {listing.price}
           </div>
         )}
-
-        {/* Rule */}
-        <div style={{ height: 1, background: 'rgba(200,169,110,0.24)', marginBottom: 20 }} />
-
-        {/* Address + stats */}
+        <div style={{ height: 1, background: 'rgba(200,169,110,0.24)', marginBottom: 16 }} />
         <div style={{
           fontSize: TYPE.s_sm,
           fontWeight: WEIGHT.bold,
@@ -135,13 +130,13 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           lineHeight: 1.05,
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
-          marginBottom: 14,
+          marginBottom: 12,
         }}>
           {listing.address || 'Details Coming Soon'}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.58)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>
@@ -281,10 +276,10 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         </div>
       </div>
 
-      {/* Mid: "Sold for" label + gold price — floating above the dark zone */}
+      {/* "Sold for" + gold price — centered in the clear photo zone */}
       <div style={{
         position: 'absolute',
-        bottom: 300, left: E, right: E,
+        bottom: 240, left: E, right: E,
         zIndex: 10,
       }}>
         <div style={{
@@ -322,24 +317,29 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         )}
       </div>
 
-      {/* Bottom: rule + address + stats */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 22 }} />
+      {/* Gold celebration footer — the distinct visual signature of Just Sold */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        height: 116,
+        background: BRAND.accentWarm,
+        padding: `0 ${E}px`,
+        display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10,
+        zIndex: 10,
+      }}>
         <div style={{
           fontSize: TYPE.s_sm,
-          fontWeight: WEIGHT.bold,
-          color: BRAND.white,
-          lineHeight: 1.05,
+          fontWeight: WEIGHT.black,
+          color: BRAND.navyDeep,
+          lineHeight: 1.0,
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
-          marginBottom: 14,
-          textShadow: '0 2px 16px rgba(0,0,0,0.45)',
         }}>
           {listing.address}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.50)', letterSpacing: '0.04em' }}>
+          <StatRow listing={listing} dark={false} size="sm" />
+          <div style={{ fontSize: 16, color: 'rgba(17,31,53,0.65)', letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>
