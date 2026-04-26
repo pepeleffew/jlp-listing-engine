@@ -37,7 +37,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
       {/* Steel-blue bottom gradient */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.97) 0%, rgba(26,56,82,0.97) 8%, rgba(26,56,82,0.78) 24%, rgba(26,56,82,0.22) 42%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 14%, rgba(26,56,82,0.86) 30%, rgba(26,56,82,0.26) 50%, transparent 65%)',
       }} />
 
       {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
@@ -91,12 +91,12 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         }}>
           {listing.address}
         </div>
-        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.52)', letterSpacing: '0.02em', marginBottom: 22 }}>
+        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.02em', marginBottom: 22 }}>
           {listing.city}, {listing.state}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="md" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.48)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.70)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>
@@ -192,7 +192,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
           <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
         )}
         {/* Subtle left fade into navy strip */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(26,56,82,0.70) 0%, transparent 32%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(26,56,82,0.86) 0%, transparent 38%)' }} />
       </div>
     </div>
   )

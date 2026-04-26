@@ -33,7 +33,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
       {/* Deep navy shelf — hard bottom, crisp photo above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.97) 0%, rgba(26,56,82,0.97) 8%, rgba(26,56,82,0.76) 28%, rgba(26,56,82,0.18) 48%, transparent 62%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 14%, rgba(26,56,82,0.84) 34%, rgba(26,56,82,0.24) 56%, transparent 70%)',
       }} />
 
       {/* Gold top accent bar */}
@@ -135,7 +135,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.50)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.70)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>
@@ -222,7 +222,7 @@ function NavySplit({ listing }: { listing: Listing }) {
               {listing.openHouseEndTime ? ` – ${listing.openHouseEndTime}` : ''}
             </div>
           )}
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.10)', marginBottom: 14 }} />
+          <div style={{ height: 1, background: 'rgba(255,255,255,0.30)', marginBottom: 14 }} />
           <div style={{
             fontSize: TYPE.s_sm,
             fontWeight: WEIGHT.semibold,
@@ -233,7 +233,7 @@ function NavySplit({ listing }: { listing: Listing }) {
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.38)', marginBottom: 12 }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', marginBottom: 12 }}>
             {listing.city}, {listing.state}
           </div>
           {listing.price && (
@@ -251,7 +251,7 @@ function NavySplit({ listing }: { listing: Listing }) {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.40)', letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>

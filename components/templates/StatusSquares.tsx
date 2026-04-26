@@ -20,7 +20,7 @@ function ComingSoonDark({ listing }: { listing: Listing }) {
       <PhotoBg listing={listing} overlay="rgba(26,56,82,0.05)" />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.97) 0%, rgba(26,56,82,0.97) 10%, rgba(26,56,82,0.74) 28%, rgba(26,56,82,0.18) 46%, transparent 60%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 16%, rgba(26,56,82,0.86) 34%, rgba(26,56,82,0.24) 54%, transparent 68%)',
       }} />
 
       <div style={{
@@ -189,20 +189,20 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.96) 0%, rgba(26,56,82,0.96) 8%, rgba(26,56,82,0.60) 32%, transparent 54%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 16%, rgba(26,56,82,0.74) 40%, transparent 62%)',
         padding: `80px ${E}px ${E}px`,
         zIndex: 5,
       }}>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.30)', marginBottom: 22 }} />
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_xl, fontWeight: WEIGHT.black, color: BRAND.white,
-            letterSpacing: '-0.025em', marginBottom: 10,
+            fontSize: TYPE.s_2xl, fontWeight: WEIGHT.black, color: BRAND.white,
+            letterSpacing: '-0.03em', lineHeight: 1.0, marginBottom: 10,
           }}>{listing.price}</div>
         )}
         <div style={{
-          fontSize: TYPE.s_md, fontWeight: WEIGHT.bold, color: BRAND.white,
-          lineHeight: 1.05, letterSpacing: '-0.015em', fontFamily: FONT.display, marginBottom: 12,
+          fontSize: TYPE.s_xs, fontWeight: WEIGHT.bold, color: 'rgba(255,255,255,0.80)',
+          lineHeight: 1.05, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 12,
         }}>{listing.address}</div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
@@ -226,7 +226,7 @@ function JustSoldDrama({ listing }: { listing: Listing }) {
       <PhotoBg listing={listing} overlay="rgba(26,56,82,0.05)" />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.98) 0%, rgba(26,56,82,0.98) 12%, rgba(26,56,82,0.72) 26%, rgba(26,56,82,0.14) 44%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.99) 0%, rgba(26,56,82,0.99) 18%, rgba(26,56,82,0.80) 32%, rgba(26,56,82,0.14) 48%, transparent 62%)',
       }} />
 
       <div style={{ position: 'absolute', top: E, left: E, zIndex: 10 }}>
