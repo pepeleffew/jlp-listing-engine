@@ -80,7 +80,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
             color: BRAND.white,
             lineHeight: 0.88,
             letterSpacing: '-0.04em',
-            textShadow: '0 6px 44px rgba(0,0,0,0.55)',
+            textShadow: '0 6px 44px rgba(26,56,82,0.70)',
           }}>
             {listing.price}
           </div>
@@ -92,7 +92,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
             lineHeight: 0.92,
             letterSpacing: '-0.03em',
             fontFamily: FONT.display,
-            textShadow: '0 4px 32px rgba(0,0,0,0.55)',
+            textShadow: '0 4px 32px rgba(26,56,82,0.65)',
           }}>
             Details<br />Coming.
           </div>
@@ -110,7 +110,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
           marginBottom: 6,
-          textShadow: '0 1px 12px rgba(0,0,0,0.45)',
+          textShadow: '0 1px 12px rgba(26,56,82,0.55)',
         }}>
           {listing.address || 'Details Coming Soon'}
         </div>
@@ -253,7 +253,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
           letterSpacing: '0.20em',
           textTransform: 'uppercase' as const,
           lineHeight: 1,
-          textShadow: '0 2px 24px rgba(0,0,0,0.60)',
+          textShadow: '0 2px 24px rgba(26,56,82,0.70)',
         }}>
           SOLD
         </div>
@@ -282,7 +282,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
             color: BRAND.white,
             lineHeight: 0.87,
             letterSpacing: '-0.04em',
-            textShadow: '0 8px 52px rgba(0,0,0,0.65)',
+            textShadow: '0 8px 52px rgba(26,56,82,0.75)',
           }}>
             {listing.price}
           </div>

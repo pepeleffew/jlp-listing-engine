@@ -73,7 +73,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               color: BRAND.white,
               lineHeight: 0.86,
               letterSpacing: '-0.045em',
-              textShadow: '0 4px 40px rgba(0,0,0,0.65)',
+              textShadow: '0 4px 40px rgba(26,56,82,0.75)',
             }}>
               {listing.price}
             </div>
@@ -87,7 +87,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         <div style={{
           fontSize: TYPE.s_md, fontWeight: WEIGHT.bold, color: BRAND.white,
           lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 10,
-          textShadow: '0 2px 18px rgba(0,0,0,0.50)',
+          textShadow: '0 2px 18px rgba(26,56,82,0.60)',
         }}>
           {listing.address}
         </div>

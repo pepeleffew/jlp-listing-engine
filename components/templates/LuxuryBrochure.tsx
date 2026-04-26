@@ -38,7 +38,7 @@ export default function LuxuryBrochure({ listing, variant = 'default', scale = 1
               <div style={{ width: '100%', height: '100%', background: BRAND.navyLight }} />
             )}
             {/* Subtle right fade into dark bg */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent 60%, #0f1923 100%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, transparent 60%, ${BRAND.navyDeep} 100%)` }} />
           </div>
 
           {/* Right: hero text */}

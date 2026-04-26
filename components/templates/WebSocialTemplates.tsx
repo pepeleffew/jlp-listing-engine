@@ -39,7 +39,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
       {isDark && (
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(26,56,82,0.55) 0%, transparent 26%, transparent 72%, rgba(26,56,82,0.68) 100%)',
+          background: 'linear-gradient(to bottom, rgba(26,56,82,0.48) 0%, transparent 22%, transparent 74%, rgba(26,56,82,0.58) 100%)',
           zIndex: 1,
         }} />
       )}
@@ -67,7 +67,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: headColor,
               lineHeight: 1.02,
               letterSpacing: '-0.03em',
-              ...(isDark ? { textShadow: '0 2px 20px rgba(0,0,0,0.60)' } : {}),
+              ...(isDark ? { textShadow: '0 2px 20px rgba(26,56,82,0.70)' } : {}),
             }}>
               {listing.address}
             </div>
@@ -124,7 +124,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: itemColor,
               lineHeight: 1.40,
               letterSpacing: '-0.01em',
-              ...(isDark ? { textShadow: '0 2px 18px rgba(0,0,0,0.65)' } : {}),
+              ...(isDark ? { textShadow: '0 2px 18px rgba(26,56,82,0.70)' } : {}),
             }}>
               {feat}
             </div>

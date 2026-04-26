@@ -68,7 +68,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
               letterSpacing: '-0.035em',
               marginBottom: 10,
               fontFamily: FONT.display,
-              textShadow: '0 4px 28px rgba(0,0,0,0.50)',
+              textShadow: '0 4px 28px rgba(26,56,82,0.65)',
             }}>
               {listing.openHouseDate || 'Open House'}
             </div>
@@ -79,7 +79,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
                 color: BRAND.navyLight,
                 letterSpacing: '-0.02em',
                 marginBottom: 22,
-                textShadow: '0 2px 20px rgba(0,0,0,0.40)',
+                textShadow: '0 2px 20px rgba(26,56,82,0.55)',
               }}>
                 {listing.openHouseTime}
                 {listing.openHouseEndTime ? ` – ${listing.openHouseEndTime}` : ''}
@@ -95,7 +95,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
             letterSpacing: '-0.035em',
             fontFamily: FONT.display,
             marginBottom: 22,
-            textShadow: '0 4px 28px rgba(0,0,0,0.50)',
+            textShadow: '0 4px 28px rgba(26,56,82,0.65)',
           }}>
             Open House
           </div>
@@ -113,7 +113,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
           marginBottom: 10,
-          textShadow: '0 1px 12px rgba(0,0,0,0.40)',
+          textShadow: '0 1px 12px rgba(26,56,82,0.55)',
         }}>
           {listing.address}
         </div>
@@ -124,7 +124,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
             color: BRAND.white,
             letterSpacing: '-0.025em',
             lineHeight: 1.0,
-            textShadow: '0 2px 20px rgba(0,0,0,0.50)',
+            textShadow: '0 2px 20px rgba(26,56,82,0.60)',
           }}>
             {listing.price}
           </div>
