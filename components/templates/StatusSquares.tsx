@@ -26,13 +26,13 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Very light base tint — photo dominates the full canvas */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.14)" />
+      {/* Minimal base tint — photo reads clearly across the full canvas */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.10)" />
 
-      {/* Bottom gradient — dark text zone only in lower 45%, photo fully clear above */}
+      {/* Bottom gradient — dark zone confined to bottom 36%, photo clear above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(8,14,22,0.96) 0%, rgba(8,14,22,0.88) 22%, rgba(8,14,22,0.45) 42%, transparent 62%)',
+        background: 'linear-gradient(to top, rgba(8,14,22,0.84) 0%, rgba(8,14,22,0.62) 18%, rgba(8,14,22,0.16) 34%, transparent 50%)',
       }} />
 
       {/* Top: Logo left, premium "Coming Soon" label right */}
@@ -87,7 +87,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           letterSpacing: '-0.04em',
           fontFamily: FONT.display,
           marginBottom: 32,
-          textShadow: '0 4px 32px rgba(0,0,0,0.45)',
+          textShadow: '0 6px 52px rgba(0,0,0,0.70)',
         }}>
           Soon.
         </div>
@@ -143,8 +143,8 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Soft overlay — photo is still the hero */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.28)" />
+      {/* Light overlay — photo reads clearly, diagonal band creates contrast */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.18)" />
 
       {/* Diagonal gold band — signature design element */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -177,7 +177,7 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(10,17,26,0.90) 0%, rgba(10,17,26,0.60) 40%, transparent 100%)',
+        background: 'linear-gradient(to top, rgba(10,17,26,0.78) 0%, rgba(10,17,26,0.44) 32%, transparent 58%)',
         padding: `80px ${E}px ${E}px`,
         zIndex: 5,
       }}>
@@ -226,13 +226,13 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Photo fills full canvas — light base tint, photo is the primary element */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.18)" />
+      {/* Minimal base tint — photo is the primary element */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.12)" />
 
-      {/* Bottom gradient — dark text zone anchored at foot */}
+      {/* Bottom gradient — dark zone confined to bottom 38% */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(10,17,26,0.96) 0%, rgba(10,17,26,0.88) 20%, rgba(10,17,26,0.40) 44%, transparent 64%)',
+        background: 'linear-gradient(to top, rgba(10,17,26,0.82) 0%, rgba(10,17,26,0.56) 18%, rgba(10,17,26,0.14) 36%, transparent 50%)',
       }} />
 
       {/* Top: Logo left, small gold "Just Sold" badge right */}
@@ -276,7 +276,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
             color: BRAND.accentWarm,
             lineHeight: 0.88,
             letterSpacing: '-0.04em',
-            textShadow: '0 4px 28px rgba(0,0,0,0.40)',
+            textShadow: '0 6px 44px rgba(0,0,0,0.65)',
           }}>
             {listing.price}
           </div>

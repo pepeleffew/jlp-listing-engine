@@ -31,8 +31,8 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
-        ? <PhotoBg listing={listing} overlay={OVERLAY.navyDeep} />
-        : <div style={{ position: 'absolute', inset: 0, background: bg }} />
+        ? <PhotoBg listing={listing} overlay="rgba(17,31,53,0.72)" />
+        : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
       }
 
       {/* Gold accent bar at top */}

@@ -30,7 +30,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
       {/* Photo with vignette — dark top+bottom, clear middle so photo pops */}
       <PhotoBg
         listing={listing}
-        overlay="linear-gradient(to bottom, rgba(0,0,0,0.48) 0%, transparent 32%, transparent 62%, rgba(10,17,26,0.78) 100%)"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, transparent 26%, transparent 60%, rgba(10,17,26,0.58) 100%)"
       />
 
       {/* Top: Logo left, gold pill right */}
@@ -55,10 +55,10 @@ function PhotoDate({ listing }: { listing: Listing }) {
         position: 'absolute',
         top: '50%', left: E, right: E,
         transform: 'translateY(-52%)',
-        background: 'rgba(10,17,26,0.82)',
+        background: 'rgba(10,17,26,0.68)',
         borderRadius: 24,
-        boxShadow: '0 20px 60px rgba(0,0,0,0.42)',
-        border: '1px solid rgba(200,169,110,0.28)',
+        boxShadow: '0 16px 52px rgba(0,0,0,0.36)',
+        border: '1px solid rgba(200,169,110,0.40)',
         padding: '36px 40px',
       }}>
         {/* 1. Date — dominant hero */}
@@ -161,7 +161,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
 // ── Variant B: Clean Navy — gold bar + content panel + photo bottom ───────────
 function NavySplit({ listing }: { listing: Listing }) {
   const E = M.social.edge
-  const PANEL_H = 490
+  const PANEL_H = 400
   const photo = listing.photos.find(p => p.id === listing.primaryPhotoId) || listing.photos[0]
 
   return (

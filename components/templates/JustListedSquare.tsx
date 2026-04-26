@@ -31,13 +31,13 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 
   return (
     <>
-      {/* Base: very light tint — photo reads clearly across full canvas */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.15)" />
+      {/* Very light base — photo reads clearly across entire canvas */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.10)" />
 
-      {/* Bottom gradient — creates a defined dark text zone, photo clear above */}
+      {/* Bottom gradient — dark zone only in bottom 38%, photo clear above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(10,17,26,1.00) 0%, rgba(10,17,26,0.97) 24%, rgba(10,17,26,0.60) 42%, transparent 62%)',
+        background: 'linear-gradient(to top, rgba(10,17,26,0.86) 0%, rgba(10,17,26,0.66) 16%, rgba(10,17,26,0.18) 34%, transparent 48%)',
       }} />
 
       {/* Top: pill badge + logo — floating on the clear photo */}
@@ -76,6 +76,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               lineHeight: 0.90,
               letterSpacing: '-0.03em',
               marginBottom: 26,
+              textShadow: '0 4px 32px rgba(0,0,0,0.55)',
             }}>
               {listing.price}
             </div>
@@ -87,6 +88,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         <div style={{
           fontSize: TYPE.s_lg, fontWeight: WEIGHT.bold, color: BRAND.white,
           lineHeight: 1.05, letterSpacing: '-0.015em', fontFamily: FONT.display, marginBottom: 8,
+          textShadow: '0 2px 18px rgba(0,0,0,0.45)',
         }}>
           {listing.address}
         </div>
@@ -204,12 +206,12 @@ function MinimalWhite({ listing }: { listing: Listing }) {
   const E = M.social.edge
   const photo = listing.photos.find(p => p.id === listing.primaryPhotoId) || listing.photos[0]
   const PHOTO_TOP = 86
-  const PHOTO_H   = 560
+  const PHOTO_H   = 556
 
   return (
-    <div style={{ position: 'absolute', inset: 0, background: BRAND.offWhite }}>
+    <div style={{ position: 'absolute', inset: 0, background: BRAND.stone }}>
 
-      {/* Gold accent bar — the one structural signature */}
+      {/* Gold accent bar */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: BRAND.accentWarm }} />
 
       {/* Header row */}
@@ -218,10 +220,10 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{
-          fontSize: 20,
+          fontSize: 13,
           fontWeight: WEIGHT.black,
           color: BRAND.navy,
-          letterSpacing: '0.16em',
+          letterSpacing: '0.22em',
           textTransform: 'uppercase' as const,
         }}>
           Just Listed
@@ -229,14 +231,14 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         <Logo variant="dark" height={34} />
       </div>
 
-      {/* Framed photo — rounded corners + shadow */}
+      {/* Framed photo — rounded corners + deep shadow */}
       <div style={{
         position: 'absolute',
         top: PHOTO_TOP, left: 28, right: 28,
         height: PHOTO_H,
-        borderRadius: 14,
+        borderRadius: 16,
         overflow: 'hidden',
-        boxShadow: '0 8px 36px rgba(17,31,53,0.18)',
+        boxShadow: '0 12px 52px rgba(17,31,53,0.22)',
       }}>
         {photo?.url ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -249,25 +251,27 @@ function MinimalWhite({ listing }: { listing: Listing }) {
       {/* Info panel */}
       <div style={{
         position: 'absolute',
-        top: PHOTO_TOP + PHOTO_H + 28,
+        top: PHOTO_TOP + PHOTO_H + 24,
         left: E, right: E, bottom: E,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
       }}>
         <div>
+          {/* Gold rule between photo and info */}
+          <div style={{ width: 36, height: 2, background: BRAND.accentWarm, marginBottom: 18 }} />
           {listing.price && (
             <div style={{
               fontSize: TYPE.s_2xl,
               fontWeight: WEIGHT.black,
               color: BRAND.navy,
               lineHeight: 1.0,
-              letterSpacing: '-0.025em',
-              marginBottom: 12,
+              letterSpacing: '-0.03em',
+              marginBottom: 14,
             }}>
               {listing.price}
             </div>
           )}
           <div style={{
-            fontSize: TYPE.s_md,
+            fontSize: TYPE.s_sm,
             fontWeight: WEIGHT.bold,
             color: BRAND.navy,
             lineHeight: 1.05,
@@ -277,14 +281,14 @@ function MinimalWhite({ listing }: { listing: Listing }) {
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: TYPE.s_xs, color: BRAND.gray, letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: TYPE.s_xs, color: BRAND.gray, letterSpacing: '0.03em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark={false} size="sm" />
-          <div style={{ fontSize: 20, color: BRAND.gray, letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 18, color: BRAND.gray, letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>
