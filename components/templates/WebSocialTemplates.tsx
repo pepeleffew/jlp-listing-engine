@@ -61,8 +61,19 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
             </div>
             <div style={{ fontSize: 20, color: subColor, marginTop: 10, letterSpacing: '0.01em' }}>
               {listing.city}, {listing.state}
-              {listing.price ? `  ·  ${listing.price}` : ''}
             </div>
+            {listing.price && (
+              <div style={{
+                fontSize: TYPE.s_lg,
+                fontWeight: WEIGHT.black,
+                color: BRAND.accentWarm,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.0,
+                marginTop: 14,
+              }}>
+                {listing.price}
+              </div>
+            )}
           </div>
           <Logo variant={isDark ? 'white' : 'dark'} height={34} style={{ marginTop: 2, flexShrink: 0 }} />
         </div>

@@ -119,13 +119,13 @@ function PhotoDate({ listing }: { listing: Listing }) {
           {listing.address}
         </div>
 
-        {/* 4. Price — most prominent info element (size + gold color) */}
+        {/* 4. Price — prominent info element (bigger than address, gold) */}
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_md,
+            fontSize: TYPE.s_lg,
             fontWeight: WEIGHT.black,
             color: BRAND.accentWarm,
-            letterSpacing: '-0.02em',
+            letterSpacing: '-0.025em',
             lineHeight: 1.0,
             marginBottom: 22,
           }}>
@@ -192,7 +192,7 @@ function NavySplit({ listing }: { listing: Listing }) {
           </div>
         </div>
 
-        {/* Date + time + price + address */}
+        {/* Date → time → rule → address → price */}
         <div>
           {listing.openHouseDate && (
             <div style={{
@@ -219,17 +219,6 @@ function NavySplit({ listing }: { listing: Listing }) {
               {listing.openHouseEndTime ? ` – ${listing.openHouseEndTime}` : ''}
             </div>
           )}
-          {listing.price && (
-            <div style={{
-              fontSize: TYPE.s_lg,
-              fontWeight: WEIGHT.black,
-              color: BRAND.white,
-              letterSpacing: '-0.02em',
-              marginBottom: 16,
-            }}>
-              {listing.price}
-            </div>
-          )}
           <div style={{ height: 1, background: 'rgba(255,255,255,0.10)', marginBottom: 16 }} />
           <div style={{
             fontSize: TYPE.s_sm,
@@ -240,9 +229,21 @@ function NavySplit({ listing }: { listing: Listing }) {
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.42)', marginTop: 8 }}>
+          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.42)', marginTop: 6 }}>
             {listing.city}, {listing.state}
           </div>
+          {listing.price && (
+            <div style={{
+              fontSize: TYPE.s_lg,
+              fontWeight: WEIGHT.black,
+              color: BRAND.accentWarm,
+              letterSpacing: '-0.025em',
+              lineHeight: 1.0,
+              marginTop: 18,
+            }}>
+              {listing.price}
+            </div>
+          )}
         </div>
       </div>
 

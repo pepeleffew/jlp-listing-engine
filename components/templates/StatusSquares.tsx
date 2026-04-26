@@ -26,10 +26,10 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Lighter diagonal gradient — photo is visible, not buried */}
+      {/* Dark enough to anchor white type, light enough to show photo */}
       <PhotoBg
         listing={listing}
-        overlay="linear-gradient(155deg, rgba(11,18,28,0.58) 0%, rgba(11,18,28,0.72) 55%, rgba(11,18,28,0.88) 100%)"
+        overlay="linear-gradient(155deg, rgba(11,18,28,0.65) 0%, rgba(11,18,28,0.80) 55%, rgba(11,18,28,0.92) 100%)"
       />
 
       {/* Top: Logo left, small gold label right */}
