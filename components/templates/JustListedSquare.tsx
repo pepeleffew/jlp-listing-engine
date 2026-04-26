@@ -157,7 +157,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
               {listing.price}
             </div>
           )}
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.10)', marginBottom: 22 }} />
+          <div style={{ height: 1, background: 'rgba(255,255,255,0.25)', marginBottom: 22 }} />
           <div style={{
             fontSize: TYPE.s_sm,
             fontWeight: WEIGHT.bold,
@@ -169,7 +169,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
           }}>
             {listing.address}
           </div>
-          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.02em' }}>
             {listing.city}, {listing.state}
           </div>
         </div>
@@ -177,7 +177,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
         {/* Stats + phone */}
         <div>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', marginTop: 14, letterSpacing: '0.02em' }}>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.62)', marginTop: 14, letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>
@@ -192,7 +192,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
           <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
         )}
         {/* Subtle left fade into navy strip */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(26,56,82,0.45) 0%, transparent 28%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(26,56,82,0.70) 0%, transparent 32%)' }} />
       </div>
     </div>
   )
@@ -236,7 +236,7 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         height: PHOTO_H,
         borderRadius: 16,
         overflow: 'hidden',
-        boxShadow: '0 12px 52px rgba(26,56,82,0.22)',
+        boxShadow: '0 12px 52px rgba(26,56,82,0.38)',
       }}>
         {photo?.url ? (
           // eslint-disable-next-line @next/next/no-img-element

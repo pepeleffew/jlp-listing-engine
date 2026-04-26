@@ -17,7 +17,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const isDark    = variant === 'dark'
   const bg        = isDark ? BRAND.navy    : BRAND.offWhite
   const headColor = isDark ? BRAND.white   : BRAND.navy
-  const subColor  = isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray
+  const subColor  = isDark ? 'rgba(255,255,255,0.62)' : BRAND.gray
   const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navy
   const ruleColor = isDark ? 'rgba(255,255,255,0.18)' : 'rgba(26,56,82,0.10)'
 
@@ -32,7 +32,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
         ? <PhotoBg listing={listing} overlay="rgba(26,56,82,0.08)" />
-        : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
+        : <div style={{ position: 'absolute', inset: 0, background: BRAND.stone }} />
       }
 
       {/* Dark: punchy top/bottom zones, slight mid-tint for feature legibility, photo visible in center */}
@@ -135,7 +135,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
       {/* Stats + phone bottom */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 10 }}>
         <StatRow listing={listing} dark={isDark} size="sm" />
-        <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray, letterSpacing: '0.02em' }}>
+        <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.62)' : BRAND.gray, letterSpacing: '0.02em' }}>
           {listing.agentPhone}
         </div>
       </div>
