@@ -24,40 +24,34 @@ interface Props {
 }
 
 // ── Variant A: Dark Overlay ───────────────────────────────────────────────────
-// Photo dominates. Soft gradient bottom only. Price is the typographic hero.
-// Left gold edge bar is the single structural signature.
+// Photo clearly visible in top 60%. Distinct dark text zone at bottom.
+// Two separate overlay layers: light global tint + heavy bottom gradient.
 function DarkOverlay({ listing }: { listing: Listing }) {
   const E = M.social.edge
 
   return (
     <>
-      {/* Lighter gradient — photo breathes through the top two-thirds */}
-      <PhotoBg
-        listing={listing}
-        overlay="linear-gradient(to top, rgba(10,17,26,0.96) 0%, rgba(10,17,26,0.62) 28%, rgba(0,0,0,0.10) 60%, transparent 100%)"
-      />
+      {/* Base: very light tint — photo reads clearly across full canvas */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.15)" />
 
-      {/* Left gold edge accent — architectural signature */}
-      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, background: BRAND.accentWarm, zIndex: 10 }} />
-
-      {/* Top: pill badge left, logo right */}
+      {/* Bottom gradient — creates a defined dark text zone, photo clear above */}
       <div style={{
-        position: 'absolute', top: E, left: E + 20, right: E,
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to top, rgba(10,17,26,1.00) 0%, rgba(10,17,26,0.97) 24%, rgba(10,17,26,0.60) 42%, transparent 62%)',
+      }} />
+
+      {/* Top: pill badge + logo — floating on the clear photo */}
+      <div style={{
+        position: 'absolute', top: E, left: E, right: E, zIndex: 10,
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        zIndex: 10,
       }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center',
-          background: BRAND.accentWarm,
-          borderRadius: 100,
-          padding: '12px 28px',
+          background: BRAND.accentWarm, borderRadius: 100, padding: '12px 28px',
         }}>
           <div style={{
-            fontSize: 20,
-            fontWeight: WEIGHT.black,
-            color: BRAND.white,
-            letterSpacing: '0.16em',
-            textTransform: 'uppercase' as const,
+            fontSize: 20, fontWeight: WEIGHT.black, color: BRAND.white,
+            letterSpacing: '0.16em', textTransform: 'uppercase' as const,
           }}>
             Just Listed
           </div>
@@ -65,52 +59,38 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         <Logo variant="white" height={38} />
       </div>
 
-      {/* Bottom: price + address directly on gradient — no card */}
-      <div style={{ position: 'absolute', bottom: E, left: E + 20, right: E }}>
+      {/* Bottom: price dominates the dark zone */}
+      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
         {listing.price && (
           <>
             <div style={{
-              fontSize: 12,
-              fontWeight: WEIGHT.semibold,
-              color: BRAND.accentWarm,
-              letterSpacing: '0.20em',
-              textTransform: 'uppercase' as const,
-              marginBottom: 10,
+              fontSize: 12, fontWeight: WEIGHT.semibold, color: BRAND.accentWarm,
+              letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 10,
             }}>
               Listed at
             </div>
             <div style={{
-              fontSize: TYPE.s_2xl,
+              fontSize: TYPE.s_3xl,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
-              lineHeight: 1.0,
+              lineHeight: 0.90,
               letterSpacing: '-0.03em',
-              marginBottom: 24,
+              marginBottom: 26,
             }}>
               {listing.price}
             </div>
           </>
         )}
 
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 22 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 20 }} />
 
         <div style={{
-          fontSize: TYPE.s_lg,
-          fontWeight: WEIGHT.bold,
-          color: BRAND.white,
-          lineHeight: 1.05,
-          letterSpacing: '-0.015em',
-          fontFamily: FONT.display,
-          marginBottom: 8,
+          fontSize: TYPE.s_lg, fontWeight: WEIGHT.bold, color: BRAND.white,
+          lineHeight: 1.05, letterSpacing: '-0.015em', fontFamily: FONT.display, marginBottom: 8,
         }}>
           {listing.address}
         </div>
-        <div style={{
-          fontSize: TYPE.s_xs,
-          color: 'rgba(255,255,255,0.52)',
-          letterSpacing: '0.02em',
-          marginBottom: 26,
-        }}>
+        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.52)', letterSpacing: '0.02em', marginBottom: 26 }}>
           {listing.city}, {listing.state}
         </div>
 
