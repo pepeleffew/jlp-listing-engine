@@ -114,6 +114,8 @@ function PhotoDate({ listing }: { listing: Listing }) {
           fontFamily: FONT.display,
           marginBottom: 10,
           textShadow: '0 1px 14px rgba(26,56,82,0.80)',
+          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
         }}>
           {listing.address}
         </div>
@@ -233,6 +235,8 @@ function NavySplit({ listing }: { listing: Listing }) {
             letterSpacing: '-0.01em',
             fontFamily: FONT.display,
             marginBottom: 4,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}>
             {listing.address}
           </div>

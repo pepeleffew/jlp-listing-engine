@@ -2,7 +2,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
-import { PhotoBg, StatRow, TemplateWrapper, Logo, BottomZone } from '@/components/templates/shared'
+import { PhotoBg, StatRow, TemplateWrapper, Logo, BottomZone, AutoScaleText } from '@/components/templates/shared'
 
 const W = 1080, H = 1080
 const E = M.social.edge
@@ -46,11 +46,17 @@ function ComingSoonDark({ listing }: { listing: Listing }) {
           letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 14,
         }}>Listed at</div>
         {listing.price ? (
-          <div style={{
-            fontSize: 124, fontWeight: WEIGHT.black, color: BRAND.white,
-            lineHeight: 0.88, letterSpacing: '-0.04em',
-            textShadow: '0 6px 48px rgba(26,56,82,0.95), 0 2px 12px rgba(26,56,82,0.70)',
-          }}>{listing.price}</div>
+          <AutoScaleText
+            maxFontSize={124}
+            minFontSize={56}
+            style={{
+              fontWeight: WEIGHT.black, color: BRAND.white,
+              lineHeight: 0.88, letterSpacing: '-0.04em',
+              textShadow: '0 6px 48px rgba(26,56,82,0.95), 0 2px 12px rgba(26,56,82,0.70)',
+            }}
+          >
+            {listing.price}
+          </AutoScaleText>
         ) : (
           <div style={{
             fontSize: TYPE.s_xl, fontWeight: WEIGHT.black, color: BRAND.white,
@@ -117,6 +123,8 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
           <div style={{
             fontSize: TYPE.s_sm, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
             lineHeight: 1.05, letterSpacing: '-0.015em', fontFamily: FONT.display, marginBottom: 8,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}>{listing.address || 'Address Coming Soon'}</div>
           <div style={{ fontSize: TYPE.s_xs, color: BRAND.navy, letterSpacing: '0.03em' }}>
             {listing.city}, {listing.state}
@@ -193,6 +201,8 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
         <div style={{
           fontSize: TYPE.s_xs, fontWeight: WEIGHT.bold, color: 'rgba(255,255,255,0.90)',
           lineHeight: 1.05, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 12,
+          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
         }}>{listing.address}</div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
@@ -242,11 +252,17 @@ function JustSoldDrama({ listing }: { listing: Listing }) {
           letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 14,
         }}>Sold for</div>
         {listing.price ? (
-          <div style={{
-            fontSize: 134, fontWeight: WEIGHT.black, color: BRAND.white,
-            lineHeight: 0.87, letterSpacing: '-0.04em',
-            textShadow: '0 8px 56px rgba(26,56,82,0.95), 0 2px 16px rgba(26,56,82,0.70)',
-          }}>{listing.price}</div>
+          <AutoScaleText
+            maxFontSize={134}
+            minFontSize={56}
+            style={{
+              fontWeight: WEIGHT.black, color: BRAND.white,
+              lineHeight: 0.87, letterSpacing: '-0.04em',
+              textShadow: '0 8px 56px rgba(26,56,82,0.95), 0 2px 16px rgba(26,56,82,0.70)',
+            }}
+          >
+            {listing.price}
+          </AutoScaleText>
         ) : (
           <div style={{
             fontSize: TYPE.s_2xl, fontWeight: WEIGHT.black, color: BRAND.white,
@@ -316,6 +332,8 @@ function JustSoldMinimal({ listing }: { listing: Listing }) {
           <div style={{
             fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
             lineHeight: 1.1, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 10,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}>{listing.address}</div>
           <div style={{ fontSize: TYPE.s_xs - 4, color: 'rgba(255,255,255,0.68)', letterSpacing: '0.02em' }}>
             {listing.city}, {listing.state}

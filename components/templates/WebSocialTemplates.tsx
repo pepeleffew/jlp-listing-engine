@@ -29,9 +29,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
     'Three-car garage with storage',
     'Resort-style pool and outdoor living',
   ]
-  const items = (features.length > 0 ? features : placeholders).map(f =>
-    f.length > 40 ? f.slice(0, 40).trimEnd() + '…' : f
-  )
+  const items = features.length > 0 ? features : placeholders
 
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
@@ -76,6 +74,8 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: headColor,
               lineHeight: 1.02,
               letterSpacing: '-0.025em',
+              display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
               ...(isDark ? { textShadow: '0 2px 28px rgba(26,56,82,0.98)' } : {}),
             }}>
               {listing.address}
@@ -137,6 +137,8 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: itemColor,
               lineHeight: 1.25,
               letterSpacing: '-0.01em',
+              display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
               ...(isDark
                 ? { textShadow: '0 2px 36px rgba(26,56,82,1), 0 0 80px rgba(26,56,82,0.90)' }
                 : { textShadow: '0 0 24px rgba(244,242,239,1), 0 0 48px rgba(244,242,239,0.98)' }),

@@ -1,4 +1,5 @@
-import React, { CSSProperties } from 'react'
+'use client'
+import React, { CSSProperties, useRef, useLayoutEffect, useState } from 'react'
 import { Listing } from '@/types'
 import { BRAND, FONT, OVERLAY, WEIGHT, TYPE, M, ZONES } from '@/lib/templates/brand'
 
@@ -313,6 +314,40 @@ export function Logo({ variant = 'white', height = 40, style }: {
   )
 }
 
+// ── Auto-scaling text — shrinks fontSize to fit container width ───────────────
+// Starts at maxFontSize, decrements by 2px until scrollWidth ≤ clientWidth.
+// Container is capped at maxWidth: 80% so oversized text never bleeds to edge.
+export function AutoScaleText({ children, maxFontSize, minFontSize = 36, style }: {
+  children: string
+  maxFontSize: number
+  minFontSize?: number
+  style?: CSSProperties
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [fontSize, setFontSize] = useState(maxFontSize)
+
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    let size = maxFontSize
+    el.style.fontSize = `${size}px`
+    while (el.scrollWidth > el.clientWidth && size > minFontSize) {
+      size -= 2
+      el.style.fontSize = `${size}px`
+    }
+    setFontSize(size)
+  }, [children, maxFontSize, minFontSize])
+
+  return (
+    <div
+      ref={ref}
+      style={{ maxWidth: '80%', overflow: 'hidden', whiteSpace: 'nowrap', fontSize, ...style }}
+    >
+      {children}
+    </div>
+  )
+}
+
 // ── Bottom zone — fixed address + stats + phone container ────────────────────
 // Occupies the bottom ZONES.social.BOTTOM_H pixels. Always above bottom padding.
 // Use `dark` for photo/navy backgrounds, `divider` for a rule at the top edge.
@@ -342,7 +377,9 @@ export function BottomZone({ listing, dark = true, divider = true, zIndex = 10, 
       <div style={{
         fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: textColor,
         lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display,
-        marginBottom: 6, overflow: 'hidden',
+        marginBottom: 6,
+        display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
       }}>
         {listing.address}
       </div>

@@ -2,7 +2,7 @@
 import React from 'react'
 import { Listing } from '@/types'
 import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
-import { PhotoBg, StatRow, TemplateWrapper, Logo, BottomZone } from '@/components/templates/shared'
+import { PhotoBg, StatRow, TemplateWrapper, Logo, BottomZone, AutoScaleText } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  JUST LISTED — 1080 × 1080
@@ -67,16 +67,19 @@ function DarkOverlay({ listing }: { listing: Listing }) {
             }}>
               Listed at
             </div>
-            <div style={{
-              fontSize: 140,
-              fontWeight: WEIGHT.black,
-              color: BRAND.white,
-              lineHeight: 0.86,
-              letterSpacing: '-0.048em',
-              textShadow: '0 4px 44px rgba(26,56,82,0.95), 0 1px 12px rgba(26,56,82,0.70)',
-            }}>
+            <AutoScaleText
+              maxFontSize={140}
+              minFontSize={56}
+              style={{
+                fontWeight: WEIGHT.black,
+                color: BRAND.white,
+                lineHeight: 0.86,
+                letterSpacing: '-0.048em',
+                textShadow: '0 4px 44px rgba(26,56,82,0.95), 0 1px 12px rgba(26,56,82,0.70)',
+              }}
+            >
               {listing.price}
-            </div>
+            </AutoScaleText>
           </>
         )}
       </div>
@@ -148,6 +151,8 @@ function SplitPanel({ listing }: { listing: Listing }) {
             letterSpacing: '-0.01em',
             fontFamily: FONT.display,
             marginBottom: 10,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}>
             {listing.address}
           </div>
@@ -259,6 +264,8 @@ function MinimalWhite({ listing }: { listing: Listing }) {
             letterSpacing: '-0.015em',
             fontFamily: FONT.display,
             marginBottom: 8,
+            display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
           }}>
             {listing.address}
           </div>
