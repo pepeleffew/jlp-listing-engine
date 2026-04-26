@@ -17,12 +17,14 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const isDark    = variant === 'dark'
   const bg        = isDark ? BRAND.navy    : BRAND.offWhite
   const headColor = isDark ? BRAND.white   : BRAND.navy
-  const subColor  = isDark ? 'rgba(255,255,255,0.50)' : BRAND.gray
-  const itemColor = isDark ? 'rgba(255,255,255,0.85)' : BRAND.navy
-  const numColor  = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(17,31,53,0.05)'
-  const ruleColor = isDark ? 'rgba(255,255,255,0.10)' : BRAND.grayLight
+  const subColor  = isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray
+  const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navy
+  const ruleColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(17,31,53,0.08)'
 
-  const features = listing.features.slice(0, 5)
+  // 4 max — more breathing room per item
+  const features = listing.features.slice(0, 4)
+  const placeholders = ['Spacious open floor plan', 'Chef\'s kitchen with premium appliances', 'Primary suite with spa bath', 'Private backyard retreat']
+  const items = features.length > 0 ? features : placeholders
 
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
@@ -31,62 +33,85 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         : <div style={{ position: 'absolute', inset: 0, background: bg }} />
       }
 
-      {/* Header */}
-      <div style={{ position: 'absolute', top: E, left: E, right: E }}>
-        <StatusLabel text="5 Reasons to Love This Home" dark={isDark} />
-        <div style={{
-          fontSize: TYPE.s_xl,
-          fontWeight: WEIGHT.black,
-          color: headColor,
-          lineHeight: 1.02,
-          letterSpacing: '-0.03em',
-          marginTop: 20,
-        }}>
-          {listing.address}
-        </div>
-        <div style={{ fontSize: TYPE.s_xs - 4, color: subColor, marginTop: 8, letterSpacing: '0.01em' }}>
-          {listing.city}, {listing.state}
-          {listing.price ? `  ·  ${listing.price}` : ''}
+      {/* Gold accent bar at top */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, background: BRAND.accentWarm, zIndex: 10 }} />
+
+      {/* Header: label + address + logo */}
+      <div style={{ position: 'absolute', top: 5 + E, left: E, right: E }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div style={{ flex: 1, paddingRight: 24 }}>
+            <div style={{
+              fontSize: 13,
+              fontWeight: WEIGHT.semibold,
+              color: BRAND.accentWarm,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase' as const,
+              marginBottom: 16,
+            }}>
+              Property Highlights
+            </div>
+            <div style={{
+              fontSize: TYPE.s_xl,
+              fontWeight: WEIGHT.black,
+              color: headColor,
+              lineHeight: 1.02,
+              letterSpacing: '-0.03em',
+            }}>
+              {listing.address}
+            </div>
+            <div style={{ fontSize: 20, color: subColor, marginTop: 10, letterSpacing: '0.01em' }}>
+              {listing.city}, {listing.state}
+              {listing.price ? `  ·  ${listing.price}` : ''}
+            </div>
+          </div>
+          <Logo variant={isDark ? 'white' : 'dark'} height={34} style={{ marginTop: 2, flexShrink: 0 }} />
         </div>
       </div>
 
-      {/* Feature list */}
+      {/* Feature list — 4 items, generous per-item spacing */}
       <div style={{
         position: 'absolute',
-        top: 280, left: E, right: E, bottom: E + 80,
-        display: 'flex', flexDirection: 'column', justifyContent: 'space-around',
+        top: 320, left: E, right: E, bottom: E + 72,
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'space-between',
       }}>
-        {(features.length > 0 ? features : ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']).map((feat, i) => (
+        {items.map((feat, i) => (
           <div key={i} style={{
-            display: 'flex', alignItems: 'center', gap: 32,
-            paddingBottom: 20,
-            borderBottom: i < features.length - 1 ? `1px solid ${ruleColor}` : 'none',
+            display: 'flex', alignItems: 'flex-start', gap: 22,
+            padding: '24px 0',
+            borderBottom: i < items.length - 1 ? `1px solid ${ruleColor}` : 'none',
           }}>
-            {/* Ambient number */}
-            <div style={{
-              fontSize: 80, fontWeight: WEIGHT.black, color: numColor,
-              lineHeight: 1, letterSpacing: '-0.05em', flexShrink: 0, width: 52,
-              textAlign: 'right',
-            }}>
-              {i + 1}
+            {/* Gold dash + "01"-style number */}
+            <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10, paddingTop: 4 }}>
+              <div style={{ width: 20, height: 2, background: BRAND.accentWarm }} />
+              <div style={{
+                fontSize: 14,
+                fontWeight: WEIGHT.black,
+                color: BRAND.accentWarm,
+                letterSpacing: '0.06em',
+                minWidth: 24,
+              }}>
+                {String(i + 1).padStart(2, '0')}
+              </div>
             </div>
-            <div style={{ fontSize: TYPE.s_sm - 2, fontWeight: WEIGHT.semibold, color: itemColor, lineHeight: 1.3, letterSpacing: '-0.01em' }}>
+            <div style={{
+              fontSize: TYPE.s_sm,
+              fontWeight: WEIGHT.semibold,
+              color: itemColor,
+              lineHeight: 1.38,
+              letterSpacing: '-0.01em',
+            }}>
               {feat}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Logo + phone */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+      {/* Stats + phone bottom */}
+      <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <StatRow listing={listing} dark={isDark} size="sm" />
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
-          <Logo variant={isDark ? 'white' : 'dark'} height={34} />
-          {listing.agentPhone && (
-            <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.50)' : BRAND.gray, letterSpacing: '0.02em' }}>
-              {listing.agentPhone}
-            </div>
-          )}
+        <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray, letterSpacing: '0.02em' }}>
+          {listing.agentPhone}
         </div>
       </div>
     </TemplateWrapper>

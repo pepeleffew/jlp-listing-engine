@@ -26,8 +26,11 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Near-black overlay — photo is texture, not focus */}
-      <PhotoBg listing={listing} overlay="rgba(11,18,28,0.88)" />
+      {/* Lighter diagonal gradient — photo is visible, not buried */}
+      <PhotoBg
+        listing={listing}
+        overlay="linear-gradient(155deg, rgba(11,18,28,0.58) 0%, rgba(11,18,28,0.72) 55%, rgba(11,18,28,0.88) 100%)"
+      />
 
       {/* Top: Logo left, small gold label right */}
       <div style={{
@@ -37,33 +40,42 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
       }}>
         <Logo variant="white" height={36} />
         <div style={{
-          fontSize: 17,
+          fontSize: 16,
           fontWeight: WEIGHT.semibold,
           color: BRAND.accentWarm,
-          letterSpacing: '0.20em',
+          letterSpacing: '0.22em',
           textTransform: 'uppercase' as const,
         }}>
           Coming Soon
         </div>
       </div>
 
-      {/* Center: editorial type contrast — faded italic / bold black */}
+      {/* Center: dramatic type hierarchy with breathing room */}
       <div style={{
         position: 'absolute',
         top: '50%', left: E, right: E,
         transform: 'translateY(-52%)',
       }}>
+        {/* Gold accent dash */}
+        <div style={{ width: 44, height: 2, background: BRAND.accentWarm, marginBottom: 32 }} />
+
+        {/* "Coming" — italic ghost word, visible but recessive */}
         <div style={{
           fontSize: TYPE.s_3xl,
           fontWeight: WEIGHT.regular,
-          color: 'rgba(255,255,255,0.10)',
+          color: 'rgba(255,255,255,0.22)',
           lineHeight: 0.88,
-          letterSpacing: '-0.03em',
+          letterSpacing: '-0.02em',
           fontFamily: FONT.display,
           fontStyle: 'italic',
         }}>
           Coming
         </div>
+
+        {/* Spacer between words — creates drama */}
+        <div style={{ height: 18 }} />
+
+        {/* "Soon." — solid anchor, heavy weight */}
         <div style={{
           fontSize: TYPE.s_3xl,
           fontWeight: WEIGHT.black,
@@ -71,7 +83,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           lineHeight: 0.88,
           letterSpacing: '-0.03em',
           fontFamily: FONT.display,
-          marginBottom: 40,
+          marginBottom: 48,
         }}>
           Soon.
         </div>
@@ -79,10 +91,10 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
         <div style={{
           fontSize: TYPE.s_md,
           fontWeight: WEIGHT.bold,
-          color: 'rgba(255,255,255,0.55)',
+          color: 'rgba(255,255,255,0.52)',
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
-          marginBottom: 10,
+          marginBottom: 12,
         }}>
           {listing.city || 'Chattanooga'}, {listing.state || 'TN'}
         </div>
@@ -100,7 +112,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
       {/* Bottom: gold rule + address + stats */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
-        <div style={{ height: 1, background: 'rgba(200,169,110,0.35)', marginBottom: 24 }} />
+        <div style={{ height: 1, background: 'rgba(200,169,110,0.32)', marginBottom: 26 }} />
         <div style={{
           fontSize: TYPE.s_sm,
           fontWeight: WEIGHT.bold,
@@ -108,13 +120,13 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           lineHeight: 1.05,
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
-          marginBottom: 12,
+          marginBottom: 14,
         }}>
           {listing.address || 'Details Coming Soon'}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.58)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>

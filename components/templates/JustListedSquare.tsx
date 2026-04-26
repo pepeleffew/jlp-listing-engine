@@ -24,20 +24,25 @@ interface Props {
 }
 
 // ── Variant A: Dark Overlay ───────────────────────────────────────────────────
-// Soft gradient fade. Gold pill badge. Floating white price card bottom.
+// Photo dominates. Soft gradient bottom only. Price is the typographic hero.
+// Left gold edge bar is the single structural signature.
 function DarkOverlay({ listing }: { listing: Listing }) {
   const E = M.social.edge
 
   return (
     <>
+      {/* Lighter gradient — photo breathes through the top two-thirds */}
       <PhotoBg
         listing={listing}
-        overlay="linear-gradient(to top, rgba(10,17,26,0.92) 0%, rgba(10,17,26,0.50) 40%, rgba(0,0,0,0.08) 65%, transparent 84%)"
+        overlay="linear-gradient(to top, rgba(10,17,26,0.96) 0%, rgba(10,17,26,0.62) 28%, rgba(0,0,0,0.10) 60%, transparent 100%)"
       />
 
-      {/* Top: gold pill badge left, logo right */}
+      {/* Left gold edge accent — architectural signature */}
+      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, background: BRAND.accentWarm, zIndex: 10 }} />
+
+      {/* Top: pill badge left, logo right */}
       <div style={{
-        position: 'absolute', top: E, left: E, right: E,
+        position: 'absolute', top: E, left: E + 20, right: E,
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         zIndex: 10,
       }}>
@@ -45,10 +50,10 @@ function DarkOverlay({ listing }: { listing: Listing }) {
           display: 'inline-flex', alignItems: 'center',
           background: BRAND.accentWarm,
           borderRadius: 100,
-          padding: '14px 32px',
+          padding: '12px 28px',
         }}>
           <div style={{
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: WEIGHT.black,
             color: BRAND.white,
             letterSpacing: '0.16em',
@@ -57,67 +62,62 @@ function DarkOverlay({ listing }: { listing: Listing }) {
             Just Listed
           </div>
         </div>
-        <Logo variant="white" height={40} />
+        <Logo variant="white" height={38} />
       </div>
 
-      {/* Bottom: floating white price card */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E }}>
-        <div style={{
-          background: 'rgba(255,255,255,0.97)',
-          borderRadius: 20,
-          boxShadow: '0 16px 48px rgba(0,0,0,0.38)',
-          padding: '32px 40px 28px',
-        }}>
-          <div style={{
-            fontSize: 13,
-            fontWeight: WEIGHT.semibold,
-            color: BRAND.gray,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase' as const,
-            marginBottom: 8,
-          }}>
-            Listed at
-          </div>
-          {listing.price && (
+      {/* Bottom: price + address directly on gradient — no card */}
+      <div style={{ position: 'absolute', bottom: E, left: E + 20, right: E }}>
+        {listing.price && (
+          <>
             <div style={{
-              fontSize: TYPE.s_xl,
+              fontSize: 12,
+              fontWeight: WEIGHT.semibold,
+              color: BRAND.accentWarm,
+              letterSpacing: '0.20em',
+              textTransform: 'uppercase' as const,
+              marginBottom: 10,
+            }}>
+              Listed at
+            </div>
+            <div style={{
+              fontSize: TYPE.s_2xl,
               fontWeight: WEIGHT.black,
-              color: BRAND.navy,
+              color: BRAND.white,
               lineHeight: 1.0,
-              letterSpacing: '-0.025em',
-              marginBottom: 18,
+              letterSpacing: '-0.03em',
+              marginBottom: 24,
             }}>
               {listing.price}
             </div>
-          )}
+          </>
+        )}
 
-          <div style={{ height: 1, background: BRAND.grayLight, marginBottom: 18 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 22 }} />
 
-          <div style={{
-            fontSize: TYPE.s_md,
-            fontWeight: WEIGHT.bold,
-            color: BRAND.navy,
-            lineHeight: 1.05,
-            letterSpacing: '-0.015em',
-            fontFamily: FONT.display,
-            marginBottom: 8,
-          }}>
-            {listing.address}
-          </div>
-          <div style={{
-            fontSize: TYPE.s_xs - 2,
-            color: BRAND.gray,
-            letterSpacing: '0.02em',
-            marginBottom: 20,
-          }}>
-            {listing.city}, {listing.state}
-          </div>
+        <div style={{
+          fontSize: TYPE.s_lg,
+          fontWeight: WEIGHT.bold,
+          color: BRAND.white,
+          lineHeight: 1.05,
+          letterSpacing: '-0.015em',
+          fontFamily: FONT.display,
+          marginBottom: 8,
+        }}>
+          {listing.address}
+        </div>
+        <div style={{
+          fontSize: TYPE.s_xs,
+          color: 'rgba(255,255,255,0.52)',
+          letterSpacing: '0.02em',
+          marginBottom: 26,
+        }}>
+          {listing.city}, {listing.state}
+        </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <StatRow listing={listing} dark={false} size="sm" />
-            <div style={{ fontSize: 18, color: BRAND.gray, letterSpacing: '0.04em' }}>
-              {listing.agentPhone}
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <StatRow listing={listing} dark size="md" />
+          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.48)', letterSpacing: '0.04em' }}>
+            {listing.agentPhone}
           </div>
         </div>
       </div>
