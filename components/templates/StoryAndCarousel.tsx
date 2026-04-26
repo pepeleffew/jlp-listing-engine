@@ -188,7 +188,7 @@ export function FeatureCarouselSlide({ listing, slideIndex, totalSlides = 5, dar
         top: -20, left: E - 10,
         fontSize: 320,
         fontWeight: WEIGHT.black,
-        color: dark ? 'rgba(255,255,255,0.04)' : 'rgba(17,31,53,0.04)',
+        color: dark ? 'rgba(255,255,255,0.04)' : 'rgba(26,56,82,0.04)',
         lineHeight: 1,
         letterSpacing: '-0.08em',
         userSelect: 'none',

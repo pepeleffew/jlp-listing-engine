@@ -19,7 +19,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const headColor = isDark ? BRAND.white   : BRAND.navy
   const subColor  = isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray
   const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navy
-  const ruleColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(17,31,53,0.08)'
+  const ruleColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(26,56,82,0.08)'
 
   // 3 max — generous breathing room per item
   const features = listing.features.slice(0, 3)
@@ -31,7 +31,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
-        ? <PhotoBg listing={listing} overlay="rgba(17,31,53,0.38)" />
+        ? <PhotoBg listing={listing} overlay="rgba(26,56,82,0.35)" />
         : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
       }
 
@@ -177,7 +177,7 @@ export function FacebookCover({ listing, variant = 'default', scale = 1, id }: F
 
   return (
     <TemplateWrapper id={elementId} width={1640} height={624} scale={scale}>
-      <PhotoBg listing={listing} overlay="linear-gradient(to right, rgba(17,31,53,0.92) 0%, rgba(17,31,53,0.65) 45%, rgba(17,31,53,0.20) 75%, transparent 100%)" />
+      <PhotoBg listing={listing} overlay="linear-gradient(to right, rgba(26,56,82,0.92) 0%, rgba(26,56,82,0.62) 45%, rgba(26,56,82,0.18) 75%, transparent 100%)" />
 
       {/* Left content */}
       <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 740, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 80px' }}>

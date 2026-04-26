@@ -32,7 +32,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
       {/* Bottom gradient — dark zone confined to bottom 36%, photo clear above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(8,14,22,0.84) 0%, rgba(8,14,22,0.62) 18%, rgba(8,14,22,0.16) 34%, transparent 50%)',
+        background: 'linear-gradient(to top, rgba(16,38,62,0.84) 0%, rgba(16,38,62,0.60) 18%, rgba(16,38,62,0.14) 34%, transparent 50%)',
       }} />
 
       {/* Top: Logo left, premium "Coming Soon" label right */}
@@ -190,7 +190,7 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(10,17,26,0.78) 0%, rgba(10,17,26,0.44) 32%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(20,44,70,0.78) 0%, rgba(20,44,70,0.42) 32%, transparent 58%)',
         padding: `80px ${E}px ${E}px`,
         zIndex: 5,
       }}>
@@ -242,10 +242,10 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
       {/* Near-invisible base — photo at near-full strength */}
       <PhotoBg listing={listing} overlay="rgba(0,0,0,0.10)" />
 
-      {/* Warm cinematic bottom gradient — golden-black, not cold navy */}
+      {/* Cinematic bottom gradient — steel blue */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(12,6,2,0.88) 0%, rgba(12,6,2,0.62) 20%, rgba(12,6,2,0.16) 38%, transparent 54%)',
+        background: 'linear-gradient(to top, rgba(22,50,80,0.90) 0%, rgba(22,50,80,0.62) 20%, rgba(22,50,80,0.16) 38%, transparent 54%)',
       }} />
 
       {/* Logo — top left */}
@@ -317,12 +317,12 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         )}
       </div>
 
-      {/* Gold celebration footer — the distinct visual signature of Just Sold */}
+      {/* Steel-blue footer — brand-aligned signature for Just Sold */}
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
         height: 116,
-        background: BRAND.accentWarm,
+        background: BRAND.navyDeep,
         padding: `0 ${E}px`,
         display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10,
         zIndex: 10,
@@ -330,7 +330,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         <div style={{
           fontSize: TYPE.s_sm,
           fontWeight: WEIGHT.black,
-          color: BRAND.navyDeep,
+          color: BRAND.white,
           lineHeight: 1.0,
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
@@ -338,8 +338,8 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
           {listing.address}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark={false} size="sm" />
-          <div style={{ fontSize: 16, color: 'rgba(17,31,53,0.65)', letterSpacing: '0.02em' }}>
+          <StatRow listing={listing} dark size="sm" />
+          <div style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.02em' }}>
             {listing.agentPhone}
           </div>
         </div>

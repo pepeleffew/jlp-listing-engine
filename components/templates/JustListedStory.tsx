@@ -103,7 +103,7 @@ function SplitInfo({ listing }: { listing: Listing }) {
           <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
         )}
         {/* Fade into navy panel — smooth transition without any seam element */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(17,31,53,1) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(26,56,82,1) 100%)' }} />
 
         <div style={{ position: 'absolute', top: E, left: E }}>
           <StatusLabel text="Just Listed" dark />

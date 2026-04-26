@@ -1,20 +1,26 @@
-// ── JLP Brand Design Tokens — Redesigned ─────────────────────────────────
-// Principle: signal authority through restraint, not decoration.
+// ── JLP Brand Design Tokens ───────────────────────────────────────────────
+// Primary palette derived directly from the Joe Leffew Properties logo:
+// steel-blue gradient (#3B7EA6 → #6AAFD4) + charcoal wordmark (#282c35).
+// Gold is an accent only — never large panels or dominant zones.
 
 export const BRAND = {
-  navy:       '#1d3557',
-  navyDeep:   '#111f35',
-  navyMid:    '#2a4a70',
-  navyLight:  '#3a5f8a',
-  blue:       '#3B7EA6',
-  blueLight:  '#6AAFD4',
+  // Steel-blue system — matched to logo gradient
+  navy:       '#2c5a7c',   // steel mid-dark  (was deep navy #1d3557)
+  navyDeep:   '#1a3852',   // dark steel blue  (was black-navy #111f35)
+  navyMid:    '#3B7EA6',   // primary logo color — the dominant brand blue
+  navyLight:  '#6AAFD4',   // light logo color
+  blue:       '#3B7EA6',   // alias — same as navyMid
+  blueLight:  '#6AAFD4',   // alias — same as navyLight
+  charcoal:   '#282c35',   // matches JLP wordmark text
+  // Neutrals
   white:      '#ffffff',
   offWhite:   '#f9f9fb',
   stone:      '#f4f2ef',
   grayLight:  '#e8e6e3',
   gray:       '#6b7280',
   grayMid:    '#9ca3af',
-  accentWarm: '#c8a96e',   // warm tan — used for ONE element per design max
+  // Accent — gold, small elements only
+  accentWarm: '#c8a96e',
   black:      '#0d0d0d',
 } as const
 
@@ -43,11 +49,11 @@ export const OVERLAY = {
   subtle:         'rgba(0,0,0,0.28)',
   medium:         'rgba(0,0,0,0.45)',
   strong:         'rgba(0,0,0,0.62)',
-  navy:           'rgba(17,31,53,0.78)',
-  navyDeep:       'rgba(17,31,53,0.90)',
-  fadeBottom:     'linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.38) 42%, transparent 72%)',
-  fadeBottomNavy: 'linear-gradient(to top, rgba(17,31,53,0.92) 0%, rgba(17,31,53,0.50) 45%, transparent 75%)',
-  fadeLeft:       'linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.40) 50%, transparent 80%)',
+  navy:           'rgba(26,56,82,0.75)',           // steel-blue mid-dark
+  navyDeep:       'rgba(26,56,82,0.90)',           // dark steel blue
+  fadeBottom:     'linear-gradient(to top, rgba(22,50,80,0.88) 0%, rgba(22,50,80,0.40) 42%, transparent 72%)',
+  fadeBottomNavy: 'linear-gradient(to top, rgba(26,56,82,0.92) 0%, rgba(26,56,82,0.50) 45%, transparent 75%)',
+  fadeLeft:       'linear-gradient(to right, rgba(26,56,82,0.85) 0%, rgba(26,56,82,0.42) 50%, transparent 80%)',
   none:           'transparent',
 } as const
 
@@ -56,7 +62,7 @@ export const GRADIENTS = {
   darkBottom:  OVERLAY.fadeBottom,
   navyBottom:  OVERLAY.fadeBottomNavy,
   darkLeft:    OVERLAY.fadeLeft,
-  navyLeft:    'linear-gradient(to right, rgba(17,31,53,0.95) 0%, rgba(17,31,53,0.60) 55%, transparent 82%)',
+  navyLeft:    'linear-gradient(to right, rgba(26,56,82,0.95) 0%, rgba(26,56,82,0.60) 55%, transparent 82%)',
   goldStreak:  `linear-gradient(135deg, #c8a96e 0%, #b8956a 100%)`,
 } as const
 
@@ -70,6 +76,6 @@ export const OVERLAYS = {
   dark:        OVERLAY.medium,
   darkStrong:  OVERLAY.strong,
   navyMid:     OVERLAY.navy,
-  navyLight:   'rgba(17,31,53,0.55)',
+  navyLight:   'rgba(26,56,82,0.55)',
   none:        OVERLAY.none,
 } as const

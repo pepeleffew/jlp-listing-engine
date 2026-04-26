@@ -37,7 +37,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
       {/* Cinematic bottom-only gradient — pure black, not cold navy */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.72) 20%, rgba(0,0,0,0.26) 40%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(22,50,80,0.92) 0%, rgba(22,50,80,0.70) 20%, rgba(22,50,80,0.24) 40%, transparent 58%)',
       }} />
 
       {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
@@ -192,7 +192,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
           <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
         )}
         {/* Subtle left fade into navy strip */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(17,31,53,0.45) 0%, transparent 28%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(26,56,82,0.45) 0%, transparent 28%)' }} />
       </div>
     </div>
   )
@@ -236,7 +236,7 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         height: PHOTO_H,
         borderRadius: 16,
         overflow: 'hidden',
-        boxShadow: '0 12px 52px rgba(17,31,53,0.22)',
+        boxShadow: '0 12px 52px rgba(26,56,82,0.22)',
       }}>
         {photo?.url ? (
           // eslint-disable-next-line @next/next/no-img-element

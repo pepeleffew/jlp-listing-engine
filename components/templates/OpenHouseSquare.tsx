@@ -30,7 +30,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
       {/* Photo with vignette — dark top+bottom, clear middle so photo pops */}
       <PhotoBg
         listing={listing}
-        overlay="linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, transparent 26%, transparent 60%, rgba(10,17,26,0.58) 100%)"
+        overlay="linear-gradient(to bottom, rgba(22,50,80,0.22) 0%, transparent 26%, transparent 60%, rgba(20,44,70,0.58) 100%)"
       />
 
       {/* Top: Logo left, gold pill right */}
@@ -55,7 +55,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
         position: 'absolute',
         top: '50%', left: E, right: E,
         transform: 'translateY(-52%)',
-        background: 'rgba(10,17,26,0.68)',
+        background: 'rgba(20,44,70,0.72)',
         borderRadius: 24,
         boxShadow: '0 16px 52px rgba(0,0,0,0.36)',
         border: '1px solid rgba(200,169,110,0.40)',
@@ -260,7 +260,7 @@ function NavySplit({ listing }: { listing: Listing }) {
         ) : (
           <div style={{ width: '100%', height: '100%', background: BRAND.navyMid }} />
         )}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(17,31,53,0.50) 0%, transparent 40%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(26,56,82,0.50) 0%, transparent 40%)' }} />
 
         <div style={{
           position: 'absolute', bottom: E, left: E, right: E,
