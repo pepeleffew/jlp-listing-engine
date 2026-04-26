@@ -27,13 +27,13 @@ function PhotoDate({ listing }: { listing: Listing }) {
 
   return (
     <>
-      {/* Photo — near full strength, barely tinted */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.06)" />
+      {/* Steel-blue tint base */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.06)" />
 
-      {/* Bottom gradient only — photo clear above 54% */}
+      {/* Steel-blue bottom gradient */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(22,50,80,0.94) 0%, rgba(22,50,80,0.62) 26%, rgba(22,50,80,0.10) 46%, transparent 60%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.94) 0%, rgba(26,56,82,0.62) 26%, rgba(26,56,82,0.10) 46%, transparent 60%)',
       }} />
 
       {/* Gold top accent bar */}

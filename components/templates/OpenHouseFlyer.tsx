@@ -67,7 +67,7 @@ export default function OpenHouseFlyer({ listing, variant = 'default', scale = 1
           ) : (
             <div style={{ width: '100%', height: '100%', background: `linear-gradient(135deg, ${BRAND.navyLight} 0%, ${BRAND.navy} 100%)` }} />
           )}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 60%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,56,82,0.45) 0%, transparent 60%)' }} />
 
           {/* Price badge bottom-left */}
           <div style={{ position: 'absolute', bottom: 20, left: 28, display: 'flex', gap: 16, alignItems: 'center' }}>

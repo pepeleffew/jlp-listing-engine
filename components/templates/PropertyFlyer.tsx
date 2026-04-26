@@ -80,7 +80,7 @@ function ModernHero({ listing }: { listing: Listing }) {
         ) : (
           <div style={{ width: '100%', height: '100%', background: `linear-gradient(135deg, ${BRAND.navyLight} 0%, ${BRAND.navyDeep} 100%)` }} />
         )}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(20,44,70,0.96) 0%, rgba(22,50,80,0.20) 52%, transparent 78%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,56,82,0.96) 0%, rgba(26,56,82,0.20) 52%, transparent 78%)' }} />
 
         {/* Top: status label + logo */}
         <div style={{ position: 'absolute', top: 26, left: 36, right: 36, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>

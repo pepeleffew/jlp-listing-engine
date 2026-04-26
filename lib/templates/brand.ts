@@ -45,13 +45,14 @@ export const M = {
 } as const
 
 // Overlays — pick ONE per design, never stack
+// All overlays use the JLP steel-blue system (rgb 26,56,82 = navyDeep #1a3852)
 export const OVERLAY = {
-  subtle:         'rgba(0,0,0,0.28)',
-  medium:         'rgba(0,0,0,0.45)',
-  strong:         'rgba(0,0,0,0.62)',
-  navy:           'rgba(26,56,82,0.75)',           // steel-blue mid-dark
-  navyDeep:       'rgba(26,56,82,0.90)',           // dark steel blue
-  fadeBottom:     'linear-gradient(to top, rgba(22,50,80,0.88) 0%, rgba(22,50,80,0.40) 42%, transparent 72%)',
+  subtle:         'rgba(26,56,82,0.28)',
+  medium:         'rgba(26,56,82,0.45)',
+  strong:         'rgba(26,56,82,0.62)',
+  navy:           'rgba(26,56,82,0.75)',
+  navyDeep:       'rgba(26,56,82,0.90)',
+  fadeBottom:     'linear-gradient(to top, rgba(26,56,82,0.88) 0%, rgba(26,56,82,0.40) 42%, transparent 72%)',
   fadeBottomNavy: 'linear-gradient(to top, rgba(26,56,82,0.92) 0%, rgba(26,56,82,0.50) 45%, transparent 75%)',
   fadeLeft:       'linear-gradient(to right, rgba(26,56,82,0.85) 0%, rgba(26,56,82,0.42) 50%, transparent 80%)',
   none:           'transparent',

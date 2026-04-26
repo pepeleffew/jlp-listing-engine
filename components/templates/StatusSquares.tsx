@@ -26,13 +26,13 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Photo — near full strength */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.08)" />
+      {/* Steel-blue tint base */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.08)" />
 
-      {/* Bottom gradient — covers lower 44%, photo clear above */}
+      {/* Steel-blue bottom gradient */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(22,50,80,0.94) 0%, rgba(22,50,80,0.60) 26%, rgba(22,50,80,0.10) 44%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.94) 0%, rgba(26,56,82,0.60) 26%, rgba(26,56,82,0.10) 44%, transparent 58%)',
       }} />
 
       {/* Top: Logo left, outlined "Coming Soon" badge right */}
@@ -139,8 +139,8 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Light overlay — photo reads clearly, diagonal band creates contrast */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.18)" />
+      {/* Steel-blue tint — photo reads clearly, diagonal band creates contrast */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.18)" />
 
       {/* Diagonal gold band — signature design element */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -173,7 +173,7 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(20,44,70,0.78) 0%, rgba(20,44,70,0.42) 32%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.78) 0%, rgba(26,56,82,0.42) 32%, transparent 58%)',
         padding: `80px ${E}px ${E}px`,
         zIndex: 5,
       }}>
@@ -222,13 +222,13 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Near-invisible base — photo at near-full strength */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.10)" />
+      {/* Steel-blue tint base */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.10)" />
 
-      {/* Cinematic bottom gradient — steel blue */}
+      {/* Steel-blue bottom gradient */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(22,50,80,0.90) 0%, rgba(22,50,80,0.62) 20%, rgba(22,50,80,0.16) 38%, transparent 54%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.90) 0%, rgba(26,56,82,0.62) 20%, rgba(26,56,82,0.16) 38%, transparent 54%)',
       }} />
 
       {/* Logo — top left */}

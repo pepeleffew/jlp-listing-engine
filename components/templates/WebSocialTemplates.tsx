@@ -31,7 +31,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
-        ? <PhotoBg listing={listing} overlay="rgba(22,50,80,0.18)" />
+        ? <PhotoBg listing={listing} overlay="rgba(26,56,82,0.18)" />
         : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
       }
 
@@ -39,7 +39,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
       {isDark && (
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(22,50,80,0.55) 0%, transparent 26%, transparent 72%, rgba(22,50,80,0.68) 100%)',
+          background: 'linear-gradient(to bottom, rgba(26,56,82,0.55) 0%, transparent 26%, transparent 72%, rgba(26,56,82,0.68) 100%)',
           zIndex: 1,
         }} />
       )}

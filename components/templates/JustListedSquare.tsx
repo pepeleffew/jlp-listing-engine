@@ -31,13 +31,13 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 
   return (
     <>
-      {/* Near-invisible base — photo at near-full strength */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.06)" />
+      {/* Near-invisible steel-blue tint */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.06)" />
 
-      {/* Cinematic bottom-only gradient — pure black, not cold navy */}
+      {/* Steel-blue bottom gradient */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(22,50,80,0.92) 0%, rgba(22,50,80,0.70) 20%, rgba(22,50,80,0.24) 40%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.92) 0%, rgba(26,56,82,0.70) 20%, rgba(26,56,82,0.24) 40%, transparent 58%)',
       }} />
 
       {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
