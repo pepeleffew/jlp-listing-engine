@@ -31,15 +31,24 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
-        ? <PhotoBg listing={listing} overlay="rgba(26,56,82,0.35)" />
+        ? <PhotoBg listing={listing} overlay="rgba(22,50,80,0.18)" />
         : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
       }
+
+      {/* Dark variant: gradient zones at top + bottom for readability, photo clear in middle */}
+      {isDark && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to bottom, rgba(22,50,80,0.55) 0%, transparent 26%, transparent 72%, rgba(22,50,80,0.68) 100%)',
+          zIndex: 1,
+        }} />
+      )}
 
       {/* Gold accent bar at top */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, background: BRAND.accentWarm, zIndex: 10 }} />
 
       {/* Header: label + address + logo */}
-      <div style={{ position: 'absolute', top: 5 + E, left: E, right: E }}>
+      <div style={{ position: 'absolute', top: 5 + E, left: E, right: E, zIndex: 10 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div style={{ flex: 1, paddingRight: 24 }}>
             <div style={{
@@ -48,7 +57,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: BRAND.accentWarm,
               letterSpacing: '0.22em',
               textTransform: 'uppercase' as const,
-              marginBottom: 18,
+              marginBottom: 16,
             }}>
               Property Highlights
             </div>
@@ -58,7 +67,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: headColor,
               lineHeight: 1.02,
               letterSpacing: '-0.03em',
-              ...(isDark ? { textShadow: '0 2px 16px rgba(0,0,0,0.50)' } : {}),
+              ...(isDark ? { textShadow: '0 2px 20px rgba(0,0,0,0.60)' } : {}),
             }}>
               {listing.address}
             </div>
@@ -72,7 +81,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
                 color: BRAND.accentWarm,
                 letterSpacing: '-0.02em',
                 lineHeight: 1.0,
-                marginTop: 16,
+                marginTop: 14,
               }}>
                 {listing.price}
               </div>
@@ -85,17 +94,18 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
       {/* Feature list — 3 items, generous spacing */}
       <div style={{
         position: 'absolute',
-        top: 340, left: E, right: E, bottom: E + 80,
+        top: 340, left: E, right: E, bottom: E + 72,
         display: 'flex', flexDirection: 'column',
         justifyContent: 'space-between',
+        zIndex: 10,
       }}>
         {items.map((feat, i) => (
           <div key={i} style={{
             display: 'flex', alignItems: 'flex-start', gap: 28,
-            paddingTop: 44, paddingBottom: 44,
+            paddingTop: 54, paddingBottom: 54,
             borderBottom: i < items.length - 1 ? `1px solid ${ruleColor}` : 'none',
           }}>
-            {/* Number column — premium oversized gold numeral */}
+            {/* Number column */}
             <div style={{ flexShrink: 0, paddingTop: 2 }}>
               <div style={{
                 fontSize: 13,
@@ -109,12 +119,12 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               <div style={{ width: 24, height: 1.5, background: BRAND.accentWarm, marginTop: 7 }} />
             </div>
             <div style={{
-              fontSize: TYPE.s_base,
+              fontSize: 40,
               fontWeight: WEIGHT.semibold,
               color: itemColor,
-              lineHeight: 1.45,
+              lineHeight: 1.40,
               letterSpacing: '-0.01em',
-              ...(isDark ? { textShadow: '0 1px 14px rgba(0,0,0,0.55)' } : {}),
+              ...(isDark ? { textShadow: '0 2px 18px rgba(0,0,0,0.65)' } : {}),
             }}>
               {feat}
             </div>
@@ -123,7 +133,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
       </div>
 
       {/* Stats + phone bottom */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 10 }}>
         <StatRow listing={listing} dark={isDark} size="sm" />
         <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray, letterSpacing: '0.02em' }}>
           {listing.agentPhone}
