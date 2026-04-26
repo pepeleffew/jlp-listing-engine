@@ -58,33 +58,51 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
         </div>
       </div>
 
+      {/* Ghost ambient "SOON" — barely-visible depth layer in the photo zone */}
+      <div style={{
+        position: 'absolute',
+        top: '50%', left: 0, right: 0,
+        transform: 'translateY(-60%)',
+        textAlign: 'center',
+        fontSize: 210,
+        fontWeight: WEIGHT.black,
+        color: 'rgba(255,255,255,0.035)',
+        letterSpacing: '-0.05em',
+        lineHeight: 1,
+        fontFamily: FONT.display,
+        zIndex: 3,
+        pointerEvents: 'none',
+      }}>
+        SOON
+      </div>
+
       {/* Bottom block: all typography anchored to dark zone */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
         {/* Gold accent dash */}
         <div style={{ width: 48, height: 3, background: BRAND.accentWarm, marginBottom: 28 }} />
 
-        {/* "Coming" — large italic ghost, recessive but cinematic */}
+        {/* "Coming" — smaller italic ghost, recessive qualifier word */}
         <div style={{
-          fontSize: TYPE.s_2xl,
+          fontSize: TYPE.s_xl,
           fontWeight: WEIGHT.bold,
-          color: 'rgba(255,255,255,0.42)',
+          color: 'rgba(255,255,255,0.40)',
           lineHeight: 0.90,
-          letterSpacing: '-0.025em',
+          letterSpacing: '-0.02em',
           fontFamily: FONT.display,
           fontStyle: 'italic',
-          marginBottom: 8,
-          textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          marginBottom: 14,
+          textShadow: '0 2px 24px rgba(0,0,0,0.60)',
         }}>
           Coming
         </div>
 
-        {/* "SOON." — dominant cinematic anchor */}
+        {/* "SOON." — much bigger than "Coming" for maximum type contrast */}
         <div style={{
-          fontSize: 140,
+          fontSize: 160,
           fontWeight: WEIGHT.black,
           color: BRAND.white,
-          lineHeight: 0.85,
-          letterSpacing: '-0.04em',
+          lineHeight: 0.84,
+          letterSpacing: '-0.05em',
           fontFamily: FONT.display,
           marginBottom: 32,
           textShadow: '0 6px 52px rgba(0,0,0,0.70)',
@@ -226,30 +244,40 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Minimal base tint — photo is the primary element */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.12)" />
+      {/* Near-invisible base — photo at near-full strength */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.10)" />
 
-      {/* Bottom gradient — dark zone confined to bottom 38% */}
+      {/* Warm cinematic bottom gradient — golden-black, not cold navy */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(10,17,26,0.82) 0%, rgba(10,17,26,0.56) 18%, rgba(10,17,26,0.14) 36%, transparent 50%)',
+        background: 'linear-gradient(to top, rgba(12,6,2,0.88) 0%, rgba(12,6,2,0.62) 20%, rgba(12,6,2,0.16) 38%, transparent 54%)',
       }} />
 
-      {/* Top: Logo left, small gold "Just Sold" badge right */}
-      <div style={{
-        position: 'absolute', top: E, left: E, right: E,
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        zIndex: 10,
-      }}>
+      {/* Logo — top left */}
+      <div style={{ position: 'absolute', top: E, left: E, zIndex: 10 }}>
         <Logo variant="white" height={38} />
+      </div>
+
+      {/* SOLD stamp — rotated badge, the celebration centrepiece */}
+      <div style={{
+        position: 'absolute',
+        top: E - 4, right: E,
+        transform: 'rotate(-8deg)',
+        zIndex: 10,
+        padding: '10px 22px',
+        border: '2.5px solid rgba(200,169,110,0.85)',
+        borderRadius: 4,
+      }}>
         <div style={{
-          display: 'inline-flex', alignItems: 'center',
-          background: BRAND.accentWarm,
-          borderRadius: 100, padding: '10px 24px',
-          fontSize: 18, fontWeight: WEIGHT.black, color: BRAND.white,
-          letterSpacing: '0.14em', textTransform: 'uppercase' as const,
+          fontSize: 52,
+          fontWeight: WEIGHT.black,
+          color: BRAND.accentWarm,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase' as const,
+          lineHeight: 1,
+          textShadow: '0 2px 20px rgba(0,0,0,0.55)',
         }}>
-          Just Sold
+          SOLD
         </div>
       </div>
 
@@ -298,19 +326,20 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 22 }} />
         <div style={{
-          fontSize: TYPE.s_md,
+          fontSize: TYPE.s_sm,
           fontWeight: WEIGHT.bold,
           color: BRAND.white,
           lineHeight: 1.05,
-          letterSpacing: '-0.015em',
+          letterSpacing: '-0.01em',
           fontFamily: FONT.display,
-          marginBottom: 18,
+          marginBottom: 14,
+          textShadow: '0 2px 16px rgba(0,0,0,0.45)',
         }}>
           {listing.address}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <StatRow listing={listing} dark size="md" />
-          <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.52)', letterSpacing: '0.04em' }}>
+          <StatRow listing={listing} dark size="sm" />
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.50)', letterSpacing: '0.04em' }}>
             {listing.agentPhone}
           </div>
         </div>

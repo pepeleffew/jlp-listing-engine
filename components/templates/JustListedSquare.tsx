@@ -31,13 +31,13 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 
   return (
     <>
-      {/* Very light base — photo reads clearly across entire canvas */}
-      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.10)" />
+      {/* Near-invisible base — photo at near-full strength */}
+      <PhotoBg listing={listing} overlay="rgba(0,0,0,0.06)" />
 
-      {/* Bottom gradient — dark zone only in bottom 38%, photo clear above */}
+      {/* Cinematic bottom-only gradient — pure black, not cold navy */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(10,17,26,0.86) 0%, rgba(10,17,26,0.66) 16%, rgba(10,17,26,0.18) 34%, transparent 48%)',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.72) 20%, rgba(0,0,0,0.26) 40%, transparent 58%)',
       }} />
 
       {/* Top: pill badge + logo — floating on the clear photo */}
@@ -59,13 +59,13 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         <Logo variant="white" height={38} />
       </div>
 
-      {/* Bottom: price dominates the dark zone */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
+      {/* Price — its own focal layer, ~90px of white space separates it from the address block below */}
+      <div style={{ position: 'absolute', bottom: 290, left: E, right: E, zIndex: 10 }}>
         {listing.price && (
           <>
             <div style={{
               fontSize: 12, fontWeight: WEIGHT.semibold, color: BRAND.accentWarm,
-              letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 10,
+              letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 12,
             }}>
               Listed at
             </div>
@@ -73,29 +73,29 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               fontSize: TYPE.s_3xl,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
-              lineHeight: 0.90,
-              letterSpacing: '-0.03em',
-              marginBottom: 26,
-              textShadow: '0 4px 32px rgba(0,0,0,0.55)',
+              lineHeight: 0.88,
+              letterSpacing: '-0.04em',
+              textShadow: '0 4px 36px rgba(0,0,0,0.60)',
             }}>
               {listing.price}
             </div>
           </>
         )}
+      </div>
 
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginBottom: 20 }} />
-
+      {/* Address + stats — intentionally smaller than price, anchored at foot */}
+      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 20 }} />
         <div style={{
-          fontSize: TYPE.s_lg, fontWeight: WEIGHT.bold, color: BRAND.white,
-          lineHeight: 1.05, letterSpacing: '-0.015em', fontFamily: FONT.display, marginBottom: 8,
-          textShadow: '0 2px 18px rgba(0,0,0,0.45)',
+          fontSize: TYPE.s_md, fontWeight: WEIGHT.bold, color: BRAND.white,
+          lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 10,
+          textShadow: '0 2px 18px rgba(0,0,0,0.50)',
         }}>
           {listing.address}
         </div>
-        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.52)', letterSpacing: '0.02em', marginBottom: 26 }}>
+        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.52)', letterSpacing: '0.02em', marginBottom: 22 }}>
           {listing.city}, {listing.state}
         </div>
-
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="md" />
           <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.48)', letterSpacing: '0.04em' }}>

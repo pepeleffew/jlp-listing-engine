@@ -31,7 +31,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
-        ? <PhotoBg listing={listing} overlay="rgba(17,31,53,0.72)" />
+        ? <PhotoBg listing={listing} overlay="rgba(17,31,53,0.58)" />
         : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
       }
 
@@ -91,7 +91,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         {items.map((feat, i) => (
           <div key={i} style={{
             display: 'flex', alignItems: 'flex-start', gap: 28,
-            paddingTop: 36, paddingBottom: 36,
+            paddingTop: 44, paddingBottom: 44,
             borderBottom: i < items.length - 1 ? `1px solid ${ruleColor}` : 'none',
           }}>
             {/* Number column — premium oversized gold numeral */}
