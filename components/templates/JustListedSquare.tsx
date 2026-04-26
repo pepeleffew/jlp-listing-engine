@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Listing } from '@/types'
-import { BRAND, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
+import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
 import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -81,17 +81,24 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      {/* Address + stats — intentionally smaller than price, anchored at foot */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.40)', marginBottom: 20 }} />
+      {/* Zone 3 — fixed bottom zone, nothing from middle zone may overlap */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        height: ZONES.social.BOTTOM_H,
+        padding: `24px ${E}px ${E}px`,
+        zIndex: 10,
+        overflow: 'hidden',
+      }}>
+        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.40)', marginBottom: 16 }} />
         <div style={{
           fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
-          lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 10,
+          lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 8,
           textShadow: '0 2px 22px rgba(26,56,82,0.85)',
+          overflow: 'hidden',
         }}>
           {listing.address}
         </div>
-        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.02em', marginBottom: 22 }}>
+        <div style={{ fontSize: TYPE.s_xs, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.02em', marginBottom: 16 }}>
           {listing.city}, {listing.state}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -114,13 +121,14 @@ function SplitPanel({ listing }: { listing: Listing }) {
   return (
     <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
 
-      {/* Left navy strip */}
+      {/* Left navy strip — overflow: hidden prevents any text from bleeding past panel edge */}
       <div style={{
         width: 340,
         flexShrink: 0,
         background: BRAND.navyDeep,
         padding: `${E}px 36px`,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        overflow: 'hidden',
         zIndex: 1,
       }}>
         {/* Logo + badge */}
@@ -246,12 +254,13 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      {/* Info panel */}
+      {/* Info panel — overflow: hidden guards bottom edge at canvas safe margin */}
       <div style={{
         position: 'absolute',
         top: PHOTO_TOP + PHOTO_H + 24,
         left: E, right: E, bottom: E,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        overflow: 'hidden',
       }}>
         <div>
           {/* Gold rule between photo and info */}

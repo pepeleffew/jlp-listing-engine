@@ -80,3 +80,18 @@ export const OVERLAYS = {
   navyLight:   'rgba(26,56,82,0.55)',
   none:        OVERLAY.none,
 } as const
+
+// ── Layout grid — three vertical zones on the 1080×1080 social canvas ────────
+// Every template must respect these boundaries:
+//   Zone 1 (Top)    — 0 → TOP_H       — logo + status badge
+//   Zone 2 (Middle) — TOP_H → BOTTOM_Y — price + primary content
+//   Zone 3 (Bottom) — BOTTOM_Y → 1080  — address + stats + phone (fixed, never overlapped)
+export const ZONES = {
+  social: {
+    H:        1080,
+    TOP_H:     140,   // zone 1 height
+    BOTTOM_H:  240,   // zone 3 height  (address ~28 + city ~22 + stats ~44 + padding)
+    BOTTOM_Y:  840,   // 1080 - 240  — top edge of zone 3; middle content must end above this
+    SIDE:       60,   // horizontal margin = M.social.edge
+  },
+} as const

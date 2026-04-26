@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Listing } from '@/types'
-import { BRAND, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
+import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
 import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 const W = 1080, H = 1080
@@ -60,14 +60,22 @@ function ComingSoonDark({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        <div style={{ width: 40, height: 2.5, background: BRAND.navyLight, marginBottom: 16 }} />
+      {/* Zone 3 — fixed bottom zone */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        height: ZONES.social.BOTTOM_H,
+        padding: `24px ${E}px ${E}px`,
+        zIndex: 10,
+        overflow: 'hidden',
+      }}>
+        <div style={{ width: 40, height: 2.5, background: BRAND.navyLight, marginBottom: 14 }} />
         <div style={{
           fontSize: TYPE.s_sm, fontWeight: WEIGHT.bold, color: BRAND.white,
           lineHeight: 1.05, letterSpacing: '-0.01em', fontFamily: FONT.display, marginBottom: 6,
           textShadow: '0 1px 12px rgba(26,56,82,0.55)',
+          overflow: 'hidden',
         }}>{listing.address || 'Details Coming Soon'}</div>
-        <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', marginBottom: 16, letterSpacing: '0.02em' }}>
+        <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', marginBottom: 14, letterSpacing: '0.02em' }}>
           {listing.city}, {listing.state}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -113,6 +121,7 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
       <div style={{
         position: 'absolute', top: 86 + PHOTO_H + 24, left: E, right: E, bottom: E,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        overflow: 'hidden',
       }}>
         <div>
           <div style={{ width: 48, height: 3, background: BRAND.accentWarm, marginBottom: 18 }} />
@@ -268,20 +277,29 @@ function JustSoldDrama({ listing }: { listing: Listing }) {
         )}
       </div>
 
+      {/* Zone 3 — fixed bottom zone */}
       <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, height: 136,
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        height: ZONES.social.BOTTOM_H,
         background: BRAND.navyDeep,
-        padding: `0 ${E}px`,
-        display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14,
+        padding: `24px ${E}px ${E}px`,
+        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         zIndex: 10,
+        overflow: 'hidden',
       }}>
-        <div style={{
-          fontSize: TYPE.s_sm, fontWeight: WEIGHT.black, color: BRAND.white,
-          lineHeight: 1.0, letterSpacing: '-0.01em', fontFamily: FONT.display,
-        }}>{listing.address}</div>
+        <div>
+          <div style={{
+            fontSize: TYPE.s_sm, fontWeight: WEIGHT.black, color: BRAND.white,
+            lineHeight: 1.0, letterSpacing: '-0.01em', fontFamily: FONT.display,
+            marginBottom: 6, overflow: 'hidden',
+          }}>{listing.address}</div>
+          <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>
+            {listing.city}, {listing.state}
+          </div>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <StatRow listing={listing} dark size="sm" />
-          <div style={{ fontSize: 16, color: 'rgba(255,255,255,0.60)', letterSpacing: '0.02em' }}>{listing.agentPhone}</div>
+          <div style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>{listing.agentPhone}</div>
         </div>
       </div>
     </>
@@ -307,12 +325,13 @@ function JustSoldMinimal({ listing }: { listing: Listing }) {
         }} />
       </div>
 
-      {/* Right: dark editorial panel */}
+      {/* Right: dark editorial panel — overflow: hidden prevents text bleeding past panel */}
       <div style={{
         width: 360, flexShrink: 0,
         background: BRAND.navyDeep,
         padding: `${E}px 36px`,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        overflow: 'hidden',
         zIndex: 1,
       }}>
         <div>

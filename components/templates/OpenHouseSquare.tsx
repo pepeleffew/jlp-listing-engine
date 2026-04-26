@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Listing } from '@/types'
-import { BRAND, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
+import { BRAND, TYPE, WEIGHT, M, FONT, ZONES } from '@/lib/templates/brand'
 import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -147,6 +147,8 @@ function PhotoDate({ listing }: { listing: Listing }) {
 // ── Variant B: Clean Navy — photo fills top 60%, structured info band below ───
 function NavySplit({ listing }: { listing: Listing }) {
   const E = M.social.edge
+  // INFO_H must be >= ZONES.social.BOTTOM_H (240) to hold all bottom-zone content.
+  // 440 comfortably exceeds that, giving room for date/time above the address+stats block.
   const INFO_H = 440
   const photo = listing.photos.find(p => p.id === listing.primaryPhotoId) || listing.photos[0]
 
@@ -189,12 +191,13 @@ function NavySplit({ listing }: { listing: Listing }) {
       {/* Gold accent line at junction */}
       <div style={{ position: 'absolute', top: H - INFO_H, left: 0, right: 0, height: 4, background: BRAND.accentWarm, zIndex: 5 }} />
 
-      {/* Info band */}
+      {/* Info band — fixed height INFO_H, overflow: hidden enforces zone boundary */}
       <div style={{
         position: 'absolute',
         top: H - INFO_H + 4, left: 0, right: 0, bottom: 0,
         padding: `24px ${E}px ${E}px`,
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        overflow: 'hidden',
       }}>
         <div>
           {listing.openHouseDate && (

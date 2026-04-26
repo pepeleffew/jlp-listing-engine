@@ -1,6 +1,6 @@
 import React from 'react'
 import { Listing } from '@/types'
-import { BRAND, OVERLAY, TYPE, WEIGHT, M } from '@/lib/templates/brand'
+import { BRAND, OVERLAY, TYPE, WEIGHT, M, ZONES } from '@/lib/templates/brand'
 import { PhotoBg, StatusLabel, Rule, StatRow, PriceDisplay, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 const E = M.social.edge
@@ -101,13 +101,16 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         </div>
       </div>
 
-      {/* Feature list — 5 items, compact but clear */}
+      {/* Zone 2 — feature list. Top=370 clears the taller Top5 header block.
+           Bottom=ZONES.social.BOTTOM_H guarantees no overlap with stats zone. */}
       <div style={{
         position: 'absolute',
-        top: 370, left: E, right: E, bottom: E + 72,
+        top: 370, left: E, right: E,
+        bottom: ZONES.social.BOTTOM_H,
         display: 'flex', flexDirection: 'column',
         justifyContent: 'space-between',
         zIndex: 10,
+        overflow: 'hidden',
       }}>
         {items.map((feat, i) => (
           <div key={i} style={{
@@ -144,8 +147,14 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
         ))}
       </div>
 
-      {/* Stats + phone bottom */}
-      <div style={{ position: 'absolute', bottom: E, left: E, right: E, display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 10 }}>
+      {/* Zone 3 — fixed bottom zone, never overlapped by feature list */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        height: ZONES.social.BOTTOM_H,
+        display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+        padding: `0 ${E}px ${E}px`,
+        zIndex: 10,
+      }}>
         <StatRow listing={listing} dark={isDark} size="sm" />
         <div style={{ fontSize: 18, color: isDark ? 'rgba(255,255,255,0.62)' : BRAND.gray, letterSpacing: '0.02em' }}>
           {listing.agentPhone}
