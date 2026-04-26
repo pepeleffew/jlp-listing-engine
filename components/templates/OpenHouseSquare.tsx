@@ -30,10 +30,10 @@ function PhotoDate({ listing }: { listing: Listing }) {
       {/* Steel-blue tint base */}
       <PhotoBg listing={listing} overlay="rgba(26,56,82,0.06)" />
 
-      {/* Steel-blue bottom gradient */}
+      {/* Deep navy shelf — hard bottom, crisp photo above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.94) 0%, rgba(26,56,82,0.62) 26%, rgba(26,56,82,0.10) 46%, transparent 60%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.97) 0%, rgba(26,56,82,0.97) 8%, rgba(26,56,82,0.76) 28%, rgba(26,56,82,0.18) 48%, transparent 62%)',
       }} />
 
       {/* Gold top accent bar */}
@@ -68,7 +68,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
               letterSpacing: '-0.035em',
               marginBottom: 10,
               fontFamily: FONT.display,
-              textShadow: '0 4px 28px rgba(26,56,82,0.65)',
+              textShadow: '0 4px 32px rgba(26,56,82,0.92), 0 1px 8px rgba(26,56,82,0.65)',
             }}>
               {listing.openHouseDate || 'Open House'}
             </div>
@@ -79,7 +79,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
                 color: BRAND.navyLight,
                 letterSpacing: '-0.02em',
                 marginBottom: 22,
-                textShadow: '0 2px 20px rgba(26,56,82,0.55)',
+                textShadow: '0 2px 22px rgba(26,56,82,0.85)',
               }}>
                 {listing.openHouseTime}
                 {listing.openHouseEndTime ? ` – ${listing.openHouseEndTime}` : ''}
@@ -95,14 +95,14 @@ function PhotoDate({ listing }: { listing: Listing }) {
             letterSpacing: '-0.035em',
             fontFamily: FONT.display,
             marginBottom: 22,
-            textShadow: '0 4px 28px rgba(26,56,82,0.65)',
+            textShadow: '0 4px 32px rgba(26,56,82,0.92), 0 1px 8px rgba(26,56,82,0.65)',
           }}>
             Open House
           </div>
         )}
 
         {/* Divider */}
-        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.28)', marginBottom: 18 }} />
+        <div style={{ height: 1.5, background: 'rgba(255,255,255,0.52)', marginBottom: 18 }} />
 
         {/* Address + price */}
         <div style={{
@@ -113,7 +113,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
           marginBottom: 10,
-          textShadow: '0 1px 12px rgba(26,56,82,0.55)',
+          textShadow: '0 1px 14px rgba(26,56,82,0.80)',
         }}>
           {listing.address}
         </div>
@@ -124,7 +124,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
             color: BRAND.white,
             letterSpacing: '-0.025em',
             lineHeight: 1.0,
-            textShadow: '0 2px 20px rgba(26,56,82,0.60)',
+            textShadow: '0 2px 24px rgba(26,56,82,0.88)',
           }}>
             {listing.price}
           </div>

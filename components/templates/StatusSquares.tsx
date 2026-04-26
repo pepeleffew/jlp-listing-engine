@@ -26,13 +26,13 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Steel-blue tint base */}
-      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.08)" />
+      {/* Minimal tint — keep photo crisp */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.05)" />
 
-      {/* Steel-blue bottom gradient */}
+      {/* Deep navy shelf at bottom — sharp transition, not a soft haze */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.94) 0%, rgba(26,56,82,0.60) 26%, rgba(26,56,82,0.10) 44%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.97) 0%, rgba(26,56,82,0.97) 10%, rgba(26,56,82,0.74) 28%, rgba(26,56,82,0.18) 46%, transparent 60%)',
       }} />
 
       {/* Top: Logo left, outlined "Coming Soon" badge right */}
@@ -80,7 +80,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
             color: BRAND.white,
             lineHeight: 0.88,
             letterSpacing: '-0.04em',
-            textShadow: '0 6px 44px rgba(26,56,82,0.70)',
+            textShadow: '0 6px 48px rgba(26,56,82,0.95), 0 2px 12px rgba(26,56,82,0.70)',
           }}>
             {listing.price}
           </div>
@@ -92,7 +92,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
             lineHeight: 0.92,
             letterSpacing: '-0.03em',
             fontFamily: FONT.display,
-            textShadow: '0 4px 32px rgba(26,56,82,0.65)',
+            textShadow: '0 4px 36px rgba(26,56,82,0.90), 0 1px 10px rgba(26,56,82,0.65)',
           }}>
             Details<br />Coming.
           </div>
@@ -139,8 +139,8 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Steel-blue tint — photo reads clearly, diagonal band creates contrast */}
-      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.18)" />
+      {/* Minimal tint — keep photo crisp, band provides its own contrast */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.10)" />
 
       {/* Diagonal steel-blue band — clean brand-aligned status signal */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -173,11 +173,11 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
       <div style={{
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.78) 0%, rgba(26,56,82,0.42) 32%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.96) 0%, rgba(26,56,82,0.96) 8%, rgba(26,56,82,0.60) 32%, transparent 54%)',
         padding: `80px ${E}px ${E}px`,
         zIndex: 5,
       }}>
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.15)', marginBottom: 22 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.30)', marginBottom: 22 }} />
         {listing.price && (
           <div style={{
             fontSize: TYPE.s_xl,
@@ -222,13 +222,13 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
 
   return (
     <TemplateWrapper id={elementId} width={W} height={H} scale={scale}>
-      {/* Steel-blue tint base */}
-      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.10)" />
+      {/* Minimal tint — photo clarity is the hook */}
+      <PhotoBg listing={listing} overlay="rgba(26,56,82,0.05)" />
 
-      {/* Steel-blue bottom gradient */}
+      {/* Deep flat-bottom shelf — price sits on solid dark, fades hard above */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.90) 0%, rgba(26,56,82,0.62) 20%, rgba(26,56,82,0.16) 38%, transparent 54%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.98) 0%, rgba(26,56,82,0.98) 12%, rgba(26,56,82,0.72) 26%, rgba(26,56,82,0.14) 44%, transparent 58%)',
       }} />
 
       {/* Logo — top left */}
@@ -243,7 +243,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         transform: 'rotate(-8deg)',
         zIndex: 10,
         padding: '10px 24px',
-        border: '3px solid rgba(255,255,255,0.72)',
+        border: '3px solid rgba(255,255,255,0.90)',
         borderRadius: 4,
       }}>
         <div style={{
@@ -253,7 +253,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
           letterSpacing: '0.20em',
           textTransform: 'uppercase' as const,
           lineHeight: 1,
-          textShadow: '0 2px 24px rgba(26,56,82,0.70)',
+          textShadow: '0 2px 28px rgba(26,56,82,0.95)',
         }}>
           SOLD
         </div>
@@ -268,7 +268,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
         <div style={{
           fontSize: 12,
           fontWeight: WEIGHT.semibold,
-          color: 'rgba(255,255,255,0.48)',
+          color: 'rgba(255,255,255,0.72)',
           letterSpacing: '0.22em',
           textTransform: 'uppercase' as const,
           marginBottom: 14,
@@ -282,7 +282,7 @@ export function JustSoldSquare({ listing, variant = 'gold-celebration', scale = 
             color: BRAND.white,
             lineHeight: 0.87,
             letterSpacing: '-0.04em',
-            textShadow: '0 8px 52px rgba(26,56,82,0.75)',
+            textShadow: '0 8px 56px rgba(26,56,82,0.95), 0 2px 16px rgba(26,56,82,0.70)',
           }}>
             {listing.price}
           </div>

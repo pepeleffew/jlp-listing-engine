@@ -19,7 +19,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   const headColor = isDark ? BRAND.white   : BRAND.navy
   const subColor  = isDark ? 'rgba(255,255,255,0.42)' : BRAND.gray
   const itemColor = isDark ? 'rgba(255,255,255,0.90)' : BRAND.navy
-  const ruleColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(26,56,82,0.08)'
+  const ruleColor = isDark ? 'rgba(255,255,255,0.18)' : 'rgba(26,56,82,0.10)'
 
   // 3 max — generous breathing room per item
   const features = listing.features.slice(0, 3)
@@ -31,15 +31,15 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
   return (
     <TemplateWrapper id={elementId} width={1080} height={1080} scale={scale}>
       {isDark
-        ? <PhotoBg listing={listing} overlay="rgba(26,56,82,0.18)" />
+        ? <PhotoBg listing={listing} overlay="rgba(26,56,82,0.08)" />
         : <PhotoBg listing={listing} overlay="rgba(249,249,251,0.84)" />
       }
 
-      {/* Dark variant: gradient zones at top + bottom for readability, photo clear in middle */}
+      {/* Dark: punchy top/bottom zones, slight mid-tint for feature legibility, photo visible in center */}
       {isDark && (
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(26,56,82,0.48) 0%, transparent 22%, transparent 74%, rgba(26,56,82,0.58) 100%)',
+          background: 'linear-gradient(to bottom, rgba(26,56,82,0.64) 0%, rgba(26,56,82,0.14) 22%, rgba(26,56,82,0.22) 74%, rgba(26,56,82,0.76) 100%)',
           zIndex: 1,
         }} />
       )}
@@ -67,7 +67,7 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               color: headColor,
               lineHeight: 1.02,
               letterSpacing: '-0.03em',
-              ...(isDark ? { textShadow: '0 2px 20px rgba(26,56,82,0.70)' } : {}),
+              ...(isDark ? { textShadow: '0 2px 24px rgba(26,56,82,0.90)' } : {}),
             }}>
               {listing.address}
             </div>
@@ -120,11 +120,11 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
             </div>
             <div style={{
               fontSize: 40,
-              fontWeight: WEIGHT.semibold,
+              fontWeight: WEIGHT.bold,
               color: itemColor,
               lineHeight: 1.40,
               letterSpacing: '-0.01em',
-              ...(isDark ? { textShadow: '0 2px 18px rgba(26,56,82,0.70)' } : {}),
+              ...(isDark ? { textShadow: '0 2px 24px rgba(26,56,82,0.95), 0 0 40px rgba(26,56,82,0.55)' } : {}),
             }}>
               {feat}
             </div>

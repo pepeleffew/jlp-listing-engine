@@ -37,7 +37,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
       {/* Steel-blue bottom gradient */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(26,56,82,0.92) 0%, rgba(26,56,82,0.70) 20%, rgba(26,56,82,0.24) 40%, transparent 58%)',
+        background: 'linear-gradient(to top, rgba(26,56,82,0.97) 0%, rgba(26,56,82,0.97) 8%, rgba(26,56,82,0.78) 24%, rgba(26,56,82,0.22) 42%, transparent 58%)',
       }} />
 
       {/* Left vertical gold stripe — compositional anchor, asymmetric structure */}
@@ -73,7 +73,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
               color: BRAND.white,
               lineHeight: 0.86,
               letterSpacing: '-0.045em',
-              textShadow: '0 4px 40px rgba(26,56,82,0.75)',
+              textShadow: '0 4px 44px rgba(26,56,82,0.95), 0 1px 12px rgba(26,56,82,0.70)',
             }}>
               {listing.price}
             </div>
@@ -83,11 +83,11 @@ function DarkOverlay({ listing }: { listing: Listing }) {
 
       {/* Address + stats — intentionally smaller than price, anchored at foot */}
       <div style={{ position: 'absolute', bottom: E, left: E, right: E, zIndex: 10 }}>
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 20 }} />
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.32)', marginBottom: 20 }} />
         <div style={{
           fontSize: TYPE.s_md, fontWeight: WEIGHT.bold, color: BRAND.white,
           lineHeight: 1.02, letterSpacing: '-0.02em', fontFamily: FONT.display, marginBottom: 10,
-          textShadow: '0 2px 18px rgba(26,56,82,0.60)',
+          textShadow: '0 2px 22px rgba(26,56,82,0.85)',
         }}>
           {listing.address}
         </div>
