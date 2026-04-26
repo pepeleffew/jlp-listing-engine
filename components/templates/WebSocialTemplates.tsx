@@ -15,17 +15,22 @@ interface Top5Props { listing: Listing; variant?: 'dark' | 'light'; scale?: numb
 export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }: Top5Props) {
   const elementId = id || `tpl-top5-features-${variant}`
   const isDark    = variant === 'dark'
-  const bg        = isDark ? BRAND.navy    : BRAND.offWhite
   const headColor = isDark ? BRAND.white   : BRAND.navy
   const subColor  = isDark ? 'rgba(255,255,255,0.62)' : BRAND.gray
   const itemColor = isDark ? BRAND.white : BRAND.navyDeep
   const ruleColor = isDark ? 'rgba(255,255,255,0.24)' : 'rgba(26,56,82,0.22)'
 
-  // 3 max — generous breathing room per item
-  const features = listing.features.slice(0, 3)
-  const placeholders = ['Spacious open floor plan', 'Chef\'s kitchen with premium appliances', 'Primary suite with spa bath']
+  // Show all 5 — compact layout keeps each row to a single readable line
+  const features = listing.features.slice(0, 5)
+  const placeholders = [
+    'Spacious open floor plan',
+    'Chef\'s kitchen with premium appliances',
+    'Primary suite with spa bath',
+    'Three-car garage with storage',
+    'Resort-style pool and outdoor living',
+  ]
   const items = (features.length > 0 ? features : placeholders).map(f =>
-    f.length > 52 ? f.slice(0, 52).trimEnd() + '…' : f
+    f.length > 40 ? f.slice(0, 40).trimEnd() + '…' : f
   )
 
   return (
@@ -66,11 +71,11 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               Property Highlights
             </div>
             <div style={{
-              fontSize: TYPE.s_lg,
+              fontSize: TYPE.s_md,
               fontWeight: WEIGHT.black,
               color: headColor,
               lineHeight: 1.02,
-              letterSpacing: '-0.03em',
+              letterSpacing: '-0.025em',
               ...(isDark ? { textShadow: '0 2px 28px rgba(26,56,82,0.98)' } : {}),
             }}>
               {listing.address}
@@ -92,28 +97,28 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               </div>
             )}
           </div>
-          <Logo variant={isDark ? 'white' : 'dark'} height={34} style={{ marginTop: 2, flexShrink: 0 }} />
+          <Logo variant={isDark ? 'white' : 'dark'} height={36} style={{ marginTop: 2, flexShrink: 0 }} />
         </div>
       </div>
 
-      {/* Feature list — 3 items, generous spacing */}
+      {/* Feature list — 5 items, compact but clear */}
       <div style={{
         position: 'absolute',
-        top: 340, left: E, right: E, bottom: E + 72,
+        top: 370, left: E, right: E, bottom: E + 72,
         display: 'flex', flexDirection: 'column',
         justifyContent: 'space-between',
         zIndex: 10,
       }}>
         {items.map((feat, i) => (
           <div key={i} style={{
-            display: 'flex', alignItems: 'flex-start', gap: 28,
-            paddingTop: 64, paddingBottom: 64,
-            borderBottom: i < items.length - 1 ? `1.5px solid ${ruleColor}` : 'none',
+            display: 'flex', alignItems: 'center', gap: 24,
+            paddingTop: 20, paddingBottom: 20,
+            borderBottom: i < items.length - 1 ? `1px solid ${ruleColor}` : 'none',
           }}>
             {/* Number column */}
-            <div style={{ flexShrink: 0, paddingTop: 4 }}>
+            <div style={{ flexShrink: 0, width: 44, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <div style={{
-                fontSize: 22,
+                fontSize: 18,
                 fontWeight: WEIGHT.black,
                 color: BRAND.accentWarm,
                 letterSpacing: '0.10em',
@@ -121,14 +126,14 @@ export function Top5FeaturesSquare({ listing, variant = 'dark', scale = 1, id }:
               }}>
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <div style={{ width: 28, height: 2, background: BRAND.accentWarm, marginTop: 8 }} />
+              <div style={{ width: 22, height: 1.5, background: BRAND.accentWarm, marginTop: 6 }} />
             </div>
             <div style={{
-              fontSize: 48,
+              fontSize: 34,
               fontWeight: WEIGHT.black,
               color: itemColor,
-              lineHeight: 1.22,
-              letterSpacing: '-0.015em',
+              lineHeight: 1.25,
+              letterSpacing: '-0.01em',
               ...(isDark
                 ? { textShadow: '0 2px 36px rgba(26,56,82,1), 0 0 80px rgba(26,56,82,0.90)' }
                 : { textShadow: '0 0 24px rgba(244,242,239,1), 0 0 48px rgba(244,242,239,0.98)' }),

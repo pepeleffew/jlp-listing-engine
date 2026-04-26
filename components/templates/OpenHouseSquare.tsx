@@ -45,7 +45,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         zIndex: 10,
       }}>
-        <Logo variant="white" height={38} />
+        <Logo variant="white" height={36} />
         <div style={{
           background: BRAND.navyMid,
           borderRadius: 100, padding: '10px 24px',
@@ -199,12 +199,12 @@ function NavySplit({ listing }: { listing: Listing }) {
         <div>
           {listing.openHouseDate && (
             <div style={{
-              fontSize: TYPE.s_2xl,
+              fontSize: TYPE.s_xl,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
               lineHeight: 1.0,
               letterSpacing: '-0.03em',
-              marginBottom: 8,
+              marginBottom: 4,
               fontFamily: FONT.display,
             }}>
               {listing.openHouseDate}
@@ -212,11 +212,11 @@ function NavySplit({ listing }: { listing: Listing }) {
           )}
           {listing.openHouseTime && (
             <div style={{
-              fontSize: TYPE.s_xl,
+              fontSize: TYPE.s_lg,
               fontWeight: WEIGHT.bold,
               color: BRAND.navyLight,
               letterSpacing: '-0.02em',
-              marginBottom: 16,
+              marginBottom: 14,
             }}>
               {listing.openHouseTime}
               {listing.openHouseEndTime ? ` – ${listing.openHouseEndTime}` : ''}

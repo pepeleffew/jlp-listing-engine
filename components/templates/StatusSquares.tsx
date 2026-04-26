@@ -95,7 +95,7 @@ function ComingSoonLight({ listing }: { listing: Listing }) {
           fontSize: 13, fontWeight: WEIGHT.black, color: BRAND.navyDeep,
           letterSpacing: '0.22em', textTransform: 'uppercase' as const,
         }}>Coming Soon</div>
-        <Logo variant="dark" height={34} />
+        <Logo variant="dark" height={36} />
       </div>
 
       <div style={{
@@ -187,7 +187,7 @@ export function UnderContractSquare({ listing, scale = 1, id }: UnderContractPro
       </div>
 
       <div style={{ position: 'absolute', top: E, left: E, zIndex: 10 }}>
-        <Logo variant="white" height={38} />
+        <Logo variant="white" height={36} />
       </div>
 
       <div style={{
@@ -233,7 +233,7 @@ function JustSoldDrama({ listing }: { listing: Listing }) {
       }} />
 
       <div style={{ position: 'absolute', top: E, left: E, zIndex: 10 }}>
-        <Logo variant="white" height={38} />
+        <Logo variant="white" height={36} />
       </div>
 
       <div style={{
@@ -316,7 +316,7 @@ function JustSoldMinimal({ listing }: { listing: Listing }) {
         zIndex: 1,
       }}>
         <div>
-          <Logo variant="white" height={34} style={{ marginBottom: 28 }} />
+          <Logo variant="white" height={36} style={{ marginBottom: 28 }} />
           <div style={{
             display: 'inline-flex', alignItems: 'center',
             background: BRAND.navyMid, borderRadius: 100, padding: '10px 22px',
@@ -335,7 +335,7 @@ function JustSoldMinimal({ listing }: { listing: Listing }) {
           }}>Closed at</div>
           {listing.price && (
             <div style={{
-              fontSize: TYPE.s_3xl, fontWeight: WEIGHT.black, color: BRAND.white,
+              fontSize: TYPE.s_2xl, fontWeight: WEIGHT.black, color: BRAND.white,
               lineHeight: 1.0, letterSpacing: '-0.025em', marginBottom: 22,
             }}>{listing.price}</div>
           )}

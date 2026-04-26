@@ -54,7 +54,7 @@ function DarkOverlay({ listing }: { listing: Listing }) {
         }}>
           Just Listed
         </div>
-        <Logo variant="white" height={38} />
+        <Logo variant="white" height={36} />
       </div>
 
       {/* Price — its own focal layer, ~90px of white space separates it from the address block below */}
@@ -125,7 +125,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
       }}>
         {/* Logo + badge */}
         <div>
-          <Logo variant="white" height={34} style={{ marginBottom: 28 }} />
+          <Logo variant="white" height={36} style={{ marginBottom: 28 }} />
           <div style={{
             display: 'inline-flex', alignItems: 'center',
             background: BRAND.navyMid,
@@ -147,7 +147,7 @@ function SplitPanel({ listing }: { listing: Listing }) {
         <div>
           {listing.price && (
             <div style={{
-              fontSize: 100,
+              fontSize: TYPE.s_xl,
               fontWeight: WEIGHT.black,
               color: BRAND.white,
               lineHeight: 1.0,
@@ -226,7 +226,7 @@ function MinimalWhite({ listing }: { listing: Listing }) {
         }}>
           Just Listed
         </div>
-        <Logo variant="dark" height={34} />
+        <Logo variant="dark" height={36} />
       </div>
 
       {/* Framed photo — rounded corners + deep shadow */}
