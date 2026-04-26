@@ -50,7 +50,7 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
         </div>
       </div>
 
-      {/* Center: dramatic type hierarchy with breathing room */}
+      {/* Center: dramatic type hierarchy */}
       <div style={{
         position: 'absolute',
         top: '50%', left: E, right: E,
@@ -59,11 +59,11 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
         {/* Gold accent dash */}
         <div style={{ width: 44, height: 2, background: BRAND.accentWarm, marginBottom: 32 }} />
 
-        {/* "Coming" — italic ghost word, visible but recessive */}
+        {/* "Coming" — italic, bold enough to read, still recessive vs "Soon." */}
         <div style={{
           fontSize: TYPE.s_3xl,
-          fontWeight: WEIGHT.regular,
-          color: 'rgba(255,255,255,0.22)',
+          fontWeight: WEIGHT.bold,
+          color: 'rgba(255,255,255,0.38)',
           lineHeight: 0.88,
           letterSpacing: '-0.02em',
           fontFamily: FONT.display,
@@ -72,10 +72,10 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           Coming
         </div>
 
-        {/* Spacer between words — creates drama */}
+        {/* Spacer — preserves drama between words */}
         <div style={{ height: 18 }} />
 
-        {/* "Soon." — solid anchor, heavy weight */}
+        {/* "Soon." — the dominant anchor */}
         <div style={{
           fontSize: TYPE.s_3xl,
           fontWeight: WEIGHT.black,
@@ -83,31 +83,34 @@ export function ComingSoonSquare({ listing, variant = 'dark', scale = 1, id }: C
           lineHeight: 0.88,
           letterSpacing: '-0.03em',
           fontFamily: FONT.display,
-          marginBottom: 48,
+          marginBottom: 32,
         }}>
           Soon.
         </div>
 
-        <div style={{
-          fontSize: TYPE.s_md,
-          fontWeight: WEIGHT.bold,
-          color: 'rgba(255,255,255,0.52)',
-          letterSpacing: '-0.01em',
-          fontFamily: FONT.display,
-          marginBottom: 12,
-        }}>
-          {listing.city || 'Chattanooga'}, {listing.state || 'TN'}
-        </div>
+        {/* Price: second most dominant element, sits directly under headline */}
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_xl,
+            fontSize: TYPE.s_2xl,
             fontWeight: WEIGHT.black,
             color: BRAND.accentWarm,
-            letterSpacing: '-0.02em',
+            letterSpacing: '-0.025em',
+            lineHeight: 1.0,
+            marginBottom: 16,
           }}>
             {listing.price}
           </div>
         )}
+
+        {/* City/state: supporting context, visually secondary */}
+        <div style={{
+          fontSize: TYPE.s_sm,
+          fontWeight: WEIGHT.medium,
+          color: 'rgba(255,255,255,0.48)',
+          letterSpacing: '0.01em',
+        }}>
+          {listing.city || 'Chattanooga'}, {listing.state || 'TN'}
+        </div>
       </div>
 
       {/* Bottom: gold rule + address + stats */}

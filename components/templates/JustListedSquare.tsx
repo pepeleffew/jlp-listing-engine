@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Listing } from '@/types'
-import { BRAND, OVERLAY, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
+import { BRAND, TYPE, WEIGHT, M, FONT } from '@/lib/templates/brand'
 import { PhotoBg, StatRow, TemplateWrapper, Logo } from '@/components/templates/shared'
 
 // ─────────────────────────────────────────────────────────────────────────────

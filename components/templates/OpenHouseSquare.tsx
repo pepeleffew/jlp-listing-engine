@@ -50,7 +50,7 @@ function PhotoDate({ listing }: { listing: Listing }) {
         </div>
       </div>
 
-      {/* Center: frosted event invitation card */}
+      {/* Center: frosted event card — left-aligned, clear hierarchy */}
       <div style={{
         position: 'absolute',
         top: '50%', left: E, right: E,
@@ -59,21 +59,9 @@ function PhotoDate({ listing }: { listing: Listing }) {
         borderRadius: 24,
         boxShadow: '0 20px 60px rgba(0,0,0,0.42)',
         border: '1px solid rgba(200,169,110,0.28)',
-        padding: '40px 44px',
-        textAlign: 'center',
+        padding: '36px 40px',
       }}>
-        {/* "You're Invited" label */}
-        <div style={{
-          fontSize: TYPE.s_xs - 4,
-          fontWeight: WEIGHT.semibold,
-          color: BRAND.accentWarm,
-          letterSpacing: '0.20em',
-          textTransform: 'uppercase' as const,
-          marginBottom: 24,
-        }}>
-          You&apos;re Invited
-        </div>
-
+        {/* 1. Date — dominant hero */}
         {hasDate ? (
           <>
             <div style={{
@@ -82,18 +70,19 @@ function PhotoDate({ listing }: { listing: Listing }) {
               color: BRAND.white,
               lineHeight: 1.0,
               letterSpacing: '-0.03em',
-              marginBottom: 16,
+              marginBottom: 14,
               fontFamily: FONT.display,
             }}>
               {listing.openHouseDate || 'Open House'}
             </div>
+            {/* 2. Time — secondary hero */}
             {listing.openHouseTime && (
               <div style={{
                 fontSize: TYPE.s_xl,
                 fontWeight: WEIGHT.bold,
                 color: BRAND.accentWarm,
                 letterSpacing: '-0.02em',
-                marginBottom: 30,
+                marginBottom: 28,
               }}>
                 {listing.openHouseTime}
                 {listing.openHouseEndTime ? ` – ${listing.openHouseEndTime}` : ''}
@@ -108,46 +97,49 @@ function PhotoDate({ listing }: { listing: Listing }) {
             lineHeight: 1.0,
             letterSpacing: '-0.03em',
             fontFamily: FONT.display,
-            marginBottom: 30,
+            marginBottom: 28,
           }}>
             Open House
           </div>
         )}
 
         {/* Gold divider */}
-        <div style={{ height: 1, background: 'rgba(200,169,110,0.30)', marginBottom: 24 }} />
+        <div style={{ height: 1, background: 'rgba(200,169,110,0.28)', marginBottom: 22 }} />
 
-        {/* Address inside card */}
+        {/* 3. Address — info tier */}
         <div style={{
           fontSize: TYPE.s_sm,
-          fontWeight: WEIGHT.bold,
-          color: BRAND.white,
-          lineHeight: 1.05,
+          fontWeight: WEIGHT.semibold,
+          color: 'rgba(255,255,255,0.75)',
+          lineHeight: 1.1,
           letterSpacing: '-0.01em',
           fontFamily: FONT.display,
-          marginBottom: 8,
+          marginBottom: 12,
         }}>
           {listing.address}
         </div>
+
+        {/* 4. Price — most prominent info element (size + gold color) */}
         {listing.price && (
           <div style={{
-            fontSize: TYPE.s_sm,
+            fontSize: TYPE.s_md,
             fontWeight: WEIGHT.black,
             color: BRAND.accentWarm,
-            letterSpacing: '-0.01em',
-            marginBottom: 2,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            marginBottom: 22,
           }}>
             {listing.price}
           </div>
         )}
 
+        {/* 5. Utility label */}
         <div style={{
-          fontSize: TYPE.s_xs - 6,
+          fontSize: TYPE.s_xs - 4,
           fontWeight: WEIGHT.regular,
-          color: 'rgba(255,255,255,0.38)',
-          letterSpacing: '0.12em',
+          color: 'rgba(255,255,255,0.32)',
+          letterSpacing: '0.14em',
           textTransform: 'uppercase' as const,
-          marginTop: 20,
         }}>
           No appointment needed
         </div>
